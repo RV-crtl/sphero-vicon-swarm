@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.11", "3.12", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m compileall -q src examples
+      - run: ruff check .
+      - run: mypy src/sphero_vicon_swarm
+      - run: pytest --cov=sphero_vicon_swarm --cov-report=term-missing --cov-report=xml
+      - run: python tools/privacy_scan.py .
+      - run: python reference_controllers/three_chariot_square_swarm.py --dry-run --timeout 2 --no-digital-twin
+      - uses: actions/upload-artifact@v4
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
+        with:
+          name: coverage
+          path: coverage.xml

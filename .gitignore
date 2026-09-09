@@ -1,0 +1,41 @@
+# Local / private configuration
+config/robot_setup.toml
+.env
+.env.*
+!.env.example
+
+# Runtime data
+artifacts/logs/*
+!artifacts/logs/.gitkeep
+*.csv
+*.log
+*.jsonl
+*.mp4
+*.mov
+*.avi
+
+# Calibration / learned state
+*calibration*.json
+*learning*.json
+*ilc*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+dist/
+build/
+.venv/
+venv/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,15 @@
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: ["docs/**", "README.md"]
+tests:
+  - changed-files:
+      - any-glob-to-any-file: ["tests/**"]
+robot-control:
+  - changed-files:
+      - any-glob-to-any-file: ["src/sphero_vicon_swarm/control.py", "reference_controllers/**"]
+hardware:
+  - changed-files:
+      - any-glob-to-any-file: ["src/sphero_vicon_swarm/drivers/**", "src/sphero_vicon_swarm/tracking/**", "examples/**"]
+ci:
+  - changed-files:
+      - any-glob-to-any-file: [".github/workflows/**", ".pre-commit-config.yaml"]

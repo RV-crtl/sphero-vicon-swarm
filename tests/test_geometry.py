@@ -1,4 +1,11 @@
-from sphero_vicon_swarm.geometry import clamp, project_point_to_segment, rotate, unit, wrap180, wrap360
+from sphero_vicon_swarm.geometry import (
+    clamp,
+    project_point_to_segment,
+    rotate,
+    unit,
+    wrap180,
+    wrap360,
+)
 
 
 def test_angle_wrapping() -> None:

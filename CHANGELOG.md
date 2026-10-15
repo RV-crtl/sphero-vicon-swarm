@@ -13,6 +13,9 @@
 - Add scheduled dependency auditing and OpenSSF Scorecard analysis.
 - Refresh pre-commit hooks and group Dependabot updates.
 - Require Ruff formatting checks in CI.
+- Scope write-capable GitHub tokens to the jobs that require them.
+- Add signed build-provenance attestations to tagged releases.
+- Expand the security policy with private-reporting and hardware-motion guidance.
 
 All notable public changes are recorded here.
 

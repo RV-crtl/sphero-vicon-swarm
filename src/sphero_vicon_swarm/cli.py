@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import time
+
 from .config import load_config
 from .diagnostics import doctor
 from .simulation import default_three_robot_simulation

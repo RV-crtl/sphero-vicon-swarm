@@ -4,6 +4,8 @@
 [![Docs](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/docs.yml/badge.svg)](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/docs.yml)
 [![CodeQL](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/codeql.yml/badge.svg)](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/codeql.yml)
 [![Secret Scan](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/secret-scan.yml)
+[![Security Maintenance](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/security-maintenance.yml/badge.svg)](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/security-maintenance.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/RV-crtl/sphero-vicon-swarm/badge)](https://scorecard.dev/viewer/?uri=github.com/RV-crtl/sphero-vicon-swarm)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Style](https://img.shields.io/badge/code%20style-ruff-261230)
@@ -216,15 +218,20 @@ It runs:
 
 The GitHub workflows add:
 
-- multi-version Python CI
-- Ruff lint/format validation
-- mypy static typing
+- multi-version, cross-platform Python CI
+- Ruff lint and formatting validation
+- mypy strict static typing
 - pytest + coverage
+- wheel/source-distribution build and install validation
 - CodeQL analysis
-- dependency review on pull requests
-- scheduled dependency updates
+- Gitleaks plus project-specific privacy scanning
+- pull-request dependency review with `pip-audit` fallback
+- weekly dependency-security maintenance
+- OpenSSF Scorecard supply-chain analysis
+- grouped Dependabot updates
 - documentation build/deploy
-- release package build on version tags
+- release package build and checksum generation on version tags
+- GitHub Actions pinned to immutable commit SHAs
 
 ## Documentation
 

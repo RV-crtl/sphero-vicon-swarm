@@ -7,6 +7,12 @@
 - Validate documentation on pull requests and deploy only from non-PR runs.
 - Update GitHub Actions to current Node 24-compatible major versions.
 - Add live workflow badges and canonical project URLs.
+- Pin GitHub Actions to immutable commit SHAs for supply-chain integrity.
+- Add CODEOWNERS and strengthen pull-request review guidance.
+- Add package build/install validation to CI.
+- Add scheduled dependency auditing and OpenSSF Scorecard analysis.
+- Refresh pre-commit hooks and group Dependabot updates.
+- Require Ruff formatting checks in CI.
 
 All notable public changes are recorded here.
 

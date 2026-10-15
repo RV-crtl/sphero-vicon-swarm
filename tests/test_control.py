@@ -1,4 +1,9 @@
-from sphero_vicon_swarm.control import boundary_recovery, collision_repulsion, slot_velocity, vector_to_speed_cmd
+from sphero_vicon_swarm.control import (
+    boundary_recovery,
+    collision_repulsion,
+    slot_velocity,
+    vector_to_speed_cmd,
+)
 from sphero_vicon_swarm.models import Pose2D, Velocity2D, Workspace
 
 

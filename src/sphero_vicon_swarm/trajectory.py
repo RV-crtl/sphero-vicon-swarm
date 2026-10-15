@@ -15,7 +15,7 @@ class SquarePath:
     def corners(self) -> tuple[tuple[float, float], ...]:
         h = self.side_mm / 2.0
         cx, cy = self.center_x_mm, self.center_y_mm
-        return ((cx-h, cy-h), (cx+h, cy-h), (cx+h, cy+h), (cx-h, cy+h))
+        return ((cx - h, cy - h), (cx + h, cy - h), (cx + h, cy + h), (cx - h, cy + h))
 
     def segment(self, index: int) -> tuple[tuple[float, float], tuple[float, float]]:
         corners = self.corners

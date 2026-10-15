@@ -56,15 +56,24 @@ def load_config(path: str | Path, *, allow_placeholders: bool = False) -> Runtim
         robots.append(
             RobotSpec(
                 label=str(raw.get("label", f"robot-{index}")),
-                sphero_name=os.getenv(f"SPHERO_{suffix}_NAME", str(raw.get("sphero_name", "YOUR_DEVICE_NAME"))),
-                vicon_subject=os.getenv(f"VICON_{suffix}_SUBJECT", str(raw.get("vicon_subject", f"Robot {index}"))),
-                vicon_segment=os.getenv(f"VICON_{suffix}_SEGMENT", str(raw.get("vicon_segment", raw.get("vicon_subject", f"Robot {index}")))),
+                sphero_name=os.getenv(
+                    f"SPHERO_{suffix}_NAME", str(raw.get("sphero_name", "YOUR_DEVICE_NAME"))
+                ),
+                vicon_subject=os.getenv(
+                    f"VICON_{suffix}_SUBJECT", str(raw.get("vicon_subject", f"Robot {index}"))
+                ),
+                vicon_segment=os.getenv(
+                    f"VICON_{suffix}_SEGMENT",
+                    str(raw.get("vicon_segment", raw.get("vicon_subject", f"Robot {index}"))),
+                ),
                 body_length_mm=float(raw.get("body_length_mm", 200.0)),
                 body_width_mm=float(raw.get("body_width_mm", 140.0)),
             )
         )
 
-    result = RuntimeConfig(vicon=vicon, workspace=workspace, controller=controller, robots=tuple(robots))
+    result = RuntimeConfig(
+        vicon=vicon, workspace=workspace, controller=controller, robots=tuple(robots)
+    )
     if allow_placeholders:
         result.workspace.validate()
         if result.vicon.floor_plane not in {"XY", "XZ"}:

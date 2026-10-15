@@ -18,10 +18,12 @@ def main() -> None:
         end = time.monotonic() + args.seconds
         while time.monotonic() < end:
             poses = tracker.read_all()
-            print(" | ".join(
-                f"{label}: ({pose.x_mm:8.1f},{pose.y_mm:8.1f}) yaw={pose.yaw_deg:6.1f} occ={pose.occluded}"
-                for label, pose in poses.items()
-            ))
+            print(
+                " | ".join(
+                    f"{label}: ({pose.x_mm:8.1f},{pose.y_mm:8.1f}) yaw={pose.yaw_deg:6.1f} occ={pose.occluded}"
+                    for label, pose in poses.items()
+                )
+            )
             time.sleep(0.1)
 
 

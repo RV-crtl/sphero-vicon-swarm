@@ -28,7 +28,11 @@ class SimRobot:
         self.command_speed = 0
 
     def step(self, dt_s: float) -> None:
-        desired = 0.0 if self.command_speed < self.static_cmd and self.speed_mm_s < 20 else self.command_speed * 5.2 * self.speed_scale
+        desired = (
+            0.0
+            if self.command_speed < self.static_cmd and self.speed_mm_s < 20
+            else self.command_speed * 5.2 * self.speed_scale
+        )
         tau = 0.20 if desired >= self.speed_mm_s else 0.12
         self.speed_mm_s += (desired - self.speed_mm_s) * clamp(dt_s / tau, 0.0, 1.0)
         error = wrap180(self.command_heading_deg - self.yaw_deg)
@@ -42,7 +46,13 @@ class SimRobot:
 
 def default_three_robot_simulation() -> list[SimRobot]:
     return [
-        SimRobot("robot-1", -300.0, -80.0, 10.0, heading_bias_deg=-12.0, speed_scale=0.90, static_cmd=135),
-        SimRobot("robot-2", 0.0, -120.0, 80.0, heading_bias_deg=20.0, speed_scale=1.03, static_cmd=120),
-        SimRobot("robot-3", 300.0, 40.0, 300.0, heading_bias_deg=-32.0, speed_scale=0.86, static_cmd=145),
+        SimRobot(
+            "robot-1", -300.0, -80.0, 10.0, heading_bias_deg=-12.0, speed_scale=0.90, static_cmd=135
+        ),
+        SimRobot(
+            "robot-2", 0.0, -120.0, 80.0, heading_bias_deg=20.0, speed_scale=1.03, static_cmd=120
+        ),
+        SimRobot(
+            "robot-3", 300.0, 40.0, 300.0, heading_bias_deg=-32.0, speed_scale=0.86, static_cmd=145
+        ),
     ]

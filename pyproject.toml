@@ -36,6 +36,12 @@ dev = [
 ]
 docs = ["mkdocs>=1.6", "mkdocs-material>=9.5"]
 
+[project.urls]
+Homepage = "https://github.com/RV-crtl/sphero-vicon-swarm"
+Documentation = "https://RV-crtl.github.io/sphero-vicon-swarm/"
+Issues = "https://github.com/RV-crtl/sphero-vicon-swarm/issues"
+Source = "https://github.com/RV-crtl/sphero-vicon-swarm"
+
 [project.scripts]
 sphero-vicon = "sphero_vicon_swarm.cli:main"
 
@@ -83,6 +89,10 @@ python_version = "3.11"
 strict = true
 packages = ["sphero_vicon_swarm"]
 exclude = ["reference_controllers"]
+
+[[tool.mypy.overrides]]
+module = ["spherov2.*", "vicon_dssdk.*"]
+ignore_missing_imports = true
 
 [tool.setuptools.package-data]
 sphero_vicon_swarm = ["py.typed"]

@@ -4,7 +4,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-
 GENERATED = [
     Path("artifacts/logs/release_check.csv"),
     Path("reference_controllers/three_chariot_square_ilc_reference.json"),

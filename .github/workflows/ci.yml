@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   test:
+    name: test (${{ matrix.os }}, ${{ matrix.python-version }})
     strategy:
       fail-fast: false
       matrix:
@@ -16,21 +17,48 @@ jobs:
         python-version: ["3.11", "3.12", "3.13"]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Check out repository
+        uses: actions/checkout@v7
+      - name: Set up Python
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
-      - run: python -m pip install --upgrade pip
-      - run: python -m pip install -e ".[dev]"
-      - run: python -m compileall -q src examples
-      - run: ruff check .
-      - run: mypy src/sphero_vicon_swarm
-      - run: pytest --cov=sphero_vicon_swarm --cov-report=term-missing --cov-report=xml
-      - run: python tools/privacy_scan.py .
-      - run: python reference_controllers/three_chariot_square_swarm.py --dry-run --timeout 2 --no-digital-twin
-      - uses: actions/upload-artifact@v4
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+      - name: Install development dependencies
+        run: python -m pip install -e ".[dev]"
+      - name: Compile Python sources
+        run: python -m compileall -q src examples
+      - name: Lint with Ruff
+        run: ruff check .
+      - name: Type-check reusable package
+        run: mypy src/sphero_vicon_swarm
+      - name: Run tests with coverage
+        run: pytest --cov=sphero_vicon_swarm --cov-report=term-missing --cov-report=xml
+      - name: Run privacy scan
+        run: python tools/privacy_scan.py .
+      - name: Exercise reference controller dry-run
+        run: python reference_controllers/three_chariot_square_swarm.py --dry-run --timeout 2 --no-digital-twin
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v7
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
         with:
           name: coverage
           path: coverage.xml
+          if-no-files-found: error
+
+  required-ci:
+    name: Required CI
+    if: always()
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every matrix job to pass
+        shell: bash
+        run: |
+          if [ "${{ needs.test.result }}" != "success" ]; then
+            echo "One or more CI matrix jobs failed." >&2
+            exit 1
+          fi
+          echo "All CI matrix jobs passed."

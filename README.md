@@ -1,5 +1,9 @@
 # Sphero + Vicon Swarm Control
 
+[![CI](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/ci.yml/badge.svg)](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/ci.yml)
+[![Docs](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/docs.yml/badge.svg)](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/docs.yml)
+[![CodeQL](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/codeql.yml/badge.svg)](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/codeql.yml)
+[![Secret Scan](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/secret-scan.yml)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Style](https://img.shields.io/badge/code%20style-ruff-261230)
@@ -235,6 +239,7 @@ The GitHub workflows add:
 - [Troubleshooting](docs/troubleshooting.md)
 - [Validation](docs/validation.md)
 - [GitHub workflow](docs/github-workflow.md)
+- [Maintainer workflow](docs/maintainer-workflow.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security](SECURITY.md)
 

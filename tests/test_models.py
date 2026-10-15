@@ -1,6 +1,12 @@
 import pytest
 
-from sphero_vicon_swarm.models import ControllerConfig, RobotSpec, RuntimeConfig, ViconConfig, Workspace
+from sphero_vicon_swarm.models import (
+    ControllerConfig,
+    RobotSpec,
+    RuntimeConfig,
+    ViconConfig,
+    Workspace,
+)
 
 
 def make_runtime(name: str = "DEVICE") -> RuntimeConfig:

@@ -10,6 +10,8 @@ permissions:
 
 jobs:
   label:
+    name: label
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/labeler@v5
+      - name: Label pull request by changed paths
+        uses: actions/labeler@v7

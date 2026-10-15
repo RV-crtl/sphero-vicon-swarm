@@ -18,8 +18,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages-${{ github.ref }}
@@ -28,6 +26,9 @@ concurrency:
 jobs:
   build:
     name: Build
+    permissions:
+      contents: read
+      pages: write
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -54,6 +55,9 @@ jobs:
     name: Deploy
     if: github.event_name != 'pull_request'
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

@@ -1,0 +1,8 @@
+# Default review ownership for the public repository.
+* @RV-crtl
+
+# Changes to automation and security-sensitive configuration should always be reviewed.
+.github/ @RV-crtl
+pyproject.toml @RV-crtl
+tools/privacy_scan.py @RV-crtl
+reference_controllers/ @RV-crtl

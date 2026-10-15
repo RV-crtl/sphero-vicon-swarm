@@ -1,0 +1,47 @@
+# Copy this file to config/robot_setup.toml before a hardware run.
+# The copied file is ignored by Git.
+
+[vicon]
+server = "127.0.0.1:801"
+floor_plane = "XY"
+yaw_euler_index = 2
+yaw_sign = 1.0
+yaw_offset_deg = 0.0
+
+[workspace]
+x_min_mm = -2000.0
+x_max_mm = 2000.0
+y_min_mm = -2000.0
+y_max_mm = 2000.0
+soft_margin_mm = 300.0
+
+[controller]
+control_hz = 50.0
+command_hz = 20.0
+max_speed_cmd = 160
+formation_radius_mm = 220.0
+square_side_mm = 1500.0
+
+[[robots]]
+label = "robot-1"
+sphero_name = "YOUR_DEVICE_NAME"
+vicon_subject = "Robot 1"
+vicon_segment = "Robot 1"
+body_length_mm = 200.0
+body_width_mm = 140.0
+
+[[robots]]
+label = "robot-2"
+sphero_name = "YOUR_DEVICE_NAME"
+vicon_subject = "Robot 2"
+vicon_segment = "Robot 2"
+body_length_mm = 200.0
+body_width_mm = 140.0
+
+[[robots]]
+label = "robot-3"
+sphero_name = "YOUR_DEVICE_NAME"
+vicon_subject = "Robot 3"
+vicon_segment = "Robot 3"
+body_length_mm = 200.0
+body_width_mm = 140.0

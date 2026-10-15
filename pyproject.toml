@@ -1,0 +1,88 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sphero-vicon-swarm"
+version = "1.0.0"
+description = "Multi-robot Sphero chariot control using Vicon motion capture"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+keywords = ["robotics", "sphero", "vicon", "motion-capture", "multi-robot", "swarm", "control"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = []
+
+[project.optional-dependencies]
+sphero = ["spherov2>=0.12.1"]
+dev = [
+  "build>=1.2",
+  "mypy>=1.13",
+  "pre-commit>=4.0",
+  "pytest>=8.3",
+  "pytest-cov>=6.0",
+  "ruff>=0.9",
+]
+docs = ["mkdocs>=1.6", "mkdocs-material>=9.5"]
+
+[project.scripts]
+sphero-vicon = "sphero_vicon_swarm.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-config --strict-markers"
+pythonpath = ["src"]
+
+[tool.coverage.run]
+branch = true
+source = ["sphero_vicon_swarm"]
+omit = [
+  "*/__main__.py",
+  "*/cli.py",
+  "*/diagnostics.py",
+  "*/drivers/*",
+  "*/tracking/*",
+]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 75
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = ["reference_controllers"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["sphero_vicon_swarm"]
+exclude = ["reference_controllers"]
+
+[tool.setuptools.package-data]
+sphero_vicon_swarm = ["py.typed"]

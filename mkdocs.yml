@@ -1,0 +1,40 @@
+site_name: Sphero + Vicon Swarm Control
+site_description: Public toolkit for Vicon-referenced Sphero chariot control
+repo_name: sphero-vicon-swarm
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Configuration: configuration.md
+  - Architecture: architecture.md
+  - Control design: control-design.md
+  - Development history: development-history.md
+  - Hardware setup: hardware-setup.md
+  - Vicon setup: vicon-setup.md
+  - Safety: safety.md
+  - Troubleshooting: troubleshooting.md
+  - Validation: validation.md
+  - GitHub workflow: github-workflow.md
+  - Design decisions:
+      - Vicon as navigation truth: adr/0001-vicon-as-navigation-truth.md
+      - Per-robot heading calibration: adr/0002-per-robot-calibration.md
+      - Fixed PID is not the default: adr/0003-fixed-pid-not-default.md

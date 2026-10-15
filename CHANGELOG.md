@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Fix Ruff import-order failures in CI.
+- Add a stable aggregate `Required CI` check for branch protection.
+- Validate documentation on pull requests and deploy only from non-PR runs.
+- Update GitHub Actions to current Node 24-compatible major versions.
+- Add live workflow badges and canonical project URLs.
+
 All notable public changes are recorded here.
 
 ## [1.0.0] - 2026-09-09

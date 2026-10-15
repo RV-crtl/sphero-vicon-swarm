@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 
 
@@ -18,7 +19,7 @@ class Velocity2D:
 
     @property
     def speed_mm_s(self) -> float:
-        return (self.vx_mm_s**2 + self.vy_mm_s**2) ** 0.5
+        return math.hypot(self.vx_mm_s, self.vy_mm_s)
 
 
 @dataclass(frozen=True, slots=True)

@@ -85,7 +85,9 @@ class RuntimeConfig:
             raise ValueError("Robot labels must be unique.")
         for robot in self.robots:
             if robot.sphero_name.startswith("YOUR_"):
-                raise ValueError(f"Replace placeholder Sphero name for {robot.label} before hardware use.")
+                raise ValueError(
+                    f"Replace placeholder Sphero name for {robot.label} before hardware use."
+                )
             if robot.body_length_mm <= 0 or robot.body_width_mm <= 0:
                 raise ValueError(f"Body dimensions must be positive for {robot.label}.")
         if self.controller.control_hz <= 0 or self.controller.command_hz <= 0:

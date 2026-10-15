@@ -9,7 +9,14 @@ from sphero_vicon_swarm.drivers.spherov2_driver import SpheroV2Driver
 from sphero_vicon_swarm.tracking.vicon import ViconTracker
 
 
-def measure(driver: SpheroV2Driver, tracker: ViconTracker, heading: float, speed: int, seconds: float, label: str) -> tuple[float, float]:
+def measure(
+    driver: SpheroV2Driver,
+    tracker: ViconTracker,
+    heading: float,
+    speed: int,
+    seconds: float,
+    label: str,
+) -> tuple[float, float]:
     start = tracker.read_all()[label]
     driver.command(heading, speed)
     time.sleep(seconds)
@@ -37,7 +44,9 @@ def main() -> None:
             print(f"heading 0 displacement : ({dx0:.1f}, {dy0:.1f}) mm")
             print(f"heading 90 displacement: ({dx90:.1f}, {dy90:.1f}) mm")
             print(f"calibrated basis: {basis}")
-            print(f"Vicon +X corresponds to Sphero heading {basis.world_vector_to_heading(1.0, 0.0):.1f}°")
+            print(
+                f"Vicon +X corresponds to Sphero heading {basis.world_vector_to_heading(1.0, 0.0):.1f}°"
+            )
     finally:
         driver.close()
 

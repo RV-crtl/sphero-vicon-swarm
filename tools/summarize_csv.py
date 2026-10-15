@@ -6,7 +6,9 @@ from pathlib import Path
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Print a privacy-safe structural summary of a CSV log.")
+    parser = argparse.ArgumentParser(
+        description="Print a privacy-safe structural summary of a CSV log."
+    )
     parser.add_argument("csv_file")
     args = parser.parse_args()
     path = Path(args.csv_file)

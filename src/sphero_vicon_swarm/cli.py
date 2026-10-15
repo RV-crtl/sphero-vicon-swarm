@@ -29,7 +29,11 @@ def cmd_simulate(seconds: float) -> int:
             robot.step(dt)
         now = time.monotonic()
         if now >= next_print:
-            print(" | ".join(f"{r.label}: ({r.x_mm:7.1f},{r.y_mm:7.1f}) yaw={r.yaw_deg:6.1f}" for r in robots))
+            print(
+                " | ".join(
+                    f"{r.label}: ({r.x_mm:7.1f},{r.y_mm:7.1f}) yaw={r.yaw_deg:6.1f}" for r in robots
+                )
+            )
             next_print = now + 0.5
         time.sleep(dt)
     for robot in robots:
@@ -38,7 +42,9 @@ def cmd_simulate(seconds: float) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="sphero-vicon", description="Sphero + Vicon swarm utilities")
+    parser = argparse.ArgumentParser(
+        prog="sphero-vicon", description="Sphero + Vicon swarm utilities"
+    )
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("doctor", help="report optional hardware backends and local environment")
     validate = sub.add_parser("validate-config", help="parse and sanity-check a TOML configuration")

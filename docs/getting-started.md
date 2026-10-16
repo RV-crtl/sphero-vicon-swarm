@@ -2,9 +2,9 @@
 
 The safest path is to verify the software-only workflow first, then enable hardware one subsystem at a time.
 
-## 1. Get a stable release
+## 1. Get a versioned release
 
-For a reproducible installation, clone the tagged release rather than an arbitrary development commit:
+For a reproducible installation, clone a tagged release rather than an arbitrary development commit:
 
 ```bash
 git clone --branch v1.0.0 --depth 1 https://github.com/RV-crtl/sphero-vicon-swarm.git

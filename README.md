@@ -53,7 +53,7 @@ A series of P, PD and PID experiments is documented, but **fixed gains are not p
 
 ## Quick start: no hardware required
 
-For a reproducible first run, clone the tagged stable release:
+For a reproducible first run, clone the tagged versioned release:
 
 ```bash
 git clone --branch v1.0.0 --depth 1 https://github.com/RV-crtl/sphero-vicon-swarm.git
@@ -86,7 +86,7 @@ python reference_controllers/three_chariot_square_swarm.py \
 
 ## Releases
 
-Stable releases are published on the [GitHub Releases page](https://github.com/RV-crtl/sphero-vicon-swarm/releases). Each release includes a Python wheel, source distribution and SHA-256 checksum manifest; tagged releases also produce GitHub build-provenance attestations.
+Versioned releases are published on the [GitHub Releases page](https://github.com/RV-crtl/sphero-vicon-swarm/releases). Each release includes a Python wheel, source distribution and SHA-256 checksum manifest; tagged releases also produce GitHub build-provenance attestations.
 
 The repository itself remains the recommended installation for users who want the examples, configuration template, documentation sources and reference controllers alongside the Python package.
 

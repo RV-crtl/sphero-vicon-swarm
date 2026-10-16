@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software in research or teaching, please cite this repository and the version you used."
+title: "Sphero + Vicon Swarm Control"
+type: software
+authors:
+  - name: "Sphero Vicon Swarm contributors"
+version: 1.0.0
+date-released: 2026-10-16
+license: MIT
+repository-code: "https://github.com/RV-crtl/sphero-vicon-swarm"
+url: "https://rv-crtl.github.io/sphero-vicon-swarm/"
+keywords:
+  - robotics
+  - motion capture
+  - multi-robot systems
+  - Sphero
+  - Vicon
+  - trajectory tracking

@@ -1,35 +1,53 @@
 # Changelog
 
+All notable public changes to this project are documented here.
+
 ## Unreleased
 
-- Fix Ruff import-order failures in CI.
-- Add a stable aggregate `Required CI` check for branch protection.
-- Validate documentation on pull requests and deploy only from non-PR runs.
-- Update GitHub Actions to current Node 24-compatible major versions.
-- Add live workflow badges and canonical project URLs.
-- Pin GitHub Actions to immutable commit SHAs for supply-chain integrity.
-- Add CODEOWNERS and strengthen pull-request review guidance.
-- Add package build/install validation to CI.
-- Add scheduled dependency auditing and OpenSSF Scorecard analysis.
-- Refresh pre-commit hooks and group Dependabot updates.
-- Require Ruff formatting checks in CI.
-- Scope write-capable GitHub tokens to the jobs that require them.
-- Add signed build-provenance attestations to tagged releases.
-- Expand the security policy with private-reporting and hardware-motion guidance.
+No unreleased changes.
 
-All notable public changes are recorded here.
-
-## [1.0.0] - 2026-09-09
+## [1.0.0] - 2026-10-16
 
 ### Added
 
 - public, site-neutral repository structure;
-- TOML configuration with local/private file separation;
-- public `spherov2` adapter and Vicon DataStream adapter;
 - reusable geometry, calibration, trajectory and control modules;
-- staged hardware examples;
+- public `spherov2` adapter and Vicon DataStream adapter;
+- staged one-robot, multi-robot, Vicon-only and calibration examples;
 - sanitized single- and three-chariot reference controllers;
-- simulator, unit tests and release checks;
-- privacy scanning;
-- CI, CodeQL, dependency review, Dependabot, docs deployment and release automation;
-- issue templates, pull-request template, contribution, support and security guidance.
+- simulator and software-only dry-run workflow;
+- TOML configuration with local/private values kept outside tracked source;
+- unit tests, coverage checks and release checks;
+- MkDocs documentation site and GitHub Pages deployment;
+- issue templates, pull-request template, contribution, support and security guidance;
+- CODEOWNERS and maintainer workflow documentation;
+- OpenSSF Scorecard and scheduled dependency-security auditing;
+- release build-provenance attestations and SHA-256 checksums.
+
+### Changed
+
+- refined the public controller architecture around Vicon-referenced displacement calibration;
+- documented why fixed P/PD/PID gains are not assumed to transfer reliably between loaded chariots;
+- added a stable aggregate `Required CI` gate;
+- expanded CI to Linux and Windows on Python 3.11, 3.12 and 3.13;
+- added Ruff formatting, Ruff linting, strict mypy, pytest coverage and package build/install validation;
+- grouped Dependabot maintenance updates;
+- refreshed pre-commit quality checks;
+- pinned GitHub Actions to immutable commit SHAs;
+- scoped write-capable workflow tokens to the jobs that require them.
+
+### Security
+
+- added Gitleaks history scanning;
+- added a project-specific privacy scan for private network/device/path identifiers;
+- added CodeQL static analysis;
+- added pull-request dependency review with a `pip-audit` fallback;
+- added weekly dependency auditing across public optional dependency groups;
+- expanded private vulnerability-reporting guidance;
+- added signed GitHub provenance attestations for tagged release artifacts.
+
+### Fixed
+
+- corrected CI import-order, formatting and strict-typing failures found during public hardening;
+- corrected GitHub Pages deployment permissions and validated deployment;
+- hardened the dependency-review workflow so repository-side graph availability does not remove Python vulnerability auditing.

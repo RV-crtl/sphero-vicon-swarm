@@ -6,6 +6,7 @@
 [![Secret Scan](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/secret-scan.yml)
 [![Security Maintenance](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/security-maintenance.yml/badge.svg)](https://github.com/RV-crtl/sphero-vicon-swarm/actions/workflows/security-maintenance.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/RV-crtl/sphero-vicon-swarm/badge)](https://scorecard.dev/viewer/?uri=github.com/RV-crtl/sphero-vicon-swarm)
+[![Release](https://img.shields.io/github/v/release/RV-crtl/sphero-vicon-swarm)](https://github.com/RV-crtl/sphero-vicon-swarm/releases/latest)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Style](https://img.shields.io/badge/code%20style-ruff-261230)
@@ -52,7 +53,12 @@ A series of P, PD and PID experiments is documented, but **fixed gains are not p
 
 ## Quick start: no hardware required
 
+For a reproducible first run, clone the tagged stable release:
+
 ```bash
+git clone --branch v1.0.0 --depth 1 https://github.com/RV-crtl/sphero-vicon-swarm.git
+cd sphero-vicon-swarm
+
 python -m venv .venv
 
 # Windows PowerShell
@@ -61,6 +67,7 @@ python -m venv .venv
 # macOS / Linux
 # source .venv/bin/activate
 
+python -m pip install --upgrade pip
 python -m pip install -e ".[dev,docs]"
 python -m sphero_vicon_swarm doctor
 python -m sphero_vicon_swarm validate-config --config config/robot_setup.example.toml
@@ -68,12 +75,22 @@ python -m sphero_vicon_swarm simulate --seconds 8
 pytest
 ```
 
+These checks require no robot or motion-capture hardware.
+
 The feature-rich reference controller also contains a software model:
 
 ```bash
 python reference_controllers/three_chariot_square_swarm.py \
   --dry-run --timeout 8 --no-digital-twin
 ```
+
+## Releases
+
+Stable releases are published on the [GitHub Releases page](https://github.com/RV-crtl/sphero-vicon-swarm/releases). Each release includes a Python wheel, source distribution and SHA-256 checksum manifest; tagged releases also produce GitHub build-provenance attestations.
+
+The repository itself remains the recommended installation for users who want the examples, configuration template, documentation sources and reference controllers alongside the Python package.
+
+See the [v1.0.0 release notes](docs/releases/v1.0.0.md) for the supported environment, release integrity and known limitations.
 
 ## Hardware setup
 
@@ -247,6 +264,8 @@ The GitHub workflows add:
 - [Validation](docs/validation.md)
 - [GitHub workflow](docs/github-workflow.md)
 - [Maintainer workflow](docs/maintainer-workflow.md)
+- [v1.0.0 release notes](docs/releases/v1.0.0.md)
+- [Changelog](CHANGELOG.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security](SECURITY.md)
 

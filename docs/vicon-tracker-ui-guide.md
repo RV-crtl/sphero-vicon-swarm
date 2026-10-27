@@ -19,15 +19,15 @@ The screenshots are externally referenced from DASC Lab's public Tracker 4.1 set
 
 ---
 
-# Camera Calibration
+## Camera Calibration
 
-## 1. Before automatic masking
+### 1. Before automatic masking
 
 This is the **Camera Calibration workspace before Mask All is started**.
 
 [![Tracker 4.1 Camera Calibration before masking](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
-### What is actually visible
+#### What is actually visible
 
 - left panel: **Masking**, **Wand Wave**, **Volume Setup**, **Calibration Healing**;
 - Masking action: **Mask All**;
@@ -35,7 +35,7 @@ This is the **Camera Calibration workspace before Mask All is started**.
 - origin action: **Start Set Origin**;
 - main workspace: individual camera views.
 
-### Use this screenshot when
+#### Use this screenshot when
 
 You are trying to answer: **“Am I in the correct Camera Calibration workspace?”**
 
@@ -43,13 +43,13 @@ It is not a screenshot of completed masking.
 
 ---
 
-## 2. Masking action / active state
+### 2. Masking action / active state
 
 [![Tracker 4.1 masking Mask All and Stop states](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_mask_all.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 This image is specifically useful for **Masking**. It highlights **Mask All** and includes the active-state control becoming **Stop**.
 
-### What to do
+#### What to do
 
 1. remove/cover reflective clutter physically;
 2. select the cameras;
@@ -58,13 +58,13 @@ This image is specifically useful for **Masking**. It highlights **Mask All** an
 5. click **Stop**;
 6. inspect every camera.
 
-### What “good” looks like
+#### What “good” looks like
 
 The unwanted reflections are masked without unnecessarily masking useful measurement pixels.
 
 ---
 
-## 3. 3-D view with no marker selection
+### 3. 3-D view with no marker selection
 
 [![Tracker 4.1 3-D view with cameras and no marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_no_markers.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -81,9 +81,9 @@ Use it to recognise the 3-D workspace before object/origin operations.
 
 ---
 
-# Wand calibration
+## Wand calibration
 
-## 4. Wand Wave advanced settings
+### 4. Wand Wave advanced settings
 
 <a class="sv-shot-link" href="https://dasc-lab.github.io/robot-framework/flylab/calibration.html"><img class="sv-shot-compact" src="https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png" alt="Tracker 4.1 Wand Wave settings close-up"></a>
 
@@ -97,13 +97,13 @@ It shows:
 - wand ratio/straightness tolerances;
 - **Wave All**.
 
-### Important
+#### Important
 
 The wand/model shown belongs to the source laboratory. Select the calibration object that matches **your physical Vicon wand**.
 
 ---
 
-## 5. Wand collection has just started
+### 5. Wand collection has just started
 
 [![Tracker 4.1 Wand Wave at zero/initial collection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -118,7 +118,7 @@ Use this image to recognise the **start of collection**, not the finished result
 
 ---
 
-## 6. Wand collection in progress
+### 6. Wand collection in progress
 
 [![Tracker 4.1 Wand Wave in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -129,13 +129,13 @@ This screenshot shows the state a new operator should expect while actively cove
 - calibration progress;
 - different cameras accumulating different amounts of data.
 
-### Operator action
+#### Operator action
 
 Spend more time in volume regions associated with cameras that have lower counts. Cover the actual robot operating volume, not only the centre.
 
 ---
 
-## 7. Wand calibration completed
+### 7. Wand calibration completed
 
 [![Tracker 4.1 completed wand calibration results](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_finished.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -152,9 +152,9 @@ For current Tracker 4.4 acceptance/diagnostic interpretation, use Tracker's Syst
 
 ---
 
-# Volume origin
+## Volume origin
 
-## 8. 3-D view before setting the origin
+### 8. 3-D view before setting the origin
 
 [![Tracker 4.1 initial Volume Setup 3-D view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -170,7 +170,7 @@ This is the right visual reference for the state **before/around beginning origi
 
 ---
 
-## 9. Start Set Origin state
+### 9. Start Set Origin state
 
 [![Tracker 4.1 Start Set Origin highlighted](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -182,13 +182,13 @@ Place/orient the physical origin object first, then start the operation.
 
 ---
 
-## 10. World geometry after setting the origin
+### 10. World geometry after setting the origin
 
 [![Tracker 4.1 geometry after origin setup](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_final.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 This image shows the camera geometry converging on the defined capture volume/floor region after origin setup.
 
-### Physically verify
+#### Physically verify
 
 - X axis direction;
 - Y axis direction;
@@ -200,9 +200,9 @@ Do not accept the origin solely because the screenshot “looks right”.
 
 ---
 
-# Rigid-object creation
+## Rigid-object creation
 
-## 11. Tracking panel before selecting new markers
+### 11. Tracking panel before selecting new markers
 
 [![Tracker 4.1 Tracking panel before marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
@@ -220,7 +220,7 @@ Use it to confirm you have opened the correct panel.
 
 ---
 
-## 12. Marker cluster selected
+### 12. Marker cluster selected
 
 [![Tracker 4.1 selected five-marker rigid cluster](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
@@ -228,7 +228,7 @@ This screenshot shows **five markers selected** in the 3-D View.
 
 The orange/selection region is around the candidate marker cluster.
 
-### Before clicking Create
+#### Before clicking Create
 
 Verify the selected markers all belong to the **same physical chariot**.
 
@@ -236,7 +236,7 @@ A mixed cluster can create a rigid object that appears valid for one frame but f
 
 ---
 
-## 13. Name and create the object
+### 13. Name and create the object
 
 [![Tracker 4.1 object name and Create control](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
@@ -255,7 +255,7 @@ After creation:
 
 ---
 
-# DataStream / Connections
+## DataStream / Connections
 
 The repository communicates through **Vicon DataStream SDK**, not through Tracker's UDP Object Stream.
 
@@ -281,7 +281,7 @@ Then check the Tracker Connections/Data Stream panel and move each physical obje
 
 ---
 
-# Visual-source provenance
+## Visual-source provenance
 
 These Tracker 4.1 UI captures come from DASC Lab's public robot-framework documentation at source commit:
 
@@ -296,7 +296,7 @@ Source pages:
 
 Current procedure authority remains Vicon Tracker 4.4 documentation.
 
-## Manufacturer references
+### Manufacturer references
 
 - Tracker 4.4 User Guide: https://help.vicon.com/download/attachments/376309877/Vicon%20Tracker%20User%20Guide.pdf
 - Tracker 4.4 Get to know Tracker: https://help.vicon.com/space/Tracker44/376307984
@@ -304,7 +304,7 @@ Current procedure authority remains Vicon Tracker 4.4 documentation.
 - Tracker 4.4 Add/remove object marker: https://help.vicon.com/space/Tracker44/376309055
 - DataStream SDK 1.13: https://help.vicon.com/space/DSSDK113
 
-## Where to go next
+### Where to go next
 
 - New user: [end-to-end tutorial](end-to-end-tutorial.md)
 - Detailed Vicon procedure: [Vicon setup workflow](vicon-setup.md)

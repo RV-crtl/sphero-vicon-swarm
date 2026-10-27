@@ -27,7 +27,7 @@ The local checklist happened to expect eight cameras in that installation. **Eig
 !!! tip "Need the screen layout?"
     Open the [Tracker UI guide](vicon-tracker-ui-guide.md). It now includes full-resolution real Tracker 4.1 screenshots alongside current Tracker 4.4 operating steps.
 
-[![Real Vicon Tracker 4.1 Camera Calibration interface](https://dasc-lab.github.io/robot-framework/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Vicon Tracker 4.1 Camera Calibration interface](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 *Real Tracker 4.1 UI. Written setup steps below follow Tracker 4.4 terminology.*
 
@@ -69,7 +69,7 @@ Manufacturer reference: **Tracker 4.4 User Guide, pp. 177–187**.
 
 ## 3. Remove or mask unwanted reflections
 
-[![Real Tracker 4.1 masking / Cameras view](https://dasc-lab.github.io/robot-framework/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Tracker 4.1 masking / Cameras view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 Vicon explicitly recommends **physically removing or covering unwanted reflections first** because masking prevents those camera pixels from contributing to 3D tracking.
 
@@ -102,9 +102,9 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ## 4. Perform the wand wave
 
-[![Real Tracker 4.1 wand calibration in progress](https://dasc-lab.github.io/robot-framework/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Tracker 4.1 wand calibration in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
-[![Real Tracker 4.1 calibration completed](https://dasc-lab.github.io/robot-framework/flylab/images/wand_finished.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Tracker 4.1 calibration completed](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_finished.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 The current Tracker 4.4 manufacturer sequence is:
 
@@ -131,7 +131,7 @@ Manufacturer reference: **Tracker 4.4 User Guide, pp. 130–132**.
 
 ## 5. Set the volume origin
 
-[![Real Tracker 4.1 Volume Setup view](https://dasc-lab.github.io/robot-framework/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Tracker 4.1 Volume Setup view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 Tracker 4.4 manufacturer sequence:
 
@@ -191,9 +191,9 @@ For these three similar chariots:
 
 ## 8. Create the object in Tracker
 
-[![Real Tracker 4.1 marker selection](https://dasc-lab.github.io/robot-framework/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+[![Real Tracker 4.1 marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
-[![Real Tracker 4.1 Tracking panel object creation](https://dasc-lab.github.io/robot-framework/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+[![Real Tracker 4.1 Tracking panel object creation](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
 The current Tracker 4.4 manufacturer sequence is:
 

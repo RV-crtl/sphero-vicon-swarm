@@ -1,7 +1,7 @@
-# Sphero + Vicon Swarm Control
+# Sphero + Vicon Swarm Control { .sv-page-title-hidden }
 
 <div class="sv-hero">
-  <h1>Sphero + Vicon Swarm Control</h1>
+  <div class="sv-hero__title">Sphero + Vicon Swarm Control</div>
   <p>A reproducible toolkit for Vicon-referenced control of Sphero BOLT/BOLT+ chariots, from camera calibration and DataStream verification through per-robot heading calibration and multi-robot control.</p>
   <div class="sv-badges">
     <span class="sv-badge">Vicon-referenced</span>
@@ -12,10 +12,10 @@
 </div>
 
 <div class="sv-grid">
-  <div class="sv-card"><h3><a href="vicon-setup.md">Reproduce the lab</a></h3><p>Camera health, masking, wand wave, origin, rigid objects and staged validation.</p></div>
-  <div class="sv-card"><h3><a href="vicon-tracker-ui-guide.md">Tracker visual guide</a></h3><p>Version-aware visual references plus crisp, scalable interface maps.</p></div>
-  <div class="sv-card"><h3><a href="vicon-datastream.md">DataStream SDK</a></h3><p>Connect Tracker to Python and verify subject/segment identity before motion.</p></div>
-  <div class="sv-card"><h3><a href="vicon-operator-checklist.md">Operator checklist</a></h3><p>Bench-side runbook with no blurry screenshots or fragile external image dependencies.</p></div>
+  <div class="sv-card"><h3><a href="vicon-setup/">Reproduce the lab</a></h3><p>Camera health, masking, wand wave, origin, rigid objects and staged validation.</p></div>
+  <div class="sv-card"><h3><a href="vicon-tracker-ui-guide/">Tracker visual guide</a></h3><p>Real Tracker UI screenshots with clear version labels and current operating guidance.</p></div>
+  <div class="sv-card"><h3><a href="vicon-datastream/">DataStream SDK</a></h3><p>Connect Tracker to Python and verify subject/segment identity before motion.</p></div>
+  <div class="sv-card"><h3><a href="vicon-operator-checklist/">Operator checklist</a></h3><p>A concise bench-side runbook for calibration, object creation, DataStream verification and staged motion.</p></div>
 </div>
 
 ## Real Tracker interface

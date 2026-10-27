@@ -43,9 +43,9 @@ The visual guide deliberately prioritizes **current Tracker 4.x navigation and o
 
 ### What the real Tracker UI looks like
 
-![Resolution-independent Tracker 4.x visual map](docs/assets/site/tracker-overview.svg)
+[![Real Vicon Tracker 4.1 object-creation interface](https://dasc-lab.github.io/robot-framework/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
-*Local SVG interface map: crisp at any zoom level and independent of external image hosts. Real Tracker 4.x appearance references and exact version provenance are kept in the [Tracker visual guide](docs/vicon-tracker-ui-guide.md).*
+*Real Tracker 4.1 interface from DASC Lab's public setup documentation. Current procedure wording in this repository is verified against Tracker 4.4.*
 
 Recommended sequence:
 

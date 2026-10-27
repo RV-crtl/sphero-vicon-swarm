@@ -78,13 +78,13 @@ Use the actual approved local hostname/address; do not copy an address from an o
 
 ## 5. Verify the DataStream connection in Tracker
 
-~~~mermaid
+```mermaid
 flowchart LR
     CMD["03_vicon_pose_monitor.py"] --> SDK["vicon_dssdk"]
     SDK --> TRACKER["Vicon Tracker"]
     TRACKER --> PANEL["View -> Connections -> Data Stream"]
     TRACKER --> DATA["subject / segment pose"]
-~~~
+```
 
 For a current high-resolution UI reference, use the [Tracker UI guide](vicon-tracker-ui-guide.md), which links to Vicon's Tracker 4.4 documentation.
 

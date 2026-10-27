@@ -219,7 +219,7 @@ If one remains, use Tracker's manual-mask tools rather than ignoring it.
 
 This is a deliberate close-up of the **Wand Wave controls**:
 
-[![Tracker 4.1 Wand Wave settings](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![![Tracker 4.1 Wand Wave settings](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)]](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 Confirm:
 

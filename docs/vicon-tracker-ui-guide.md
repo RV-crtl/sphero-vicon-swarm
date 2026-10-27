@@ -1,291 +1,334 @@
-# Vicon Tracker UI guide — actual lab screenshots
+# Vicon Tracker UI guide — actual screenshots + manufacturer-verified steps
 
-This page deliberately uses **real Vicon Tracker screenshots**, not reconstructed or synthetic UI drawings.
+This page uses **actual Vicon Tracker screenshots** from the lab material supplied with this project. It does **not** use a reconstructed or synthetic Tracker interface.
 
-## Version/source legend
+## Read the version labels first
 
-| Material | Version | How it is used here |
+| Evidence | Version | Purpose |
 |---|---|---|
-| Sanitized lab screenshot below | **Tracker 4.0** | Actual interface used in the lab; private network addresses are redacted |
-| Legacy calibration screenshot below | **Tracker 3.9** | Actual older training material; included only to help identify the legacy calibration layout |
-| Procedure text | **Vicon manufacturer documentation** | Current Tracker 4.4 where available; Tracker 4.0 documentation for the lab-version-specific masking/origin workflow |
+| Tracker lab screenshot | Tracker 4.0 | Shows the real interface used in the lab |
+| DataStream crop | Tracker 4.0 | Shows the real Connections/Data Stream area |
+| Calibration screenshot | Tracker 3.9 | Legacy lab visual reference only |
+| Object-creation screenshot | Tracker 3.9 | Legacy lab visual reference only |
+| Procedure text | Tracker 4.4 manufacturer guide | Current button names and sequence |
 
-!!! warning "Do not mix versions blindly"
-    Tracker 3.9, 4.0, 4.3 and 4.4 do not have identical layouts. The screenshots below are labeled by version. When a control has moved, follow the linked Vicon documentation for the version installed on the workstation.
+!!! warning "Screenshots and procedure are intentionally separated"
+    A Tracker 3.9 screenshot is **not** presented as Tracker 4.4. Use the screenshots to recognize the real application, then follow the manufacturer procedure for the version installed on the workstation.
+
+The current manufacturer procedure used here is the **Vicon Tracker 4.4 User Guide, 17 September 2025, Revision 1**.
 
 ---
 
 ## 1. Actual Tracker 4.0 lab interface
 
-![Actual Vicon Tracker 4.0 lab interface with private addresses redacted](assets/vicon/tracker4-actual-overview-annotated.jpg)
+![Actual Tracker 4.0 lab interface](assets/vicon/tracker4-actual-overview-annotated.jpg)
 
-This is an **actual Tracker 4.0 screenshot from the lab material supplied with this project**. The only edits are callouts and redaction of site-specific addresses.
+This is an actual Tracker 4.0 lab screenshot. Site-specific network addresses were redacted before publication; the Tracker UI itself is unchanged.
 
-The numbered items show the parts of Tracker used by this project:
+The useful areas visible here are:
 
-1. **View menu** — use this to open panels such as **Tracking**, **Connections**, and calibration-related views.
-2. **3D View** — use this to verify that a tracked rigid body follows the physical chariot you move.
-3. **System Health Report** — use this to inspect tracking-system health before commanding robots.
-4. **Connections / DataStream** — a DataStream client appears here when the repository connects to Tracker.
-5. **UDP output** — visible in Tracker, but **not required by this repository**. The Python code uses Vicon DataStream SDK.
+1. **View/menu area** — panels such as Tracking and Connections can be opened from the View menu when they are not already visible.
+2. **3D View** — use this to confirm that the rigid object shown by Tracker follows the physical chariot you are moving.
+3. **System Health Report** — use this before closed-loop motion to inspect tracking health.
+4. **Connections / Data Stream** — use this to see whether a DataStream client has connected.
+5. **UDP output settings** — visible in Tracker, but not used by this repository's Python Vicon adapter.
 
-The screenshot also shows a tracked chariot in the 3D View. That is the level of visual confirmation you should obtain before running closed-loop control.
+### What to do on this screen
+
+Before running any robot command:
+
+- confirm the expected cameras are online;
+- verify at least one real marker/object appears in the 3D View;
+- physically move one chariot and confirm the correct Tracker object moves;
+- inspect System Health for obvious camera/calibration/tracking problems.
 
 ---
 
-## 2. Actual Tracker 4.0 DataStream/Connections panel
+## 2. Actual Tracker 4.0 DataStream view
 
-![Actual Tracker 4.0 DataStream Connections panel](assets/vicon/tracker4-actual-datastream-connections.jpg)
+![Actual Tracker 4.0 DataStream/Connections view](assets/vicon/tracker4-actual-datastream-connections.jpg)
 
-This crop is from the same real Tracker 4.0 session.
+This crop comes from the same real Tracker 4.0 session.
 
-For this repository:
+For this project:
 
-1. Start Tracker and ensure the rigid objects are tracking.
-2. Open the **Connections** panel.
-3. Start the Python pose monitor:
+1. In Tracker, open **View → Connections** if the panel is hidden.
+2. Start the repository's Vicon-only monitor:
 
    ```bash
    python examples/03_vicon_pose_monitor.py --config config/robot_setup.toml --seconds 20
    ```
 
-4. Watch the **Data Stream** connection area.
-5. A client should appear when the Python process connects.
-6. The project uses the normal DataStream endpoint, conventionally **port 801**.
+3. Watch the **Data Stream** area in Tracker.
+4. Confirm a client appears when Python connects.
+5. Then move each chariot by hand and verify the software label that moves.
 
-The UDP Object Stream controls shown lower in Tracker are a separate output mechanism. They are not used by `src/sphero_vicon_swarm/tracking/vicon.py`.
-
-See [DataStream SDK setup](vicon-datastream.md).
+The repository uses `vicon_dssdk` / Vicon DataStream. It does **not** require enabling Tracker's UDP Object Stream.
 
 ---
 
-## 3. Manufacturer calibration workflow — Tracker 4.4/current
+## 3. System Health — manufacturer definitions
 
-The steps below follow the **Vicon Tracker 4.4 User Guide**, not an invented reconstruction.
+The right side of the actual Tracker 4.0 screenshot shows a real **System Health Report**.
 
-### 3.1 Remove or mask unwanted reflections
+Vicon Tracker 4.4 defines System Health as a default pane that consolidates key system metrics. The current manufacturer guide lists these sections:
 
-Vicon's Tracker 4.0 masking documentation says to **physically remove or cover unwanted reflective sources where practical before masking**.
-
-For automatic masking in Tracker 4.x:
-
-1. Remove unnecessary reflective objects from the capture volume.
-2. Select the **Cameras** view.
-3. In the **System** panel, select all cameras.
-4. In **Camera Calibration → Masking**, click **Mask All**.
-5. Wait until unwanted light pixels have been masked.
-6. Click **Stop**.
-7. Inspect each camera view and confirm the unwanted reflections have been eliminated.
-
-If automatic masking misses a reflection, Vicon's Tracker 4.0 procedure is:
-
-1. select a single camera;
-2. open **Camera Calibration → Masking** and show the advanced controls;
-3. click **Manual Mask Paint**;
-4. **Alt+drag** to select an area;
-5. press **E** to add the selection to the mask;
-6. press **R** to remove a selection;
-7. click **Stop** to apply changes.
-
-Manufacturer source: [Vicon Tracker 4.0 — Mask cameras](https://help.vicon.com/space/Tracker40/14190245).
-
-### 3.2 Perform the wand wave
-
-The current Tracker 4.4 user guide specifies:
-
-1. complete camera masking first;
-2. in **Camera Calibration → Wand Wave**, display the advanced properties if required;
-3. select the correct calibration object/wand;
-4. click **Wave All**;
-5. wave the wand throughout the **actual capture volume**, covering depth and height;
-6. keep the wand visible to as many cameras as possible;
-7. watch the **Wand Count** feedback — it moves from red toward green as enough data is captured;
-8. allow **Auto Stop** to finish when enabled, or stop manually after sufficient coverage.
-
-Manufacturer source: [Vicon Tracker 4.4 User Guide](https://help.vicon.com/download/attachments/376309877/Vicon%20Tracker%20User%20Guide.pdf), camera-calibration section (wand-wave procedure).
-
-### 3.3 Set the volume origin
-
-The Tracker 4.4 manufacturer procedure is:
-
-1. place the calibration device in the required origin position/orientation;
-2. in **Camera Calibration → Volume Setup**, show the advanced parameters;
-3. under **Set Volume Origin**, select the appropriate calibration device;
-4. click **Start Set Origin**;
-5. wait until Tracker has enough information and the control becomes available;
-6. click **Set Origin**;
-7. verify the displayed world axes:
-   - **X = red**
-   - **Y = green**
-   - **Z = blue**
-8. physically verify that the chosen origin and axes make sense for the robot workspace.
-
-Manufacturer source: [Vicon Tracker 4.4 User Guide](https://help.vicon.com/download/attachments/376309877/Vicon%20Tracker%20User%20Guide.pdf), volume-origin procedure.
-
-Do not “fix” a wrong Vicon world frame later by randomly swapping controller signs. Establish the coordinate frame deliberately, then configure `floor_plane`, yaw convention, and the repository's displacement calibration.
-
----
-
-## 4. Actual legacy Tracker 3.9 calibration UI
-
-![Actual Tracker 3.9 calibration tab from local training material](assets/vicon/tracker39-actual-calibrate-tab.jpg)
-
-This is an **actual Tracker 3.9 screenshot from the supplied lab training material**.
-
-It is included because older local notes may still refer to the **Calibrate** tab and **Create Camera Masks**. That terminology/layout belongs to Tracker 3.9.
-
-Do **not** use this image as a pixel-perfect guide for Tracker 4.x. In Tracker 4.x, use the **Camera Calibration** panel and the manufacturer steps above.
-
-Vicon's own Tracker 3.9 documentation describes the legacy Resources pane as containing **System**, **Calibrate**, **Objects**, and **Recording** tabs:
-[Vicon Tracker 3.9 — Resources pane](https://help.vicon.com/space/Tracker39/14057713).
-
----
-
-## 5. Creating a rigid object — manufacturer Tracker 4.4 procedure
-
-The Tracker 4.4 User Guide gives the following object-creation procedure.
-
-### Marker geometry
-
-For best results, the object should be rigid and use an asymmetric marker arrangement.
-
-Tracker 4.4 requires you to select **at least four unassigned marker trajectories**; Vicon's 4.4 guide says **five or more is recommended**.
-
-### Create the object
-
-1. Place the chariot, with its reflective markers attached, inside the calibrated capture volume.
-2. If the markers are not visible in the 3D View:
-   - in **View Filters**, enable **Unlabeled Markers**;
-   - in the **Processing** panel, ensure **Enable Unlabeled Reconstructions** is selected.
-3. Select the marker trajectories:
-   - hold **Ctrl** and click markers individually; or
-   - hold **Alt** and drag a selection box around the marker group.
-4. In the **Tracking** panel, enter a **unique object name** in the **Object** field.
-5. Click **Create**.
-6. Move the physical chariot by hand and confirm the newly created object follows **only that chariot**.
-7. Save the Tracker setup/object preset according to the local lab procedure.
-
-Manufacturer source: [Vicon Tracker 4.4 User Guide](https://help.vicon.com/download/attachments/376309877/Vicon%20Tracker%20User%20Guide.pdf), “Create objects”, p.190 in the 2025-09-17 revision.
-
-### Add or remove a marker
-
-Vicon's Tracker 4.4 procedure is:
-
-**Add**
-1. select the object in the **Tracking** panel or 3D View;
-2. hold **Ctrl** and select the marker;
-3. click **Add Marker**.
-
-**Remove**
-1. select the marker;
-2. click **Remove Marker**.
-
-Tracker will not allow removal if the object would be left with fewer than four markers.
-
-Manufacturer source: [Vicon Tracker 4.4 — Add or remove a marker](https://help.vicon.com/space/Tracker44/376309055).
-
----
-
-## 6. Local lab checklist vs manufacturer procedure
-
-The supplied local checklist independently confirms the practical Tracker 4.0 workflow used in the lab:
-
-- open **View → Tracking**;
-- place the marked object in the capture area;
-- select the object's visible markers with **Ctrl + left-click**;
-- name the object in the Tracking panel;
-- click **Create**;
-- use **Add Marker** / **Remove Marker** when required;
-- save the configuration.
-
-Where the local checklist and newer Vicon 4.4 documentation differ in layout or terminology, this project follows the **manufacturer documentation for the installed Tracker version**.
-
----
-
-## 7. System Health — what the real Tracker panel means
-
-The actual Tracker 4.0 screenshot at the top of this page shows the **System Health Report**.
-
-Vicon's System Health documentation defines the relevant metrics as follows.
+- **Performance**
+- **Calibration Details**
+- **Centroid Connectivity**
+- **Image Error**
+- **Camera Temperatures**
+- **Camera Accelerometers**
+- **Auto Recover Camera Pose**
+- **Auto Bias Handling**
 
 ### Performance
 
-- **Latency** — elapsed time from the midpoint of the camera shutter interval until data is ready for a client.
+Vicon defines:
+
+- **Latency** — elapsed time from the midpoint of the camera shutter interval until data is ready to be sent to a client.
 - **Drop Frames** — unprocessed frames as a percentage of total frames.
 
-If latency or dropped frames change unexpectedly during a run, stop and investigate rather than assuming the controller is at fault.
+Unexpected dropped frames or unstable latency should be investigated before running closed-loop control.
 
 ### Calibration Details
 
-Use this to check calibration state and identify uncalibrated cameras. Vicon explicitly notes that calibration age alone does not prove a calibration is bad.
+Use this to identify uncalibrated cameras and the age of the current calibration.
+
+An old calibration is **not automatically bad**; judge it alongside tracking quality, camera movement, temperature change and image error.
 
 ### Centroid Connectivity
 
-This reflects how well moving 2D centroids are associated with tracked object markers. Poor values can be consistent with issues such as reflections, occlusion, changed object geometry, or calibration drift.
+This is the proportion of moving 2D centroids that are successfully associated with tracked object markers.
+
+Low connectivity can point toward:
+
+- reflections;
+- marker occlusion;
+- poor object geometry;
+- calibration drift;
+- changed camera geometry.
 
 ### Image Error
 
-Vicon defines Image Error as the pixel distance between observed 2D centroids and the reprojection of reconstructed 3D points into the camera image.
+Vicon defines Image Error as the pixel difference between observed 2D centroids and where reconstructed 3D points re-project into the camera image.
 
-Tracker's System Health UI flags cameras above the configured diagnostic threshold (the Tracker 4.1 documentation describes a 1.0-pixel header threshold). Treat this as a diagnostic signal, not a universal pass/fail specification for every experiment.
+Tracker 4.4's System Health header reports cameras above a **1.0 pixel diagnostic threshold**. Treat that as a troubleshooting indicator, not as a universal project acceptance criterion.
 
-Manufacturer source: [Vicon Tracker — Understand System Health Report](https://help.vicon.com/space/Tracker41/14323303).
+Manufacturer reference: **Tracker 4.4 User Guide, “Understand System Health Report”, pp. 177–187**.
 
 ---
 
-## 8. What to press for this repository, end to end
+# Camera calibration
 
-Once Tracker itself is healthy:
+## 4. Actual legacy calibration UI from the lab material
 
-### A. Verify the Vicon client
+![Actual Tracker 3.9 calibration interface](assets/vicon/tracker39-actual-calibrate-tab.jpg)
+
+This is a real Tracker **3.9** screenshot from the supplied lab training material.
+
+It is useful for recognizing the older **Calibrate** workflow, but **do not use its button locations as a Tracker 4.4 guide**.
+
+Tracker 4.4 puts the current workflow in **Camera Calibration**.
+
+---
+
+## 5. Mask unwanted reflections — current manufacturer procedure
+
+Vicon's procedure is to remove or cover unwanted reflective sources where practical **before** using masks.
+
+For Tracker 4.x automatic masking:
+
+1. Change the Workspace to a **Cameras** view.
+2. In **System**, select the cameras to calibrate.
+3. Go to **Camera Calibration → Masking**.
+4. Click **Mask All**.
+5. Watch the camera views while Tracker creates the masks.
+6. Masked pixels are shown in blue.
+7. When the unwanted reflections are covered, click **Stop**.
+8. Inspect every camera view before moving on.
+
+For a residual reflection, Vicon's Tracker 4.0 manual-mask procedure is:
+
+1. select the affected camera;
+2. open advanced controls under **Camera Calibration → Masking**;
+3. click **Manual Mask Paint**;
+4. **Alt+drag** a region;
+5. press **E** to add it to the mask;
+6. press **R** to remove a region from the mask;
+7. click **Stop** when finished.
+
+Manufacturer reference: **Vicon Tracker 4.0 — Mask cameras**.
+
+---
+
+## 6. Perform the wand wave — Tracker 4.4 manufacturer sequence
+
+The current Tracker 4.4 guide states:
+
+1. Complete camera masking first.
+2. Go to **Camera Calibration → Wand Wave**.
+3. Select the calibration object that matches the physical wand. Vicon's default example is **Active Wand v2**.
+4. Click **Wave All**.
+5. Tracker changes the control to **Stop** and displays **Camera Calibration Active**.
+6. Wave the wand through the full useful capture volume, covering both **depth and height**.
+7. Keep the wand markers visible to as many cameras as possible.
+8. Watch the per-camera **Wand Count**:
+   - the status changes toward green as enough data is collected;
+   - low-count cameras are moved toward the top of the list.
+9. With **Auto Stop** enabled, Tracker stops after enough data has been collected for each camera.
+10. Review the per-camera **Image Error** status after calibration.
+
+After this stage the cameras are calibrated **relative to one another**, but the volume origin has not yet been set.
+
+Manufacturer reference: **Tracker 4.4 User Guide, “Perform a wand wave”, pp. 130–132**.
+
+---
+
+## 7. Set the volume origin — Tracker 4.4 manufacturer sequence
+
+After the wand wave:
+
+1. Change the Workspace to **3D View**.
+2. Place the calibration device on the floor at the required origin and orient it to the required axes.
+3. Go to **Camera Calibration → Volume Setup**.
+4. Show the advanced parameters if needed.
+5. Under **Set Volume Origin**, choose the correct calibration device.
+6. Click **Start Set Origin**.
+7. Wait until Tracker has enough data and the control becomes available.
+8. Click **Set Origin**.
+9. Verify the axes in the 3D View:
+   - **X = red**
+   - **Y = green**
+   - **Z = blue**
+10. Physically verify the floor, origin and positive directions before configuring the swarm workspace.
+
+If the capture floor is not sufficiently level, Vicon documents a separate **Set Floor Plane** workflow after the origin is established.
+
+Manufacturer reference: **Tracker 4.4 User Guide, “Set the volume origin”, pp. 134–139**.
+
+---
+
+# Rigid objects
+
+## 8. Actual object-creation UI from the supplied training material
+
+![Actual Tracker object-creation workflow](assets/vicon/tracker39-actual-object-workflow.jpg)
+
+This is a real Tracker **3.9** object-creation screen from the supplied lab training material. Object names were redacted before publication.
+
+It shows the real Tracker workspace used to select a marker constellation and create a rigid object. The current Tracker 4.4 controls are still in the **Tracking** panel, but the layout differs.
+
+---
+
+## 9. Create an object — Tracker 4.4 manufacturer sequence
+
+Vicon Tracker 4.4 states that object tracking is configured in **View → Tracking**.
+
+For best results, an object must be rigid and contain at least **four asymmetric markers**.
+
+To create one:
+
+1. Put the marked chariot inside the calibrated volume.
+2. If its markers are not visible:
+   - in **View Filters**, enable **Unlabeled Markers**;
+   - in **Processing**, enable **Unlabeled Reconstructions**.
+3. Select the unassigned marker trajectories:
+   - **Ctrl + click** markers individually; or
+   - **Alt + drag** a box around a group.
+4. Select at least **four** trajectories; Vicon recommends **five or more**.
+5. In the **Tracking** panel, type a unique name in the **Object** field.
+6. Click **Create**.
+7. Exit review/pause mode if necessary to see the new object's current pose.
+8. Move the physical chariot and confirm the new Tracker object follows **only that chariot**.
+
+Vicon notes that:
+
+- the initial object origin is the mean point of its markers;
+- its initial orientation is aligned to the global coordinate system on the creation frame;
+- objects are stored as `.vsk` files.
+
+Manufacturer reference: **Tracker 4.4 User Guide, “Create objects”, pp. 187–190**.
+
+### Add a marker
+
+1. Select the object.
+2. Ctrl-select one unassigned marker.
+3. Click **Add Marker**.
+
+### Remove a marker
+
+1. Select the marker.
+2. Click **Remove Marker**.
+
+Tracker does not allow the operation if it would leave the object with fewer than four markers.
+
+---
+
+# Handoff from Tracker to this repository
+
+## 10. Record the exact object/device mapping
+
+For every chariot, record:
+
+| Physical chariot | Sphero/BLE name | Vicon object/subject | Vicon segment |
+|---|---|---|---|
+| Robot 1 | local value | local value | local value |
+| Robot 2 | local value | local value | local value |
+| Robot 3 | local value | local value | local value |
+
+Do not infer mappings from list order.
+
+Then copy the template:
+
+```powershell
+Copy-Item config/robot_setup.example.toml config/robot_setup.toml
+```
+
+and enter those values locally.
+
+---
+
+## 11. Verify Tracker before commanding robots
+
+Run the Vicon-only monitor:
 
 ```bash
 python examples/03_vicon_pose_monitor.py --config config/robot_setup.toml --seconds 20
 ```
 
-Then physically move each chariot one at a time and verify the correct software label changes.
+With **no robot commands active**:
 
-### B. Verify Sphero identity
+1. move physical robot 1 by hand;
+2. confirm only software `robot-1` moves;
+3. repeat for robots 2 and 3;
+4. move along known world-axis directions;
+5. rotate each object;
+6. briefly occlude markers and observe the occlusion state.
 
-```bash
-python examples/01_single_sphero_smoke_test.py --config config/robot_setup.toml
-python examples/02_multi_sphero_smoke_test.py --config config/robot_setup.toml
-```
+Only after this passes should the Sphero/Vicon heading calibration be run.
 
-### C. Calibrate Sphero heading against measured Vicon displacement
+---
+
+## 12. Calibrate Sphero command heading against Vicon displacement
 
 ```bash
 python examples/04_heading_calibration.py --config config/robot_setup.toml
 ```
 
-### D. Run one robot closed-loop
-
-```bash
-python reference_controllers/single_chariot_vicon_circle.py
-```
-
-### E. Dry-run the swarm
-
-```bash
-python reference_controllers/three_chariot_square_swarm.py --dry-run --timeout 8 --no-digital-twin
-```
-
-### F. First physical swarm run
-
-```bash
-python reference_controllers/three_chariot_square_swarm.py --laps 1 --max-speed 160
-```
-
-The full sequence and stop criteria are in [Vicon setup and reproduction workflow](vicon-setup.md).
+This repository does **not** assume Vicon yaw equals the Sphero command heading. It measures the Vicon displacement created by approximately orthogonal Sphero commands and derives the mapping from the measured displacement.
 
 ---
 
-## Manufacturer references
+## Manufacturer references used for this page
 
-- [Tracker 4.4 User Guide](https://help.vicon.com/download/attachments/376309877/Vicon%20Tracker%20User%20Guide.pdf)
-- [Tracker 4.0 — Mask cameras](https://help.vicon.com/space/Tracker40/14190245)
-- [Tracker 4.0 — Scale calibration and set a fixed origin](https://help.vicon.com/space/Tracker40/14189152)
-- [Tracker 4.4 — Add or remove a marker](https://help.vicon.com/space/Tracker44/376309055)
-- [Tracker 4.1 — Understand System Health Report](https://help.vicon.com/space/Tracker41/14323303)
-- [Tracker 3.9 — Resources pane (legacy layout)](https://help.vicon.com/space/Tracker39/14057713)
-- [Vicon DataStream SDK documentation](https://help.vicon.com/space/DSSDK113)
+- **Vicon Tracker 4.4 User Guide**, 2025-09-17, Revision 1  
+  https://help.vicon.com/download/attachments/376309877/Vicon%20Tracker%20User%20Guide.pdf
+- **Vicon Tracker 4.0 — Mask cameras**  
+  https://help.vicon.com/space/Tracker40/14190245
+- **Vicon Tracker 4.4 — Add or remove a marker**  
+  https://help.vicon.com/space/Tracker44/376309055
+- **Vicon DataStream SDK documentation**  
+  https://help.vicon.com/space/DSSDK113
+
+See the [full Vicon reproduction workflow](vicon-setup.md) for the end-to-end sequence and stop criteria.

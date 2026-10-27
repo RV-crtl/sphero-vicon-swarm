@@ -18,7 +18,7 @@ The primary guide now uses **version-correct navigation maps and current Vicon d
 
 ## Tracker 4.x window map
 
-~~~mermaid
+```mermaid
 flowchart LR
     subgraph LEFT["Left-side panels"]
         SYS["System<br/>cameras + hardware"]
@@ -37,7 +37,7 @@ flowchart LR
     WS --> HEALTH
     WS --> LOG
     CONN -. verification .-> WS
-~~~
+```
 
 ### Which panel do I need?
 
@@ -174,20 +174,20 @@ Do not infer software mappings from list order. Record the exact Tracker object 
 
 The repository uses the **Vicon DataStream SDK** through `vicon_dssdk`. Tracker's UDP Object Stream is not required.
 
-~~~mermaid
+```mermaid
 flowchart LR
     PY["examples/03_vicon_pose_monitor.py"] --> SDK["vicon_dssdk"]
     SDK --> DS["Tracker DataStream server"]
     DS --> UI["View -> Connections -> Data Stream"]
     DS --> POSE["subject / segment pose"]
     POSE --> CHECK["move one chariot by hand<br/>verify only the expected software label changes"]
-~~~
+```
 
 Run:
 
-~~~bash
+```bash
 python examples/03_vicon_pose_monitor.py --config config/robot_setup.toml --seconds 20
-~~~
+```
 
 Then:
 
@@ -207,9 +207,9 @@ Only after this passes should robot motion be enabled.
 
 Run:
 
-~~~bash
+```bash
 python examples/04_heading_calibration.py --config config/robot_setup.toml
-~~~
+```
 
 The project deliberately does **not** assume that Tracker yaw and the Sphero command heading are the same frame. It measures the Vicon displacement produced by approximately orthogonal Sphero commands and derives the heading mapping from those measured vectors.
 

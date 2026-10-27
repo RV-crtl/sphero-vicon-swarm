@@ -4,7 +4,11 @@ All notable public changes to this project are documented here.
 
 ## Unreleased
 
-No unreleased changes.
+### Changed
+
+- rebuilt the Vicon UI documentation around clear Tracker 4.x vector navigation maps and current Tracker 4.4 manufacturer references;
+- removed low-resolution legacy screenshots from the primary README, documentation home, setup and DataStream workflows while retaining the original captures for historical provenance;
+- clarified which visuals are current operating guidance versus historical lab evidence.
 
 ## [1.0.0] - 2026-10-16
 

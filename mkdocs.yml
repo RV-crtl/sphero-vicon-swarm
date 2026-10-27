@@ -62,6 +62,7 @@ nav:
       - End-to-end first run: end-to-end-tutorial.md
       - Getting started: getting-started.md
       - Configuration: configuration.md
+      - Command reference: command-reference.md
       - Hardware setup: hardware-setup.md
   - Vicon:
       - Full setup workflow: vicon-setup.md

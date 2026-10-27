@@ -63,7 +63,7 @@ Do not continue if the area is crowded or you cannot stop the robots quickly.
 For the released workflow:
 
 ~~~powershell
-git clone --branch v1.0.0 --depth 1 https://github.com/RV-crtl/sphero-vicon-swarm.git
+git clone https://github.com/RV-crtl/sphero-vicon-swarm.git
 cd sphero-vicon-swarm
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1

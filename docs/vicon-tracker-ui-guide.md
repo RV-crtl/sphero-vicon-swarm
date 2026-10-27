@@ -16,17 +16,14 @@ The primary guide now uses **version-correct navigation maps and current Vicon d
 !!! warning "Use the installed Tracker version as the final UI authority"
     Tracker 4.x keeps the same core panel model, but controls and layout can move between point releases. Follow the current Vicon help for the version installed on the workstation.
 
-## Real Tracker 4.1 visual reference
+## Visual orientation
 
-The diagrams below explain the layout, but the screenshots here show the **actual application** at a readable resolution.
+<figure class="sv-figure sv-figure--wide">
+  <img src="assets/site/tracker-overview.svg" alt="High-resolution vector map of the Vicon Tracker 4.x interface">
+  <figcaption>Primary site visual: a local, resolution-independent Tracker 4.x map. It cannot become blurry or disappear because an external image host changes.</figcaption>
+</figure>
 
-[![Vicon Tracker 4.1 - camera calibration workspace](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)
-
-*Tracker 4.1 Camera Calibration workspace: Camera Calibration panel on the left and multi-camera views in the workspace. Click to open the full-resolution image.*
-
-[![Vicon Tracker 4.1 - tracking workspace](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)
-
-*Tracker 4.1 Tracking panel and 3D View during rigid-object creation. Click to open full resolution.*
+For appearance comparison against a real application capture, the public DASC Lab Tracker 4.1 screenshots remain linked from the [source documentation](https://github.com/dasc-lab/robot-framework/tree/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab), rather than being required for this site to render correctly.
 
 !!! note "Version relationship"
     These screenshots are Tracker **4.1**, so they use the same Tracker 4 panel-based UI generation as Tracker 4.4. Button placement can move between point releases; the written instructions on this page follow current Tracker 4.4 terminology.
@@ -115,9 +112,10 @@ Tracker reports cameras above a **1.0 pixel Image Error diagnostic threshold** i
 
 ## Mask unwanted reflections
 
-[![Tracker 4.1 masking / Cameras view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)
-
-*Real Tracker 4.1 masking workspace. The Camera Calibration panel is visible on the left; camera views occupy the workspace.*
+<figure class="sv-figure">
+  <img src="assets/site/calibration-workflow.svg" alt="High-resolution camera calibration workflow">
+  <figcaption>Masking, Wand Wave, review and Volume Setup shown as a local scalable vector workflow.</figcaption>
+</figure>
 
 Use **Camera Calibration -> Masking**.
 
@@ -139,15 +137,7 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ### Controls before starting
 
-[![Tracker 4.1 Wand Wave settings](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)
 
-*Real Tracker 4.1 Wand Wave controls, including Auto Stop and Wave All.*
-
-### During calibration
-
-[![Tracker 4.1 wand calibration in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)
-
-*Real Tracker 4.1 calibration run. Wand Count and Image Error feedback are visible at left while per-camera detections fill the workspace.*
 
 Use **Camera Calibration -> Wand Wave**.
 
@@ -164,9 +154,7 @@ After this stage, cameras are calibrated relative to each other; the world origi
 
 ## Set the volume origin
 
-[![Tracker 4.1 Start Set Origin view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)
 
-*Real Tracker 4.1 Volume Setup view with **Start Set Origin** highlighted and completed camera-calibration feedback visible.*
 
 Use **Camera Calibration -> Volume Setup**.
 
@@ -188,17 +176,12 @@ If required, use Vicon's separate **Set Floor Plane** workflow after the origin 
 
 # 3. Create and verify rigid objects
 
-### Select the marker cluster
+<figure class="sv-figure">
+  <img src="assets/site/rigid-object-workflow.svg" alt="High-resolution rigid object creation workflow">
+  <figcaption>Select marker cluster → name/create object → verify physical identity.</figcaption>
+</figure>
 
-[![Tracker 4.1 marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)
 
-*Real Tracker 4.1 3D View with an asymmetric marker cluster selected.*
-
-### Create the object
-
-[![Tracker 4.1 object creation](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)
-
-*Real Tracker 4.1 Tracking panel showing the object name field and **Create** control.*
 
 Tracker 4.4 uses the **Tracking** panel.
 

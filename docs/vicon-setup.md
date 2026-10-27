@@ -25,7 +25,11 @@ The supplied local checklist records the practical start-up sequence as:
 The local checklist happened to expect eight cameras in that installation. **Eight is not a Vicon requirement**; the correct count is the number installed and expected at the site.
 
 !!! tip "Need the screen layout?"
-    Open the [Tracker UI guide](vicon-tracker-ui-guide.md#tracker-4x-window-map). It shows the current Tracker 4.x panel structure in a crisp vector diagram and links directly to Vicon's official Tracker 4.4 visual documentation.
+    Open the [Tracker UI guide](vicon-tracker-ui-guide.md). It now includes full-resolution real Tracker 4.1 screenshots alongside current Tracker 4.4 operating steps.
+
+[![Real Vicon Tracker 4.1 calibration workspace](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)
+
+*Real Tracker 4.1 Camera Calibration workspace. Click to open the full-resolution image.*
 
 Before continuing:
 
@@ -65,6 +69,10 @@ Manufacturer reference: **Tracker 4.4 User Guide, pp. 177–187**.
 
 ## 3. Remove or mask unwanted reflections
 
+[![Tracker 4.1 masking workspace](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)
+
+*Tracker 4.1 visual reference: Camera Calibration panel + Cameras view.*
+
 Vicon explicitly recommends **physically removing or covering unwanted reflections first** because masking prevents those camera pixels from contributing to 3D tracking.
 
 Current Tracker 4.x manufacturer sequence:
@@ -96,6 +104,12 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ## 4. Perform the wand wave
 
+[![Tracker 4.1 Wand Wave settings](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)
+
+[![Tracker 4.1 wand calibration in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)
+
+*Tracker 4.1 visual references. The written sequence below follows Tracker 4.4 terminology.*
+
 The current Tracker 4.4 manufacturer sequence is:
 
 1. finish masking first;
@@ -120,6 +134,10 @@ Manufacturer reference: **Tracker 4.4 User Guide, pp. 130–132**.
 ---
 
 ## 5. Set the volume origin
+
+[![Tracker 4.1 Volume Setup / Start Set Origin](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)
+
+*Tracker 4.1 visual reference for the Volume Setup stage.*
 
 Tracker 4.4 manufacturer sequence:
 

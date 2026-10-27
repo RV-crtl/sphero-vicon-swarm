@@ -78,10 +78,6 @@ Use the actual approved local hostname/address; do not copy an address from an o
 
 ## 5. Verify the DataStream connection in Tracker
 
-![DataStream verification architecture](assets/site/datastream-workflow.svg)
-
-*Architecture diagram, not a Tracker UI screenshot. For the actual **Connections** panel, open **View → Connections** in Tracker and use Vicon's current Tracker documentation.*
-
 ```mermaid
 flowchart LR
     CMD["03_vicon_pose_monitor.py"] --> SDK["vicon_dssdk"]
@@ -90,9 +86,9 @@ flowchart LR
     TRACKER --> DATA["subject / segment pose"]
 ```
 
-For a recognisable real UI reference, use the [Tracker UI guide](vicon-tracker-ui-guide.md), which now includes full-resolution Tracker 4.1 screenshots and links to current Vicon Tracker 4.4 documentation.
+The [Tracker visual guide](vicon-tracker-ui-guide.md) contains real Tracker screenshots for calibration/object workflows. It deliberately does **not** fabricate a Connections screenshot.
 
-For the **Connections** panel specifically, Vicon's current **Tracker ROS 2 Quick Start Guide (2026)** shows `View -> Connections` and the live DataStream client workflow:
+For the **Connections** panel specifically, Vicon's current **Tracker ROS 2 Quick Start Guide (2026)** shows `View → Connections` and the live DataStream client workflow:
 https://help.vicon.com/download/attachments/376309877/Vicon%20Tracker%20ROS%202%20Quick%20Start%20Guide.pdf
 
 1. In Tracker, open **View → Connections**.
@@ -104,7 +100,9 @@ python examples/03_vicon_pose_monitor.py --config config/robot_setup.toml --seco
 ```
 
 4. Confirm a client appears in the **Data Stream** area.
-5. Move each physical chariot by hand and verify the intended software label changes.
+5. In the terminal, confirm live coordinates/yaw are updating.
+6. Move each physical chariot by hand and verify the intended software label changes.
+7. Briefly occlude one rigid body and confirm the printed `occ` state changes.
 
 ## 6. What this repository actually calls
 

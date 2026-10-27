@@ -7,7 +7,7 @@ This page is the shorter software-first installation path.
 ## 1. Get a versioned release
 
 ```bash
-git clone --branch v1.0.0 --depth 1 https://github.com/RV-crtl/sphero-vicon-swarm.git
+git clone https://github.com/RV-crtl/sphero-vicon-swarm.git
 cd sphero-vicon-swarm
 ```
 

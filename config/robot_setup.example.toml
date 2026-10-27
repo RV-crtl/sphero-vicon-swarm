@@ -29,6 +29,7 @@ vicon_subject = "Robot 1"
 vicon_segment = "Robot 1"
 body_length_mm = 200.0
 body_width_mm = 140.0
+body_yaw_offset_deg = 0.0
 
 [[robots]]
 label = "robot-2"
@@ -37,6 +38,7 @@ vicon_subject = "Robot 2"
 vicon_segment = "Robot 2"
 body_length_mm = 200.0
 body_width_mm = 140.0
+body_yaw_offset_deg = 0.0
 
 [[robots]]
 label = "robot-3"
@@ -45,3 +47,4 @@ vicon_subject = "Robot 3"
 vicon_segment = "Robot 3"
 body_length_mm = 200.0
 body_width_mm = 140.0
+body_yaw_offset_deg = 0.0

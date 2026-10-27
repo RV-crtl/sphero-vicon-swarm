@@ -156,9 +156,9 @@ python -m sphero_vicon_swarm validate-config --config config/robot_setup.toml
 
 ---
 
-# Part I — Vicon Tracker
+## Part I — Vicon Tracker
 
-## 3. Check camera health before recalibrating
+### 3. Check camera health before recalibrating
 
 Open Tracker. Confirm the expected camera set is present in **System** and inspect **System Health Report**.
 
@@ -173,7 +173,7 @@ The correct camera count is your installed count; do not copy a count from anoth
 
 ---
 
-## 4. Open Camera Calibration
+### 4. Open Camera Calibration
 
 This is a real Tracker 4.1 calibration workspace **before masking begins**:
 
@@ -191,7 +191,7 @@ If your Tracker 4.4 panels are rearranged, follow the control names rather than 
 
 ---
 
-## 5. Mask unwanted reflections
+### 5. Mask unwanted reflections
 
 Remove or cover reflective clutter physically first.
 
@@ -215,7 +215,7 @@ If one remains, use Tracker's manual-mask tools rather than ignoring it.
 
 ---
 
-## 6. Configure the wand
+### 6. Configure the wand
 
 This is a deliberate close-up of the **Wand Wave controls**:
 
@@ -232,7 +232,7 @@ Do not copy another lab's wand model merely because it appears in the screenshot
 
 ---
 
-## 7. Perform the wand wave
+### 7. Perform the wand wave
 
 At the beginning of collection the count can still be zero:
 
@@ -262,7 +262,7 @@ At this point cameras are calibrated relative to each other. The world frame sti
 
 ---
 
-## 8. Set the world origin
+### 8. Set the world origin
 
 Switch to **3D View**. This image shows the real 3-D workspace after camera calibration and before the final origin is accepted:
 
@@ -291,7 +291,7 @@ Physically verify:
 
 ---
 
-## 9. Create rigid objects
+### 9. Create rigid objects
 
 Use an asymmetric marker constellation with at least four markers; five or more is preferable when practical.
 
@@ -309,7 +309,7 @@ Enter a unique name and click **Create**:
 
 Repeat for each chariot.
 
-### Prove identity by hand
+#### Prove identity by hand
 
 For every object:
 
@@ -322,9 +322,9 @@ Never infer identity from list order.
 
 ---
 
-# Part II — DataStream
+## Part II — DataStream
 
-## 10. Install the Vicon DataStream SDK
+### 10. Install the Vicon DataStream SDK
 
 Vicon currently publishes **DataStream SDK 1.13** for Tracker 4.x.
 
@@ -345,7 +345,7 @@ If installation from Program Files fails on a recent Python version, use the ven
 
 ---
 
-## 11. Prove Vicon identity with no robot commands
+### 11. Prove Vicon identity with no robot commands
 
 Run:
 
@@ -369,9 +369,9 @@ If the wrong label moves, fix the TOML before doing anything with motors.
 
 ---
 
-# Part III — Sphero identity and command frame
+## Part III — Sphero identity and command frame
 
-## 12. Move exactly one Sphero
+### 12. Move exactly one Sphero
 
 ~~~powershell
 python examples/01_single_sphero_smoke_test.py --config config/robot_setup.toml --speed 60 --seconds 0.5
@@ -383,7 +383,7 @@ If another device moves, correct the BLE mapping.
 
 ---
 
-## 13. Connect all configured Spheros
+### 13. Connect all configured Spheros
 
 ~~~powershell
 python examples/02_multi_sphero_smoke_test.py --config config/robot_setup.toml
@@ -395,7 +395,7 @@ This connects each device and sends zero-speed identification commands.
 
 ---
 
-## 14. Measure the heading basis for every robot
+### 14. Measure the heading basis for every robot
 
 Do not assume Sphero heading zero is aligned with Vicon +X or +Y.
 
@@ -423,9 +423,9 @@ This JSON is diagnostic/reference evidence. The advanced controller performs its
 
 ---
 
-# Part IV — Closed-loop validation
+## Part IV — Closed-loop validation
 
-## 15. One chariot before three
+### 15. One chariot before three
 
 The single-chariot controller now uses the same TOML mapping as the examples:
 
@@ -451,7 +451,7 @@ Watch for:
 
 ---
 
-## 16. Run the advanced controller without hardware
+### 16. Run the advanced controller without hardware
 
 ~~~powershell
 python reference_controllers/three_chariot_square_swarm.py ^
@@ -471,15 +471,15 @@ If the private config is absent, dry-run only can fall back to the public exampl
 
 ---
 
-## 17. Understand the two speed controls
+### 17. Understand the two speed controls
 
 The advanced controller intentionally separates two different limits.
 
-### Mission command cap — --max-speed
+#### Mission command cap — --max-speed
 
 This caps ordinary mission commands **and stiction/breakaway pulses during the swarm mission**.
 
-### Startup displacement calibration — --calibration-speed
+#### Startup displacement calibration — --calibration-speed
 
 This is the pre-run movement command used to measure the Sphero-to-Vicon mapping. Default is **255** because the original loaded chariots required decisive displacement.
 
@@ -489,7 +489,7 @@ If your setup can calibrate reliably at a lower command, lower it explicitly.
 
 ---
 
-## 18. First physical three-chariot run
+### 18. First physical three-chariot run
 
 Before starting:
 
@@ -517,7 +517,7 @@ At startup the controller now prints the config file, Vicon server, workspace, m
 
 ---
 
-## 19. Watch the right telemetry
+### 19. Watch the right telemetry
 
 The advanced controller reports/logs:
 
@@ -538,7 +538,7 @@ The digital twin is a diagnostic view, not a replacement for watching the real r
 
 ---
 
-## 20. Stop conditions
+### 20. Stop conditions
 
 Stop immediately if:
 
@@ -555,7 +555,7 @@ Use Ctrl+C first. Physically intervene only when safe.
 
 ---
 
-# Final acceptance checklist
+## Final acceptance checklist
 
 A new setup is ready for experimental use only when:
 
@@ -573,7 +573,7 @@ A new setup is ready for experimental use only when:
 - [ ] workspace and stop path are clear;
 - [ ] live-run mission and calibration caps were chosen deliberately.
 
-# Debug in this order
+## Debug in this order
 
 **camera health → camera calibration → world origin → rigid-object identity → TOML mapping → DataStream → Sphero identity → heading calibration → single robot → dry-run swarm → live swarm**
 

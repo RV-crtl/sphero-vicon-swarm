@@ -68,6 +68,7 @@ def load_config(path: str | Path, *, allow_placeholders: bool = False) -> Runtim
                 ),
                 body_length_mm=float(raw.get("body_length_mm", 200.0)),
                 body_width_mm=float(raw.get("body_width_mm", 140.0)),
+                body_yaw_offset_deg=float(raw.get("body_yaw_offset_deg", 0.0)),
             )
         )
 

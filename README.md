@@ -18,6 +18,23 @@ The repository is designed for reproducibility rather than a single fixed labora
 
 > **Safety first:** these scripts can command physical robots. Start at low speed, keep the operating area clear, verify the emergency-stop path, and confirm that every Vicon rigid body maps to the intended robot before closed-loop motion.
 
+## Reproduce the Vicon + swarm setup
+
+If your goal is to **repeat the laboratory setup from scratch**, start here rather than jumping straight into the controller code:
+
+- **[Step-by-step Vicon setup and reproduction workflow](docs/vicon-setup.md)** — camera health, calibration, origin/floor plane, rigid-body creation, object naming, DataStream verification, heading calibration and staged swarm startup.
+- **[Bench-side Vicon operator checklist](docs/vicon-operator-checklist.md)** — condensed checklist for a returning user standing at the Vicon workstation.
+- **[Configuration](docs/configuration.md)** — maps local Vicon object names and Sphero devices into the software.
+
+Recommended sequence:
+
+```text
+Vicon cameras -> calibration -> rigid bodies -> robot/object mapping
+      -> Vicon-only pose monitor -> heading calibration
+      -> single robot -> dry-run swarm -> low-speed physical swarm
+```
+
+
 ## What is included
 
 The codebase follows the natural development path for a multi-robot motion-capture controller:
@@ -258,7 +275,8 @@ The GitHub workflows add:
 - [Control design](docs/control-design.md)
 - [Development history](docs/development-history.md)
 - [Hardware setup](docs/hardware-setup.md)
-- [Vicon setup](docs/vicon-setup.md)
+- [Vicon setup — step-by-step reproduction guide](docs/vicon-setup.md)
+- [Vicon operator quick checklist](docs/vicon-operator-checklist.md)
 - [Safety](docs/safety.md)
 - [Troubleshooting](docs/troubleshooting.md)
 - [Validation](docs/validation.md)

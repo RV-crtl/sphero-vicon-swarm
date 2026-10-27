@@ -65,3 +65,5 @@ This keeps the lab procedure aligned with `src/sphero_vicon_swarm/tracking/vicon
 9. [Hardware setup](hardware-setup.md)
 10. [Control design](control-design.md)
 11. [Validation](validation.md)
+12. [Command reference](command-reference.md)
+13. [Glossary](glossary.md)

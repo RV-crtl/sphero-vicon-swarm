@@ -33,14 +33,9 @@ Official current references are preferred for UI appearance and control placemen
 
 ### Historical lab captures
 
-The following supplied images remain in the repository for provenance only:
+The original supplied lab screenshots were useful while reconstructing the workflow, but their public copies were removed from the rendered repository because several were heavily downsampled or malformed and created a poor operator experience.
 
-- `tracker4-actual-overview-annotated.jpg`
-- `tracker4-actual-datastream-connections.jpg`
-- `tracker39-actual-calibrate-tab.jpg`
-- `tracker39-actual-object-workflow.jpg`
-
-The Tracker 4.0 files preserve the real lab context after privacy redaction. The Tracker 3.9 files preserve older training context. None of these images is treated as pixel-identical evidence for Tracker 4.4.
+The public site now uses local, resolution-independent SVG explanations for primary visuals. Historical screenshots remain source-context only and are not required to understand or operate the documented workflow.
 
 ## Manufacturer references
 

@@ -4,7 +4,7 @@
 <strong>Bench-side use:</strong> use this page after reading the full <a href="vicon-setup.md">Vicon setup workflow</a>. UI screenshots below are real Vicon Tracker 4.1 captures; the written steps use current Tracker 4.4 terminology.
 </div>
 
-[![Real Vicon Tracker 4.1 Camera Calibration UI](https://dasc-lab.github.io/robot-framework/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Vicon Tracker 4.1 Camera Calibration UI](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 *Real Tracker 4.1 Camera Calibration workspace. Source: DASC Lab public Vicon setup documentation.*
 
@@ -20,7 +20,7 @@
 
 ### Remove/mask reflections
 
-[![Tracker 4.1 Masking / Cameras view](https://dasc-lab.github.io/robot-framework/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Tracker 4.1 Masking / Cameras view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 *Real Tracker 4.1 masking workspace: Camera Calibration controls on the left and the multi-camera workspace on the right.*
 
@@ -34,11 +34,11 @@
 
 ### Wand wave
 
-[![Tracker 4.1 Wand Wave in progress](https://dasc-lab.github.io/robot-framework/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Tracker 4.1 Wand Wave in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 *Real full-window Tracker 4.1 calibration in progress. The Wand Wave controls are visible at left; Wand Count and Image Error are shown below them.*
 
-[![Tracker 4.1 calibration completed](https://dasc-lab.github.io/robot-framework/flylab/images/wand_finished.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Tracker 4.1 calibration completed](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_finished.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 *Real full-window Tracker 4.1 post-calibration view with completed counts and image-error results.*
 
@@ -52,7 +52,7 @@
 
 ### Origin
 
-[![Tracker 4.1 Volume Setup / Start Set Origin](https://dasc-lab.github.io/robot-framework/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Tracker 4.1 Volume Setup / Start Set Origin](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 *Real Tracker 4.1 Volume Setup view.*
 
@@ -67,11 +67,11 @@
 
 ## C. Create each rigid object
 
-[![Tracker 4.1 marker selection in 3D View](https://dasc-lab.github.io/robot-framework/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+[![Tracker 4.1 marker selection in 3D View](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
 *Real Tracker 4.1 3D View with an asymmetric marker cluster selected.*
 
-[![Tracker 4.1 Tracking panel object creation](https://dasc-lab.github.io/robot-framework/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+[![Tracker 4.1 Tracking panel object creation](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
 *Real Tracker 4.1 Tracking panel showing the object-name field and **Create** control.*
 

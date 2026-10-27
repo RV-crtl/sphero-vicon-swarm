@@ -76,11 +76,17 @@ so this repository follows the same `HOST:PORT` convention.
 
 Use the actual approved local hostname/address; do not copy an address from an old screenshot.
 
-## 5. Verify the actual DataStream connection in Tracker
+## 5. Verify the DataStream connection in Tracker
 
-![Actual Tracker 4.0 Connections/DataStream panel](assets/vicon/tracker4-actual-datastream-connections.jpg)
+~~~mermaid
+flowchart LR
+    CMD["03_vicon_pose_monitor.py"] --> SDK["vicon_dssdk"]
+    SDK --> TRACKER["Vicon Tracker"]
+    TRACKER --> PANEL["View -> Connections -> Data Stream"]
+    TRACKER --> DATA["subject / segment pose"]
+~~~
 
-This is an actual Tracker 4.0 screenshot from the supplied lab material, with the site-specific address redacted.
+For a current high-resolution UI reference, use the [Tracker UI guide](vicon-tracker-ui-guide.md), which links to Vicon's Tracker 4.4 documentation.
 
 1. In Tracker, open **View → Connections**.
 2. Leave the panel visible.

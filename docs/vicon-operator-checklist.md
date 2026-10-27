@@ -15,9 +15,9 @@
 
 ### Remove/mask reflections
 
-[![Tracker 4.1 Masking / Cameras view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Tracker 4.1 Mask All and active masking state](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_mask_all.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
-*Real Tracker 4.1 masking workspace: Camera Calibration controls on the left and the multi-camera workspace on the right.*
+*Use this reference for the **Mask All → Stop** masking action. The [visual guide](vicon-tracker-ui-guide.md) shows the complete screenshot sequence.*
 
 - [ ] Remove or cover reflective sources where practical.
 - [ ] Workspace → **Cameras**.
@@ -49,7 +49,7 @@
 
 [![Tracker 4.1 Volume Setup / Start Set Origin](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
-*Real Tracker 4.1 Volume Setup view.*
+*Real Tracker 4.1 **Start Set Origin** state. This is the origin action, not the completed-origin result.*
 
 - [ ] Workspace → **3D View**.
 - [ ] Place/orient the calibration device at the intended origin.
@@ -141,23 +141,27 @@ python examples/04_heading_calibration.py --config config/robot_setup.toml
 
 - [ ] clear space;
 - [ ] verify the correct rigid object;
-- [ ] verify both calibration displacements are sensible.
+- [ ] calibrate each intended robot sequentially;
+- [ ] verify both displacement legs are sensible for each robot;
+- [ ] confirm `artifacts/heading_calibration.json` was written.
 
 ## I. One robot before three
 
 ```bash
-python reference_controllers/single_chariot_vicon_circle.py
+python reference_controllers/single_chariot_vicon_circle.py --config config/robot_setup.toml
 ```
 
 ## J. Dry-run, then physical swarm
 
 ```bash
-python reference_controllers/three_chariot_square_swarm.py --dry-run --timeout 8 --no-digital-twin
-python reference_controllers/three_chariot_square_swarm.py --laps 1 --max-speed 160
+python reference_controllers/three_chariot_square_swarm.py --config config/robot_setup.toml --dry-run --timeout 8 --no-digital-twin
+python reference_controllers/three_chariot_square_swarm.py --config config/robot_setup.toml --laps 1 --max-speed 140 --calibration-speed 180
 ```
 
 Before live motion:
 
+- [ ] understand that `--max-speed` is the mission/stiction-pulse cap;
+- [ ] choose `--calibration-speed` deliberately for the available clearance;
 - [ ] all three objects are visible;
 - [ ] mappings are confirmed;
 - [ ] workspace is clear;
@@ -170,4 +174,6 @@ Before live motion:
 <strong>camera health → calibration → rigid-object identity → DataStream → Sphero identity → heading calibration → single robot → swarm</strong>
 </div>
 
-For exact version notes and source provenance, see the [Tracker UI guide](vicon-tracker-ui-guide.md) and [Vicon procedure sources](vicon-procedure-sources.md).
+For a first-time setup, follow the [end-to-end tutorial](end-to-end-tutorial.md) rather than this condensed checklist.
+
+For exact screenshot states and version notes, see the [Tracker visual guide](vicon-tracker-ui-guide.md) and [Vicon procedure sources](vicon-procedure-sources.md).

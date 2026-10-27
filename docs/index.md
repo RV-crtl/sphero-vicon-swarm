@@ -18,10 +18,11 @@
   <div class="sv-card"><h3><a href="vicon-operator-checklist.md">Operator checklist</a></h3><p>Bench-side runbook with no blurry screenshots or fragile external image dependencies.</p></div>
 </div>
 
-<figure class="sv-figure sv-figure--wide">
-  <img src="assets/site/tracker-overview.svg" alt="High-resolution Vicon Tracker 4.x interface map">
-  <figcaption>Tracker 4.x system map. This vector illustration is deliberately local and resolution-independent; the visual guide also links to real Tracker screenshots for appearance/version comparison.</figcaption>
-</figure>
+## Real Tracker interface
+
+[![Real Vicon Tracker 4.1 Tracking interface](https://dasc-lab.github.io/robot-framework/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+
+*Real Vicon Tracker 4.1 UI from DASC Lab's public setup documentation. The site's written procedure is checked against Tracker 4.4, while this image provides a recognisable real interface rather than a mockup.*
 
 ## Reproduction path
 

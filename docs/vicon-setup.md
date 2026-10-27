@@ -2,14 +2,12 @@
 
 This is the **end-to-end lab procedure** for reproducing the Vicon side of the Sphero swarm system.
 
-The UI instructions on this page are deliberately split into two evidence types:
+The UI instructions on this page use two evidence types:
 
-- **actual Tracker screenshots from the supplied lab material**; and
-- **current Vicon manufacturer procedure** for Tracker 4.4.
+- **current Vicon manufacturer procedure** for Tracker 4.4; and
+- **clear Tracker 4.x navigation maps** in the [Tracker UI guide](vicon-tracker-ui-guide.md).
 
-No reconstructed Tracker UI is used.
-
-For the screenshots, keep the [Tracker UI guide](vicon-tracker-ui-guide.md) open beside this page.
+The supplied lab captures are retained only as historical evidence because their source resolution is too low for dependable button-by-button instruction.
 
 > Site-specific credentials, addresses and network policy are intentionally excluded. Follow the local laboratory SOP for those items.
 
@@ -26,9 +24,8 @@ The supplied local checklist records the practical start-up sequence as:
 
 The local checklist happened to expect eight cameras in that installation. **Eight is not a Vicon requirement**; the correct count is the number installed and expected at the site.
 
-![Actual Tracker 4.0 lab interface](assets/vicon/tracker4-actual-overview-annotated.jpg)
-
-This is the actual Tracker 4.0 lab interface, with private addresses redacted.
+!!! tip "Need the screen layout?"
+    Open the [Tracker UI guide](vicon-tracker-ui-guide.md#tracker-4x-window-map). It shows the current Tracker 4.x panel structure in a crisp vector diagram and links directly to Vicon's official Tracker 4.4 visual documentation.
 
 Before continuing:
 
@@ -117,9 +114,8 @@ After the wand wave, the cameras are calibrated **relative to each other**, but 
 
 Manufacturer reference: **Tracker 4.4 User Guide, pp. 130–132**.
 
-![Actual legacy calibration UI from the supplied lab material](assets/vicon/tracker39-actual-calibrate-tab.jpg)
-
-The image above is actual Tracker **3.9**, included only so users can recognize the older lab training material. For Tracker 4.4, follow the button names above.
+!!! info "Legacy lab screenshot"
+    The original Tracker 3.9 calibration capture remains in `docs/assets/vicon/` for provenance, but it is intentionally not embedded here. Its layout is obsolete for Tracker 4.4; follow the control path above.
 
 ---
 
@@ -183,9 +179,8 @@ For these three similar chariots:
 
 ## 8. Create the object in Tracker
 
-![Actual Tracker object-creation UI from supplied training material](assets/vicon/tracker39-actual-object-workflow.jpg)
-
-This is actual Tracker **3.9** UI from the supplied training material, with object names redacted. It is shown as real lab context only.
+!!! info "Legacy lab screenshot"
+    The original Tracker 3.9 object-creation capture remains in `docs/assets/vicon/` for provenance. Use the current **Tracking** panel steps below rather than the legacy button locations.
 
 The current Tracker 4.4 manufacturer sequence is:
 
@@ -281,7 +276,13 @@ Vicon's Python quick-start documentation uses `localhost:801` in its DataStream 
 
 ## 12. Verify DataStream with **no robot commands**
 
-![Actual Tracker 4.0 DataStream/Connections UI](assets/vicon/tracker4-actual-datastream-connections.jpg)
+~~~mermaid
+flowchart LR
+    MON["Python Vicon-only monitor"] --> SDK["vicon_dssdk"]
+    SDK --> TRACKER["Tracker DataStream server"]
+    TRACKER --> CONN["View -> Connections -> Data Stream"]
+    TRACKER --> POSE["live subject / segment pose"]
+~~~
 
 1. In Tracker, open **View → Connections**.
 2. Run:
@@ -365,7 +366,7 @@ The hardware reference controller performs a fresh heading calibration by defaul
 
 The procedure above was built from:
 
-1. **actual supplied Tracker lab screenshots and the supplied local Vicon checklist** for the lab workflow;
+1. **the supplied local Vicon checklist and historical lab captures** for site workflow context;
 2. **Vicon Tracker 4.4 User Guide** for current calibration, System Health and object-creation procedure;
 3. **Vicon Tracker 4.0 masking documentation** where the lab software/version-specific procedure is relevant;
 4. **Vicon DataStream SDK documentation** for Python/DataStream setup;

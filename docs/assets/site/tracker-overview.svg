@@ -1,0 +1,56 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="t d">
+<title id="t">Vicon Tracker 4.x interface map</title><desc id="d">Vector reconstruction showing camera system panel, 3D workspace, system health and connection areas.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#111827"/><stop offset="1" stop-color="#060b14"/></linearGradient>
+  <linearGradient id="accent" x1="0" x2="1"><stop stop-color="#46c7ff"/><stop offset="1" stop-color="#7b6cff"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-opacity=".22"/></filter>
+</defs>
+<rect width="1600" height="900" rx="30" fill="url(#bg)"/>
+<rect x="28" y="28" width="1544" height="60" rx="14" fill="#1d2636"/>
+<text x="58" y="66" fill="#f8fafc" font-family="Inter,Segoe UI,sans-serif" font-size="27" font-weight="700">TRACKER 4.x</text>
+<text x="1270" y="66" fill="#8fa3bf" font-family="Inter,Segoe UI,sans-serif" font-size="20">SYSTEM • CAMERAS • TRACKING</text>
+
+<rect x="28" y="108" width="320" height="764" rx="18" fill="#151e2d" stroke="#2d3a50"/>
+<text x="54" y="150" fill="#f8fafc" font-family="Inter,Segoe UI,sans-serif" font-size="23" font-weight="700">Control panels</text>
+<g font-family="Inter,Segoe UI,sans-serif">
+  <rect x="50" y="178" width="276" height="94" rx="14" fill="#1f2a3d"/><circle cx="78" cy="209" r="8" fill="#47d18c"/><text x="99" y="216" fill="#e8eef8" font-size="21" font-weight="700">System</text><text x="78" y="246" fill="#98a8bf" font-size="16">camera state • devices</text>
+  <rect x="50" y="290" width="276" height="132" rx="14" fill="#1f2a3d" stroke="#46c7ff" stroke-width="2"/><text x="76" y="326" fill="#e8eef8" font-size="21" font-weight="700">Camera Calibration</text><text x="76" y="357" fill="#98a8bf" font-size="16">Masking</text><text x="76" y="382" fill="#98a8bf" font-size="16">Wand Wave</text><text x="76" y="407" fill="#98a8bf" font-size="16">Volume Setup</text>
+  <rect x="50" y="440" width="276" height="112" rx="14" fill="#1f2a3d"/><text x="76" y="476" fill="#e8eef8" font-size="21" font-weight="700">Tracking</text><text x="76" y="507" fill="#98a8bf" font-size="16">rigid objects • markers</text><text x="76" y="532" fill="#98a8bf" font-size="16">create • edit • verify</text>
+  <rect x="50" y="570" width="276" height="102" rx="14" fill="#1f2a3d"/><text x="76" y="607" fill="#e8eef8" font-size="21" font-weight="700">Connections</text><text x="76" y="638" fill="#98a8bf" font-size="16">DataStream clients</text>
+</g>
+
+<rect x="372" y="108" width="840" height="564" rx="18" fill="#090f19" stroke="#29364b"/>
+<text x="404" y="148" fill="#dce7f5" font-family="Inter,Segoe UI,sans-serif" font-size="21" font-weight="700">3D View / Cameras workspace</text>
+<g stroke="#253246" stroke-width="2"><path d="M442 590L792 330L1142 590"/><path d="M442 590H1142"/><path d="M530 525H1054"/><path d="M618 460H966"/><path d="M706 395H878"/></g>
+<g fill="none" stroke="#4ec7ff" stroke-width="3" opacity=".9">
+  <path d="M520 240L790 330M1080 235L790 330M475 500L790 330M1110 505L790 330"/>
+</g>
+<g fill="#f4f7fb">
+  <circle cx="770" cy="318" r="8"/><circle cx="797" cy="338" r="7"/><circle cx="817" cy="315" r="6"/><circle cx="785" cy="300" r="5"/><circle cx="830" cy="345" r="5"/>
+</g>
+<g fill="#7b6cff"><rect x="493" y="214" width="44" height="28" rx="5"/><rect x="1058" y="210" width="44" height="28" rx="5"/><rect x="452" y="486" width="44" height="28" rx="5"/><rect x="1090" y="492" width="44" height="28" rx="5"/></g>
+
+<rect x="1236" y="108" width="336" height="564" rx="18" fill="#151e2d" stroke="#2d3a50"/>
+<text x="1264" y="150" fill="#f8fafc" font-family="Inter,Segoe UI,sans-serif" font-size="22" font-weight="700">System Health</text>
+<g font-family="Inter,Segoe UI,sans-serif">
+  <text x="1264" y="196" fill="#91a3ba" font-size="16">Latency</text><rect x="1392" y="180" width="140" height="18" rx="9" fill="#253248"/><rect x="1392" y="180" width="92" height="18" rx="9" fill="#47d18c"/>
+  <text x="1264" y="244" fill="#91a3ba" font-size="16">Drop Frames</text><rect x="1392" y="228" width="140" height="18" rx="9" fill="#253248"/><rect x="1392" y="228" width="24" height="18" rx="9" fill="#47d18c"/>
+  <text x="1264" y="292" fill="#91a3ba" font-size="16">Image Error</text><rect x="1392" y="276" width="140" height="18" rx="9" fill="#253248"/><rect x="1392" y="276" width="58" height="18" rx="9" fill="#f6c85f"/>
+  <text x="1264" y="340" fill="#91a3ba" font-size="16">Connectivity</text><rect x="1392" y="324" width="140" height="18" rx="9" fill="#253248"/><rect x="1392" y="324" width="118" height="18" rx="9" fill="#47d18c"/>
+</g>
+<rect x="1262" y="382" width="284" height="94" rx="14" fill="#1f2a3d"/><text x="1285" y="417" fill="#f4f7fb" font-family="Inter,Segoe UI,sans-serif" font-size="18" font-weight="700">DataStream</text><circle cx="1291" cy="448" r="7" fill="#47d18c"/><text x="1310" y="454" fill="#9fb1c8" font-family="Inter,Segoe UI,sans-serif" font-size="16">client connected</text>
+<rect x="372" y="696" width="1200" height="176" rx="18" fill="#101827" stroke="#29364b"/>
+<text x="404" y="737" fill="#f8fafc" font-family="Inter,Segoe UI,sans-serif" font-size="21" font-weight="700">Operator flow</text>
+<g font-family="Inter,Segoe UI,sans-serif" font-size="18" font-weight="650" text-anchor="middle">
+  <g><rect x="414" y="770" width="180" height="58" rx="13" fill="#20324a"/><text x="504" y="806" fill="#eaf3ff">Camera health</text></g>
+  <path d="M602 799H654" stroke="url(#accent)" stroke-width="5" stroke-linecap="round"/>
+  <g><rect x="662" y="770" width="180" height="58" rx="13" fill="#20324a"/><text x="752" y="806" fill="#eaf3ff">Calibrate</text></g>
+  <path d="M850 799H902" stroke="url(#accent)" stroke-width="5" stroke-linecap="round"/>
+  <g><rect x="910" y="770" width="180" height="58" rx="13" fill="#20324a"/><text x="1000" y="806" fill="#eaf3ff">Create object</text></g>
+  <path d="M1098 799H1150" stroke="url(#accent)" stroke-width="5" stroke-linecap="round"/>
+  <g><rect x="1158" y="770" width="180" height="58" rx="13" fill="#20324a"/><text x="1248" y="806" fill="#eaf3ff">DataStream</text></g>
+  <path d="M1346 799H1398" stroke="url(#accent)" stroke-width="5" stroke-linecap="round"/>
+  <g><rect x="1406" y="770" width="130" height="58" rx="13" fill="#223b42"/><text x="1471" y="806" fill="#d8fff1">Run</text></g>
+</g>
+</svg>

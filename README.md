@@ -90,7 +90,7 @@ The project documents P/PD/PID experiments but does **not** claim one fixed gain
 ## Quick start — no hardware
 
 ~~~powershell
-git clone --branch v1.0.0 --depth 1 https://github.com/RV-crtl/sphero-vicon-swarm.git
+git clone https://github.com/RV-crtl/sphero-vicon-swarm.git
 cd sphero-vicon-swarm
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1

@@ -4,6 +4,17 @@ All notable public changes to this project are documented here.
 
 ## Unreleased
 
+### Website and documentation
+
+- completed full generated GitHub Pages artifact QA across navigation, links, headings, images and assets;
+- fixed broken raw-HTML documentation links and canonical GitHub Pages URL handling;
+- reorganised top navigation into focused Get started, Vicon, Engineering, Project and Design decisions groups;
+- restored real Tracker UI screenshots for UI guidance while keeping diagrams explicitly limited to architecture/data-flow explanation;
+- enabled proper task-list checkboxes, automatic URL linking and Mermaid diagram rendering;
+- corrected heading hierarchy, duplicate homepage title semantics, stale screenshot provenance text and screenshot presentation;
+- verified the generated site contains no broken internal links, missing local assets, leaked Markdown-file URLs or duplicate H1 headings.
+
+
 ### Changed
 
 - rebuilt the Vicon UI documentation around clear Tracker 4.x vector navigation maps and current Tracker 4.4 manufacturer references;

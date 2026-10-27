@@ -63,6 +63,7 @@ nav:
       - Getting started: getting-started.md
       - Configuration: configuration.md
       - Command reference: command-reference.md
+      - Glossary: glossary.md
       - Hardware setup: hardware-setup.md
   - Vicon:
       - Full setup workflow: vicon-setup.md

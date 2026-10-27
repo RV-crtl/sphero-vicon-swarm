@@ -2,6 +2,10 @@
 
 Use this as the **bench-side checklist** once the full [Vicon setup and reproduction workflow](vicon-setup.md) has been read.
 
+For screenshots/click maps, keep the [Vicon Tracker visual guide](vicon-tracker-ui-guide.md) open beside this page.
+
+For SDK installation/network debugging, use [Vicon DataStream SDK setup](vicon-datastream.md).
+
 It condenses the practical sequence into one page for a returning user.
 
 ## A. Start the Vicon system
@@ -12,6 +16,7 @@ It condenses the practical sequence into one page for a returning user.
 - [ ] Open **Vicon Tracker 4.x**.
 - [ ] Open **System** and confirm every expected camera is online and contributing.
 - [ ] Check the 3D view: reflective markers should reconstruct as points when moved through the capture volume.
+- [ ] Check **System Health Report**: calibration status, latency/drop frames, Centroid Connectivity and Image Error.
 - [ ] Stop if the expected camera count or tracking volume is not healthy.
 
 ## B. Check or calibrate the volume
@@ -34,7 +39,7 @@ If cameras have moved, Tracker reports an invalid calibration, or tracking quali
 
 For **each** chariot:
 
-- [ ] Use at least four rigid, asymmetric, well-spaced reflective markers.
+- [ ] Use at least four rigid, asymmetric, well-spaced reflective markers; **five or more is preferred** where practical.
 - [ ] Make the constellation visibly different from the other robots.
 - [ ] Place the chariot in the capture volume.
 - [ ] Open the **Tracking** panel.
@@ -82,7 +87,15 @@ Then edit:
 
 The real local file is ignored by Git.
 
-## F. Verify Vicon only — no robot commands
+## F. Verify the DataStream path — no robot commands
+
+This project uses the **Vicon DataStream SDK**. Tracker's UDP Object Stream is optional and is **not required** for the swarm controller.
+
+- [ ] Install/import `vicon_dssdk`.
+- [ ] In Tracker, open **View → Connections**.
+- [ ] Confirm the configured DataStream endpoint/host is the approved local value.
+
+## G. Verify Vicon only — no robot commands
 
 Run:
 
@@ -102,7 +115,7 @@ Then:
 
 **Do not enable closed-loop motion if any mapping is ambiguous.**
 
-## G. Verify one Sphero at a time
+## H. Verify one Sphero at a time
 
 Run the single-device and multi-device smoke tests:
 
@@ -113,7 +126,7 @@ python examples/02_multi_sphero_smoke_test.py --config config/robot_setup.toml
 
 Keep speeds low and maintain a clear stop path.
 
-## H. Calibrate Sphero heading to Vicon world coordinates
+## I. Calibrate Sphero heading to Vicon world coordinates
 
 Run:
 
@@ -128,7 +141,7 @@ The calibration measures Vicon displacement for two approximately orthogonal Sph
 - [ ] confirm both calibration moves produce sensible displacement;
 - [ ] repeat if mounting, wheel/chariot mechanics or marker geometry changed.
 
-## I. Validate closed-loop motion
+## J. Validate closed-loop motion
 
 Single robot first:
 
@@ -143,7 +156,7 @@ Check:
 - [ ] tracking remains stable;
 - [ ] the robot stays inside conservative bounds.
 
-## J. Validate the three-robot controller
+## K. Validate the three-robot controller
 
 Software-only dry run:
 

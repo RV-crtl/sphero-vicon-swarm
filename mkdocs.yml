@@ -30,7 +30,9 @@ nav:
   - Development history: development-history.md
   - Hardware setup: hardware-setup.md
   - Vicon:
-      - Step-by-step setup: vicon-setup.md
+      - Start here — full setup: vicon-setup.md
+      - Tracker visual guide: vicon-tracker-ui-guide.md
+      - DataStream SDK setup: vicon-datastream.md
       - Operator quick checklist: vicon-operator-checklist.md
   - Safety: safety.md
   - Troubleshooting: troubleshooting.md

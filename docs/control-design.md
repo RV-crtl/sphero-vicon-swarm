@@ -39,7 +39,7 @@ A desired world vector w is represented by:
 
 ```text
 w ≈ a v0 + b v90
-~~~
+```
 
 and the internal Sphero command angle is recovered from the measured coefficients.
 

@@ -197,8 +197,13 @@ For these three similar chariots:
 
 ## 8. Create the object in Tracker
 
-!!! info "Legacy lab screenshot"
-    The original Tracker 3.9 object-creation capture remains in `docs/assets/vicon/` for provenance. Use the current **Tracking** panel steps below rather than the legacy button locations.
+[![Tracker 4.1 marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)
+
+*Real Tracker 4.1 marker selection in the 3D View.*
+
+[![Tracker 4.1 object creation controls](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)
+
+*Real Tracker 4.1 Tracking panel showing the object-name field and **Create** button. Click either image for full resolution.*
 
 The current Tracker 4.4 manufacturer sequence is:
 
@@ -388,6 +393,7 @@ The procedure above was built from:
 2. **Vicon Tracker 4.4 User Guide** for current calibration, System Health and object-creation procedure;
 3. **Vicon Tracker 4.0 masking documentation** where the lab software/version-specific procedure is relevant;
 4. **Vicon DataStream SDK documentation** for Python/DataStream setup;
-5. the repository's own source code for the project-specific Python commands and data path.
+5. the repository's own source code for the project-specific Python commands and data path;
+6. **DASC Lab's public Tracker 4.1 setup documentation** for high-resolution visual references, pinned to source commit `c3241aa50284640d379de1acb5f87774c5d415a2`.
 
 See [Vicon procedure sources](vicon-procedure-sources.md) for the exact provenance table.

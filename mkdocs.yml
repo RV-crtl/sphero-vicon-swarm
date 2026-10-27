@@ -29,7 +29,9 @@ nav:
   - Control design: control-design.md
   - Development history: development-history.md
   - Hardware setup: hardware-setup.md
-  - Vicon setup: vicon-setup.md
+  - Vicon:
+      - Step-by-step setup: vicon-setup.md
+      - Operator quick checklist: vicon-operator-checklist.md
   - Safety: safety.md
   - Troubleshooting: troubleshooting.md
   - Validation: validation.md

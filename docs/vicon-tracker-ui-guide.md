@@ -1,4 +1,4 @@
-# Vicon Tracker UI guide - clear Tracker 4.x map + verified procedures
+# Vicon Tracker visual guide — real UI + verified procedures
 
 This page is the visual companion to the [full Vicon setup workflow](vicon-setup.md).
 
@@ -9,7 +9,6 @@ The primary guide uses **real Tracker 4.1 UI screenshots** for visual recognitio
 | Evidence | Version | How it is used |
 |---|---:|---|
 | Current procedure text | Tracker 4.4 | Primary authority for control names and workflow |
-| Tracker 4.x panel map below | Tracker 4.x | Clear orientation to the current application layout |
 | Official Vicon online documentation | Tracker 4.4 / Tracker 4.x | High-resolution current visual reference |
 | DASC Lab public UI captures | Tracker 4.1 | Real interface screenshots for visual recognition |
 
@@ -84,7 +83,7 @@ These references are kept external so the public MIT repository does not redistr
 
 ---
 
-# 1. Start Tracker and orient yourself
+## 1. Start Tracker and orient yourself
 
 Before commanding a robot:
 
@@ -96,7 +95,7 @@ Before commanding a robot:
 
 A healthy first check is visual and physical: move one marked chariot by hand and confirm the expected rigid object follows it in Tracker.
 
-## System Health - what matters for this project
+### System Health — what matters for this project
 
 Tracker 4.4 exposes these sections in System Health:
 
@@ -111,9 +110,9 @@ Tracker reports cameras above a **1.0 pixel Image Error diagnostic threshold** i
 
 ---
 
-# 2. Camera calibration
+## 2. Camera calibration
 
-## Mask unwanted reflections
+### Mask unwanted reflections
 
 [![Real Tracker 4.1 masking workspace](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -135,9 +134,9 @@ For a residual reflection, Tracker 4.x also provides **Manual Mask Paint** in th
 Manufacturer reference:  
 https://help.vicon.com/space/Tracker40/14190245
 
-## Perform the wand wave
+### Perform the wand wave
 
-### Controls before starting
+#### Controls before starting
 
 [![Real Tracker 4.1 calibration in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -156,7 +155,7 @@ Use **Camera Calibration -> Wand Wave**.
 
 After this stage, cameras are calibrated relative to each other; the world origin still needs to be set.
 
-## Set the volume origin
+### Set the volume origin
 
 [![Real Tracker 4.1 Volume Setup / Start Set Origin](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -178,7 +177,7 @@ If required, use Vicon's separate **Set Floor Plane** workflow after the origin 
 
 ---
 
-# 3. Create and verify rigid objects
+## 3. Create and verify rigid objects
 
 [![Real Tracker 4.1 marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
@@ -201,7 +200,7 @@ Do not infer software mappings from list order. Record the exact Tracker object 
 
 ---
 
-# 4. Verify the DataStream connection
+## 4. Verify the DataStream connection
 
 The repository uses the **Vicon DataStream SDK** through `vicon_dssdk`. Tracker's UDP Object Stream is not required.
 
@@ -234,7 +233,7 @@ Only after this passes should robot motion be enabled.
 
 ---
 
-# 5. Calibrate Sphero command heading against Vicon displacement
+## 5. Calibrate Sphero command heading against Vicon displacement
 
 Run:
 
@@ -246,11 +245,11 @@ The project deliberately does **not** assume that Tracker yaw and the Sphero com
 
 ---
 
-# Historical visual policy
+## Visual provenance and limitations
 
 The original low-resolution lab JPEGs were removed from the public tree because several were malformed or too compressed to be useful. The UI screenshots on this page are real Tracker 4.1 captures from the public DASC Lab documentation, while current procedure wording is verified against Vicon Tracker 4.4.
 
-## Screenshot attribution
+### Screenshot attribution
 
 The Tracker 4.1 screenshots above come from the public **DASC Lab robot-framework** setup documentation and are referenced from the source repository at commit `c3241aa50284640d379de1acb5f87774c5d415a2`. They are used as visual references for the real Tracker 4 interface; current procedure authority remains Vicon Tracker 4.4 documentation.
 

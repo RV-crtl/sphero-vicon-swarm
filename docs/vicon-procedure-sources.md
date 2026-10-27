@@ -31,11 +31,13 @@ The main documentation now uses **clear Tracker 4.x panel/navigation maps** plus
 
 Official current references are preferred for UI appearance and control placement.
 
-### Historical lab captures
+### Visual-source policy
 
-The original supplied lab screenshots were useful while reconstructing the workflow, but their public copies were removed from the rendered repository because several were heavily downsampled or malformed and created a poor operator experience.
+The original supplied lab screenshots were useful while reconstructing the workflow, but their public copies were removed because several were heavily downsampled or malformed.
 
-The public site now uses local, resolution-independent SVG explanations for primary visuals. Historical screenshots remain source-context only and are not required to understand or operate the documented workflow.
+For UI recognition, the public site now links directly to real **Tracker 4.1 application screenshots** from DASC Lab's public setup documentation. Those images are not copied into this repository. Current button names and procedure authority remain Vicon Tracker 4.4 documentation.
+
+For non-UI concepts such as the Python/DataStream path, the site may use local diagrams that are explicitly labelled as architecture diagrams rather than Tracker screenshots.
 
 ## Manufacturer references
 

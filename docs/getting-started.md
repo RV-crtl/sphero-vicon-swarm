@@ -1,17 +1,17 @@
 # Getting started
 
-The safest path is to verify the software-only workflow first, then enable hardware one subsystem at a time.
+If this is your **first time with the system**, use the **[end-to-end tutorial](end-to-end-tutorial.md)**. It includes real Tracker screenshots, physical pre-flight checks, pass/fail criteria, DataStream identity checks, per-robot calibration, single-robot validation and the first conservative swarm run.
+
+This page is the shorter software-first installation path.
 
 ## 1. Get a versioned release
-
-For a reproducible installation, clone a tagged release rather than an arbitrary development commit:
 
 ```bash
 git clone --branch v1.0.0 --depth 1 https://github.com/RV-crtl/sphero-vicon-swarm.git
 cd sphero-vicon-swarm
 ```
 
-You can also download the wheel and source distribution from the GitHub Releases page. Cloning the repository is recommended when you want the examples, configuration template and reference controllers alongside the package.
+A tagged release is preferable to an arbitrary development commit when you need reproducibility.
 
 ## 2. Create an isolated environment
 
@@ -19,26 +19,32 @@ You can also download the wheel and source distribution from the GitHub Releases
 python -m venv .venv
 ```
 
-Activate it on Windows PowerShell:
+Windows PowerShell:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-Or on macOS/Linux:
+macOS/Linux:
 
 ```bash
 source .venv/bin/activate
 ```
 
-Install the software and developer validation tools:
+Install:
 
 ```bash
 python -m pip install --upgrade pip
 python -m pip install -e ".[dev,docs]"
 ```
 
-## 3. Check the software-only path
+For Sphero hardware:
+
+```bash
+python -m pip install -e ".[sphero]"
+```
+
+## 3. Prove the hardware-free path
 
 ```bash
 python -m sphero_vicon_swarm doctor
@@ -48,13 +54,11 @@ pytest
 python tools/privacy_scan.py .
 ```
 
-These steps require no Sphero or Vicon hardware.
+Do not debug Bluetooth or Vicon until these pass.
 
-## 4. Create local hardware configuration
+## 4. Create the private hardware configuration
 
-Copy `config/robot_setup.example.toml` to `config/robot_setup.toml` and insert your own Vicon host, device names, rigid-body names and workspace limits. The local configuration is gitignored.
-
-Windows PowerShell:
+Windows:
 
 ```powershell
 Copy-Item config/robot_setup.example.toml config/robot_setup.toml
@@ -66,36 +70,65 @@ macOS/Linux:
 cp config/robot_setup.example.toml config/robot_setup.toml
 ```
 
-## 5. Install the optional hardware backend
+Fill in:
 
-For the public Sphero BLE backend:
+- Vicon host/port;
+- floor plane/yaw convention where required;
+- measured workspace;
+- Sphero BLE names;
+- Vicon subject/segment names;
+- body dimensions and optional body-yaw geometry offset.
+
+See [Configuration](configuration.md).
+
+## 5. Install Vicon DataStream
+
+The Vicon DataStream SDK is vendor software and is not redistributed by this repository.
+
+Install the current SDK/Python bindings into the same virtual environment, then run:
 
 ```bash
-python -m pip install -e ".[sphero]"
+python -c "import vicon_dssdk; print('vicon_dssdk: OK')"
+python -m sphero_vicon_swarm doctor
 ```
 
-The Vicon DataStream SDK and its Python bindings are vendor software and are not redistributed by this project. Install the SDK separately for your platform.
+See [DataStream SDK setup](vicon-datastream.md).
 
-## 6. Verify each subsystem independently
-
-Run the staged examples in numerical order:
+## 6. Validate in stages
 
 ```bash
-python examples/01_single_sphero_smoke_test.py --config config/robot_setup.toml
+python examples/03_vicon_pose_monitor.py --config config/robot_setup.toml --seconds 20
+python examples/01_single_sphero_smoke_test.py --config config/robot_setup.toml --speed 60 --seconds 0.5
 python examples/02_multi_sphero_smoke_test.py --config config/robot_setup.toml
-python examples/03_vicon_pose_monitor.py --config config/robot_setup.toml
 python examples/04_heading_calibration.py --config config/robot_setup.toml
 ```
 
-Do not begin multi-robot closed-loop motion until the individual robot mapping, Vicon coordinate frame, operating-area bounds and stop path have all been verified.
+The heading example now calibrates configured robots sequentially by default.
 
-## 7. Move to closed-loop control
+## 7. One robot, then three
 
-Start with the single-chariot reference controller, then use the three-chariot controller in dry-run mode before commanding real motion.
+Single robot:
 
 ```bash
-python reference_controllers/single_chariot_vicon_circle.py
-python reference_controllers/three_chariot_square_swarm.py --dry-run --timeout 8 --no-digital-twin
+python reference_controllers/single_chariot_vicon_circle.py --config config/robot_setup.toml
 ```
 
-See the hardware, Vicon, safety and troubleshooting documentation before a physical multi-robot run.
+Advanced dry-run:
+
+```bash
+python reference_controllers/three_chariot_square_swarm.py --config config/robot_setup.toml --dry-run --timeout 8 --no-digital-twin
+```
+
+Only after the staged gates pass should you consider a live multi-robot run.
+
+## 8. Before the first live run
+
+Read:
+
+- [End-to-end tutorial](end-to-end-tutorial.md)
+- [Hardware setup](hardware-setup.md)
+- [Safety](safety.md)
+- [Validation](validation.md)
+- [Troubleshooting](troubleshooting.md)
+
+The advanced controller separates the **mission cap** (`--max-speed`) from the **startup displacement-calibration command** (`--calibration-speed`). Understand both before hardware motion.

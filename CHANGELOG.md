@@ -4,6 +4,20 @@ All notable public changes to this project are documented here.
 
 ## Unreleased
 
+### Final-product documentation and runtime alignment
+
+- added a comprehensive end-to-end first-run tutorial from clean installation through the first conservative three-chariot run;
+- rebuilt the Tracker visual guide as a real-UI screenshot atlas with each image explicitly matched to the state it actually shows;
+- added a command reference classifying operator commands by physical-motion side effect;
+- expanded hardware setup, safety, validation, troubleshooting, architecture and control-design documentation;
+- aligned the single- and three-chariot reference controllers with the shared TOML configuration path;
+- changed the heading-calibration example to process all configured robots sequentially by default and save measured JSON results;
+- added per-robot body_yaw_offset_deg configuration for footprint/digital-twin geometry;
+- made the advanced mission speed cap apply to mission stiction pulses and exposed startup calibration speed separately;
+- strengthened CI/local release checks to compile public controllers/tools and validate the public example configuration;
+- corrected stale/mismatched screenshot captions, commands and provenance text throughout the site.
+
+
 ### Website and documentation
 
 - completed full generated GitHub Pages artifact QA across navigation, links, headings, images and assets;

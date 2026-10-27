@@ -7,7 +7,7 @@ The UI instructions on this page use two evidence types:
 - **current Vicon manufacturer procedure** for Tracker 4.4; and
 - **clear Tracker 4.x navigation maps** in the [Tracker UI guide](vicon-tracker-ui-guide.md).
 
-The supplied lab captures are retained only as historical evidence because their source resolution is too low for dependable button-by-button instruction.
+The old supplied lab captures were removed from the public tree because their resolution was too low for dependable button-by-button instruction. Real Tracker 4.1 UI screenshots from DASC Lab's public documentation are used instead, with written procedure checked against Tracker 4.4.
 
 > Site-specific credentials, addresses and network policy are intentionally excluded. Follow the local laboratory SOP for those items.
 
@@ -102,9 +102,9 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ## 4. Perform the wand wave
 
-[![Real Tracker 4.1 Wand Wave settings](https://dasc-lab.github.io/robot-framework/flylab/images/wand_settings.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
-
 [![Real Tracker 4.1 wand calibration in progress](https://dasc-lab.github.io/robot-framework/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+[![Real Tracker 4.1 calibration completed](https://dasc-lab.github.io/robot-framework/flylab/images/wand_finished.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 The current Tracker 4.4 manufacturer sequence is:
 

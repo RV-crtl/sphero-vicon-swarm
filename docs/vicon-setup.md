@@ -1,6 +1,8 @@
 # Vicon setup and reproduction workflow
 
-This is the **end-to-end lab procedure** for reproducing the Vicon side of the Sphero swarm system.
+This is the **detailed Vicon-specific procedure** for reproducing the motion-capture side of the Sphero swarm system.
+
+If you are new to the complete project, start with the **[end-to-end first-run tutorial](end-to-end-tutorial.md)**, which integrates Tracker, TOML configuration, DataStream, Sphero identity, calibration and the controllers.
 
 The UI instructions on this page use two evidence types:
 
@@ -69,7 +71,9 @@ Manufacturer reference: **Tracker 4.4 User Guide, pp. 177–187**.
 
 ### 3. Remove or mask unwanted reflections
 
-[![Real Tracker 4.1 masking / Cameras view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Tracker 4.1 Mask All and active masking state](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_mask_all.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*This screenshot is specifically the masking action/state: **Mask All** is identified and the active operation changes to **Stop**.*
 
 Vicon explicitly recommends **physically removing or covering unwanted reflections first** because masking prevents those camera pixels from contributing to 3D tracking.
 
@@ -102,9 +106,21 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ### 4. Perform the wand wave
 
+[![Tracker 4.1 Wand Wave settings](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*Close-up of the Wand Wave settings and **Wave All** action. Select the calibration object that matches your physical wand.*
+
+[![Real Tracker 4.1 initial Wand Wave collection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*Full-window state immediately after collection begins; early counts can still be zero.*
+
 [![Real Tracker 4.1 wand calibration in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
+*Full-window collection state with wand traces and per-camera Wand Count values.*
+
 [![Real Tracker 4.1 calibration completed](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_finished.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*Completed state with per-camera counts and Image Error results.*
 
 The current Tracker 4.4 manufacturer sequence is:
 
@@ -128,7 +144,17 @@ Manufacturer reference: **Tracker 4.4 User Guide, pp. 130–132**.
 
 ### 5. Set the volume origin
 
-[![Real Tracker 4.1 Volume Setup view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Tracker 4.1 3-D view before final origin placement](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*3-D View after camera calibration, before the final origin is accepted.*
+
+[![Tracker 4.1 Start Set Origin state](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*This screenshot specifically shows **Start Set Origin** in the Volume Setup controls.*
+
+[![Tracker 4.1 geometry after setting the origin](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_final.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*Post-origin geometry reference. Physically verify the coordinate directions rather than accepting the view by appearance alone.*
 
 Tracker 4.4 manufacturer sequence:
 
@@ -188,7 +214,13 @@ For these three similar chariots:
 
 ### 8. Create the object in Tracker
 
+[![Tracker 4.1 Tracking panel before marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+
+*Tracking workspace before creating the new object.*
+
 [![Real Tracker 4.1 marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+
+*Five markers selected in the 3-D View; confirm they all belong to one physical chariot.*
 
 [![Real Tracker 4.1 Tracking panel object creation](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
@@ -335,14 +367,16 @@ python examples/04_heading_calibration.py --config config/robot_setup.toml
 
 The project deliberately does **not** assume that Vicon yaw equals the Sphero command-heading frame.
 
-The calibration measures Vicon displacement produced by approximately orthogonal Sphero commands and derives the command/world mapping from those measured vectors.
+The calibration example now processes **all configured robots sequentially by default**, so only one chariot moves at a time. It measures Vicon displacement produced by approximately orthogonal Sphero commands and derives the command/world mapping from those measured vectors.
+
+Measured results are saved to `artifacts/heading_calibration.json`.
 
 ---
 
 ### 15. Validate one robot before the swarm
 
 ```bash
-python reference_controllers/single_chariot_vicon_circle.py
+python reference_controllers/single_chariot_vicon_circle.py --config config/robot_setup.toml
 ```
 
 Check that:
@@ -359,16 +393,19 @@ Check that:
 Software-only first:
 
 ```bash
-python reference_controllers/three_chariot_square_swarm.py --dry-run --timeout 8 --no-digital-twin
+python reference_controllers/three_chariot_square_swarm.py --config config/robot_setup.toml --dry-run --timeout 8 --no-digital-twin
 ```
 
 Then one conservative physical lap:
 
 ```bash
-python reference_controllers/three_chariot_square_swarm.py --laps 1 --max-speed 160
+python reference_controllers/three_chariot_square_swarm.py --config config/robot_setup.toml --laps 1 --max-speed 140 --calibration-speed 180
 ```
 
 The hardware reference controller performs a fresh heading calibration by default.
+
+!!! warning "Mission speed and calibration speed are separate"
+    `--max-speed` caps normal mission commands and mission stiction pulses. `--calibration-speed` controls the startup displacement-calibration move and defaults to 255. Choose the calibration command deliberately for the available travel clearance and mechanical breakaway behaviour.
 
 ---
 

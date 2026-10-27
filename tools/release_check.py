@@ -22,7 +22,14 @@ COMMANDS = [
         "reference_controllers",
         "tools",
     ],
-    [sys.executable, "-m", "sphero_vicon_swarm", "validate-config", "--config", "config/robot_setup.example.toml"],
+    [
+        sys.executable,
+        "-m",
+        "sphero_vicon_swarm",
+        "validate-config",
+        "--config",
+        "config/robot_setup.example.toml",
+    ],
     [sys.executable, "-m", "pytest", "-q"],
     [sys.executable, "tools/privacy_scan.py", "."],
     [

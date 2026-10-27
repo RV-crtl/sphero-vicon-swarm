@@ -1,12 +1,7 @@
 # Vicon operator quick checklist
 
-<div class="sv-callout">
-<strong>Bench-side use:</strong> use this page after reading the full <a href="vicon-setup.md">Vicon setup workflow</a>. UI screenshots below are real Vicon Tracker 4.1 captures; the written steps use current Tracker 4.4 terminology.
-</div>
-
-[![Real Vicon Tracker 4.1 Camera Calibration UI](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
-
-*Real Tracker 4.1 Camera Calibration workspace. Source: DASC Lab public Vicon setup documentation.*
+!!! info "Bench-side use"
+    Use this page after reading the full [Vicon setup workflow](vicon-setup.md). The screenshots below are real Tracker 4.1 captures for visual recognition; the written procedure uses current Tracker 4.4 terminology.
 
 ## A. Start and verify Tracker
 

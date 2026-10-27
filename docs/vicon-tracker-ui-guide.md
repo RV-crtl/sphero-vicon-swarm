@@ -16,14 +16,17 @@ The primary guide now uses **version-correct navigation maps and current Vicon d
 !!! warning "Use the installed Tracker version as the final UI authority"
     Tracker 4.x keeps the same core panel model, but controls and layout can move between point releases. Follow the current Vicon help for the version installed on the workstation.
 
-## Visual orientation
+## Real Tracker 4.1 visual orientation
 
-<figure class="sv-figure sv-figure--wide">
-  <img src="assets/site/tracker-overview.svg" alt="High-resolution vector map of the Vicon Tracker 4.x interface">
-  <figcaption>Primary site visual: a local, resolution-independent Tracker 4.x map. It cannot become blurry or disappear because an external image host changes.</figcaption>
-</figure>
+[![Real Vicon Tracker 4.1 Camera Calibration interface](https://dasc-lab.github.io/robot-framework/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
-For appearance comparison against a real application capture, the public DASC Lab Tracker 4.1 screenshots remain linked from the [source documentation](https://github.com/dasc-lab/robot-framework/tree/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab), rather than being required for this site to render correctly.
+*Real Tracker 4.1 Camera Calibration workspace.*
+
+[![Real Vicon Tracker 4.1 Tracking interface](https://dasc-lab.github.io/robot-framework/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+
+*Real Tracker 4.1 Tracking panel and 3D View during object creation.*
+
+These are real application screenshots, not reconstructed UI artwork. Tracker 4.4 can move individual controls between point releases, so use the written 4.4 procedure below for exact current terminology.
 
 !!! note "Version relationship"
     These screenshots are Tracker **4.1**, so they use the same Tracker 4 panel-based UI generation as Tracker 4.4. Button placement can move between point releases; the written instructions on this page follow current Tracker 4.4 terminology.
@@ -112,10 +115,9 @@ Tracker reports cameras above a **1.0 pixel Image Error diagnostic threshold** i
 
 ## Mask unwanted reflections
 
-<figure class="sv-figure">
-  <img src="assets/site/calibration-workflow.svg" alt="High-resolution camera calibration workflow">
-  <figcaption>Masking, Wand Wave, review and Volume Setup shown as a local scalable vector workflow.</figcaption>
-</figure>
+[![Real Tracker 4.1 masking workspace](https://dasc-lab.github.io/robot-framework/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*Real Tracker 4.1 masking / Cameras view.*
 
 Use **Camera Calibration -> Masking**.
 
@@ -137,7 +139,9 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ### Controls before starting
 
+[![Real Tracker 4.1 Wand Wave settings](https://dasc-lab.github.io/robot-framework/flylab/images/wand_settings.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
+[![Real Tracker 4.1 calibration in progress](https://dasc-lab.github.io/robot-framework/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 Use **Camera Calibration -> Wand Wave**.
 
@@ -154,7 +158,7 @@ After this stage, cameras are calibrated relative to each other; the world origi
 
 ## Set the volume origin
 
-
+[![Real Tracker 4.1 Volume Setup / Start Set Origin](https://dasc-lab.github.io/robot-framework/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 Use **Camera Calibration -> Volume Setup**.
 
@@ -176,12 +180,9 @@ If required, use Vicon's separate **Set Floor Plane** workflow after the origin 
 
 # 3. Create and verify rigid objects
 
-<figure class="sv-figure">
-  <img src="assets/site/rigid-object-workflow.svg" alt="High-resolution rigid object creation workflow">
-  <figcaption>Select marker cluster → name/create object → verify physical identity.</figcaption>
-</figure>
+[![Real Tracker 4.1 marker selection](https://dasc-lab.github.io/robot-framework/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
-
+[![Real Tracker 4.1 object creation controls](https://dasc-lab.github.io/robot-framework/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
 Tracker 4.4 uses the **Tracking** panel.
 
@@ -245,18 +246,9 @@ The project deliberately does **not** assume that Tracker yaw and the Sphero com
 
 ---
 
-# Historical lab captures
+# Historical visual policy
 
-The repository still retains the supplied lab captures for provenance:
-
-- `assets/vicon/tracker4-actual-overview-annotated.jpg`
-- `assets/vicon/tracker4-actual-datastream-connections.jpg`
-- `assets/vicon/tracker39-actual-calibrate-tab.jpg`
-- `assets/vicon/tracker39-actual-object-workflow.jpg`
-
-They are intentionally **not embedded as the primary instructions** because the source material is low-resolution and the Tracker 3.9 screens no longer match the current Tracker 4.4 layout.
-
-Use them only to recognize the historical lab environment. Use the Tracker 4.4 references above to locate controls on a current workstation.
+The original low-resolution lab JPEGs were removed from the public tree because several were malformed or too compressed to be useful. The UI screenshots on this page are real Tracker 4.1 captures from the public DASC Lab documentation, while current procedure wording is verified against Vicon Tracker 4.4.
 
 ## Screenshot attribution
 

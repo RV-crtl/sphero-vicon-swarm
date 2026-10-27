@@ -1,13 +1,12 @@
 # Vicon operator quick checklist
 
 <div class="sv-callout">
-<strong>Bench-side use:</strong> use this page only after reading the full <a href="vicon-setup.md">Vicon setup workflow</a>. The checklist below is intentionally compact; the linked visual guide contains the version notes and deeper explanations.
+<strong>Bench-side use:</strong> use this page after reading the full <a href="vicon-setup.md">Vicon setup workflow</a>. UI screenshots below are real Vicon Tracker 4.1 captures; the written steps use current Tracker 4.4 terminology.
 </div>
 
-<figure class="sv-figure sv-figure--wide">
-  <img src="assets/site/tracker-overview.svg" alt="High-resolution vector map of the Vicon Tracker 4.x interface">
-  <figcaption>Tracker 4.x operator map — scalable vector artwork, so panel labels remain sharp at any zoom level. It is an explanatory map rather than a pixel-for-pixel screenshot.</figcaption>
-</figure>
+[![Real Vicon Tracker 4.1 Camera Calibration UI](https://dasc-lab.github.io/robot-framework/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*Real Tracker 4.1 Camera Calibration workspace. Source: DASC Lab public Vicon setup documentation.*
 
 ## A. Start and verify Tracker
 
@@ -19,12 +18,11 @@
 
 ## B. If calibration is required
 
-<figure class="sv-figure sv-figure--wide">
-  <img src="assets/site/calibration-workflow.svg" alt="High-resolution Vicon camera calibration workflow">
-  <figcaption>Calibration workflow — Masking → Wand Wave → review image error/counts → Volume Setup. Exact control placement may vary between Tracker 4.x point releases.</figcaption>
-</figure>
-
 ### Remove/mask reflections
+
+[![Tracker 4.1 Masking / Cameras view](https://dasc-lab.github.io/robot-framework/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*Real Tracker 4.1 masking workspace: Camera Calibration controls on the left and the multi-camera workspace on the right.*
 
 - [ ] Remove or cover reflective sources where practical.
 - [ ] Workspace → **Cameras**.
@@ -36,6 +34,14 @@
 
 ### Wand wave
 
+[![Tracker 4.1 Wand Wave settings](https://dasc-lab.github.io/robot-framework/flylab/images/wand_settings.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*Real Tracker 4.1 Wand Wave controls.*
+
+[![Tracker 4.1 Wand Wave in progress](https://dasc-lab.github.io/robot-framework/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*Real Tracker 4.1 calibration in progress, with Wand Count and Image Error visible.*
+
 - [ ] **Camera Calibration → Wand Wave**.
 - [ ] Select the correct physical calibration object.
 - [ ] Click **Wave All**.
@@ -45,6 +51,10 @@
 - [ ] Review **Image Error** status.
 
 ### Origin
+
+[![Tracker 4.1 Volume Setup / Start Set Origin](https://dasc-lab.github.io/robot-framework/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*Real Tracker 4.1 Volume Setup view.*
 
 - [ ] Workspace → **3D View**.
 - [ ] Place/orient the calibration device at the intended origin.
@@ -57,10 +67,13 @@
 
 ## C. Create each rigid object
 
-<figure class="sv-figure sv-figure--wide">
-  <img src="assets/site/rigid-object-workflow.svg" alt="High-resolution rigid object creation workflow">
-  <figcaption>Rigid-object workflow — select an asymmetric marker cluster, name/create the object, then physically verify identity before DataStream mapping.</figcaption>
-</figure>
+[![Tracker 4.1 marker selection in 3D View](https://dasc-lab.github.io/robot-framework/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+
+*Real Tracker 4.1 3D View with an asymmetric marker cluster selected.*
+
+[![Tracker 4.1 Tracking panel object creation](https://dasc-lab.github.io/robot-framework/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+
+*Real Tracker 4.1 Tracking panel showing the object-name field and **Create** control.*
 
 - [ ] **View → Tracking**.
 - [ ] Place the chariot in the calibrated volume.
@@ -100,10 +113,9 @@ Enter:
 
 ## F. Verify DataStream — no robot motion
 
-<figure class="sv-figure sv-figure--wide">
-  <img src="assets/site/datastream-workflow.svg" alt="High-resolution Vicon DataStream verification workflow">
-  <figcaption>DataStream verification — confirm transport and robot identity before enabling any physical motion.</figcaption>
-</figure>
+![DataStream verification architecture](assets/site/datastream-workflow.svg)
+
+*Architecture diagram, not a Tracker UI screenshot: Tracker → DataStream → `vicon_dssdk` → pose monitor.*
 
 - [ ] Install/import `vicon_dssdk`.
 - [ ] Tracker → **View → Connections**.
@@ -163,4 +175,4 @@ Before live motion:
 <strong>camera health → calibration → rigid-object identity → DataStream → Sphero identity → heading calibration → single robot → swarm</strong>
 </div>
 
-For real Tracker 4.x screenshots, version notes, and exact source provenance, use the [Tracker UI guide](vicon-tracker-ui-guide.md) and [Vicon procedure sources](vicon-procedure-sources.md).
+For exact version notes and source provenance, see the [Tracker UI guide](vicon-tracker-ui-guide.md) and [Vicon procedure sources](vicon-procedure-sources.md).

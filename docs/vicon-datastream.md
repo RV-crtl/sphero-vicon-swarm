@@ -106,6 +106,10 @@ Use the local lab's approved hostname/address. Do not copy an old private addres
 
 ## 4. Verify Tracker is providing live data
 
+![Actual Vicon Tracker 4.0 Connections/DataStream panel](assets/vicon/tracker4-actual-datastream-connections.jpg)
+
+*Actual Tracker 4.0 lab screenshot, cropped from the supplied lab material. The site-specific client address is redacted. The highlighted Data Stream area is the interface used by this repository.*
+
 Tracker must be running with live tracking available.
 
 In Tracker 4.x:

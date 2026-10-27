@@ -17,6 +17,12 @@ flowchart LR
     F --> G["Swarm"]
 ```
 
+## Recognisable Tracker interface
+
+[![Real Vicon Tracker 4.1 tracking interface](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](vicon-tracker-ui-guide.md)
+
+*Full-resolution Tracker 4.1 screenshot from DASC Lab's public Vicon setup documentation. Click the image for the project visual guide; current operating steps are verified against Tracker 4.4.*
+
 ## Reproduction path
 
 1. [Getting started](getting-started.md) — install and verify the software-only path.

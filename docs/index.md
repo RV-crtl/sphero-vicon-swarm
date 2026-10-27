@@ -12,10 +12,10 @@
 </div>
 
 <div class="sv-grid">
-  <div class="sv-card"><h3><a href="vicon-setup/">Reproduce the lab</a></h3><p>Camera health, masking, wand wave, origin, rigid objects and staged validation.</p></div>
-  <div class="sv-card"><h3><a href="vicon-tracker-ui-guide/">Tracker visual guide</a></h3><p>Real Tracker UI screenshots with clear version labels and current operating guidance.</p></div>
-  <div class="sv-card"><h3><a href="vicon-datastream/">DataStream SDK</a></h3><p>Connect Tracker to Python and verify subject/segment identity before motion.</p></div>
-  <div class="sv-card"><h3><a href="vicon-operator-checklist/">Operator checklist</a></h3><p>A concise bench-side runbook for calibration, object creation, DataStream verification and staged motion.</p></div>
+  <div class="sv-card"><div class="sv-card__title"><a href="vicon-setup/">Reproduce the lab</a></div><p>Camera health, masking, wand wave, origin, rigid objects and staged validation.</p></div>
+  <div class="sv-card"><div class="sv-card__title"><a href="vicon-tracker-ui-guide/">Tracker visual guide</a></div><p>Real Tracker UI screenshots with clear version labels and current operating guidance.</p></div>
+  <div class="sv-card"><div class="sv-card__title"><a href="vicon-datastream/">DataStream SDK</a></div><p>Connect Tracker to Python and verify subject/segment identity before motion.</p></div>
+  <div class="sv-card"><div class="sv-card__title"><a href="vicon-operator-checklist/">Operator checklist</a></div><p>A concise bench-side runbook for calibration, object creation, DataStream verification and staged motion.</p></div>
 </div>
 
 ## Real Tracker interface
@@ -38,10 +38,10 @@ flowchart LR
 ```
 
 <div class="sv-grid">
-  <div class="sv-card"><h4>1. Software first</h4><p>Install, run diagnostics and validate the simulator without physical hardware.</p></div>
-  <div class="sv-card"><h4>2. Tracking before motion</h4><p>Verify camera health, rigid-object identity, world axes and DataStream output.</p></div>
-  <div class="sv-card"><h4>3. Calibrate every robot</h4><p>Measure Sphero command heading against observed Vicon displacement.</p></div>
-  <div class="sv-card"><h4>4. Scale deliberately</h4><p>Single chariot → dry-run swarm → conservative physical multi-robot run.</p></div>
+  <div class="sv-card"><div class="sv-card__title">1. Software first</div><p>Install, run diagnostics and validate the simulator without physical hardware.</p></div>
+  <div class="sv-card"><div class="sv-card__title">2. Tracking before motion</div><p>Verify camera health, rigid-object identity, world axes and DataStream output.</p></div>
+  <div class="sv-card"><div class="sv-card__title">3. Calibrate every robot</div><p>Measure Sphero command heading against observed Vicon displacement.</p></div>
+  <div class="sv-card"><div class="sv-card__title">4. Scale deliberately</div><p>Single chariot → dry-run swarm → conservative physical multi-robot run.</p></div>
 </div>
 
 ## Key design choice

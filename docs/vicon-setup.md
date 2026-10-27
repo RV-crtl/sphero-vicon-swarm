@@ -137,56 +137,78 @@ Use the current **Camera Calibration** panel.
 
 > **UI evidence:** the supplied lab material contains an actual Tracker 4.0 general interface screenshot and a legacy Tracker 3.9 calibration screenshot, but not a Tracker 4.x Camera Calibration screenshot. Rather than inventing one, this section follows Vicon's current Tracker 4.4 manufacturer procedure exactly. See the [UI guide](vicon-tracker-ui-guide.md) for the actual screenshots and version notes.
 
-### 4.1 Mask persistent reflections
+### 4.1 Mask unwanted reflections — Vicon Tracker procedure
 
-In **Camera Calibration → Masking**:
+Vicon explicitly recommends **physically removing or covering unwanted reflections first**. Masking should be used when the source cannot reasonably be removed.
 
-1. select the relevant cameras;
-2. start automatic masking if appropriate;
-3. inspect the result;
-4. manually mask residual reflection regions only when required;
-5. verify useful regions of the image have not been masked.
+For automatic masking in Tracker 4.x:
+
+1. Remove unnecessary reflective objects from the capture volume.
+2. Select the **Cameras** view in the workspace.
+3. In the **System** panel, select all cameras.
+4. In **Camera Calibration → Masking**, click **Mask All**.
+5. While automatic masking is active, Tracker displays masked pixels in blue.
+6. When the unwanted light pixels have been masked, click **Stop**.
+7. Inspect every camera view and confirm the unwanted reflections are eliminated.
+
+If automatic masking leaves a residual reflection, Vicon's Tracker 4.0 manual-mask procedure is:
+
+1. select the affected camera;
+2. in **Camera Calibration → Masking**, show the advanced controls;
+3. click **Manual Mask Paint**;
+4. **Alt+drag** a selection in the camera view;
+5. press **E** to add that selection to the mask;
+6. press **R** to remove a selection from the mask;
+7. click **Stop** to apply the mask.
+
+Manufacturer source: [Vicon Tracker 4.0 — Mask cameras](https://help.vicon.com/space/Tracker40/14190245).
 
 ### 4.2 Select the correct wand
 
-In **Camera Calibration → Wand Wave**, select the calibration object appropriate to the installed system.
+In **Camera Calibration → Wand Wave**, select the calibration object that matches the physical wand installed in the lab.
 
-Tracker 4.4 commonly shows **Active Wand v2** as the default, but use the wand configured for the actual lab system.
+The current Tracker 4.4 guide uses **Active Wand v2** as its normal/default example, but the correct choice is the object that corresponds to the actual lab calibration device.
 
-### 4.3 Perform the wand wave
+### 4.3 Perform the wand wave — Vicon Tracker 4.4 procedure
 
-1. Click **Wave All**.
-2. Move the wand throughout the useful capture volume.
-3. Cover the area **and height** in which the chariots will run.
-4. Try to keep the wand visible to multiple cameras.
-5. Continue until Tracker has collected sufficient coverage.
-6. Allow Auto Stop to complete when enabled, or stop according to the current Tracker feedback.
+Vicon's Tracker 4.4 procedure is:
 
-Do not only wave the wand in the center of the room if the robots will travel near the edges.
+1. Complete camera masking first.
+2. In **Camera Calibration → Wand Wave**, display the advanced properties if required.
+3. Select the correct calibration wand/object.
+4. Click **Wave All**.
+5. Move the wand throughout the full useful capture volume, covering both **depth and height**.
+6. Keep the wand visible to as many cameras as practical.
+7. Watch the camera **Wand Count** feedback. Tracker changes the feedback as enough wand data is collected and reorders cameras so low-count cameras are easier to identify.
+8. If **Auto Stop** is enabled, allow it to stop the collection once sufficient data has been collected. If Auto Stop is disabled, stop only when adequate coverage has been collected.
 
-### 4.4 Set the world origin
+For this project, make sure the wand wave covers the **actual floor area and height where the chariots will run**, including the intended boundary region.
 
-After the wand wave, the cameras are calibrated relative to one another, but the swarm still needs a meaningful global frame.
+Manufacturer source: [Vicon Tracker 4.4 User Guide](https://help.vicon.com/download/attachments/376309877/Vicon%20Tracker%20User%20Guide.pdf), “Perform a wand wave”, p.132 in the 2025-09-17 revision.
 
-In **Camera Calibration → Volume Setup → Set Volume Origin**:
+### 4.4 Set the world origin — Vicon Tracker 4.4 procedure
 
-1. choose the approved calibration/origin object;
-2. place it in the lab-approved physical location and orientation;
-3. click **Start Set Origin**;
-4. wait until Tracker has sufficient information;
-5. click **Set Origin**;
-6. inspect the displayed world axes.
+After camera calibration, establish the global coordinate frame.
 
-Tracker's convention displays world axes using the standard red/green/blue axis colouring.
+Vicon's Tracker 4.4 procedure is:
 
-Physically verify:
+1. Place the approved calibration device in the intended origin position and orientation.
+2. In **Camera Calibration → Volume Setup**, show the advanced parameters.
+3. Under **Set Volume Origin**, select the appropriate calibration device.
+4. Click **Start Set Origin**.
+5. Wait until Tracker has collected enough information; the control changes so the origin can be committed.
+6. Click **Set Origin**.
+7. Inspect the displayed world axes:
+   - **X = red**
+   - **Y = green**
+   - **Z = blue**
+8. Physically verify that the origin, horizontal plane, positive directions, and floor height match the intended robot workspace.
 
-- which direction is +X;
-- which direction is +Y or +Z on the horizontal plane;
-- which axis is vertical;
-- whether the floor appears at the intended height.
+Manufacturer source: [Vicon Tracker 4.4 User Guide](https://help.vicon.com/download/attachments/376309877/Vicon%20Tracker%20User%20Guide.pdf), “Set the volume origin”, p.136 in the 2025-09-17 revision.
 
-### 4.5 Save the calibration
+Do not compensate for a wrong Vicon world frame by arbitrarily changing controller signs. Establish the Vicon frame first, then configure the repository's explicit `floor_plane`, yaw convention, and displacement calibration.
+
+### 4.5 Save the calibration### 4.5 Save the calibration
 
 After validation, save the calibration using the laboratory's naming/versioning convention.
 

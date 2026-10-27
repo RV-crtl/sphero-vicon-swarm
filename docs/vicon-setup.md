@@ -53,7 +53,9 @@ If the expected cameras are not available, stop here and resolve the camera/netw
 
 ### Tracker 4.x orientation
 
-![Tracker 4.x orientation map](assets/vicon/tracker4-overview.svg)
+![Actual Vicon Tracker 4.0 lab interface, with site-specific addresses redacted](assets/vicon/tracker4-actual-overview-annotated.jpg)
+
+*Actual Tracker 4.0 lab screenshot. Site-specific network addresses are redacted; numbered callouts identify the controls used by this project.*
 
 The four panels used most in this workflow are:
 
@@ -64,7 +66,7 @@ The four panels used most in this workflow are:
 
 The **System Health Report** is also important because it gives a quick view of calibration and tracking quality.
 
-See [Vicon Tracker visual guide](vicon-tracker-ui-guide.md) for a click-map explanation.
+See the [Vicon Tracker UI guide](vicon-tracker-ui-guide.md) for the actual lab screenshots and version-specific manufacturer instructions.
 
 ---
 
@@ -133,7 +135,7 @@ Vicon recommends physically removing unwanted reflections where possible because
 
 Use the current **Camera Calibration** panel.
 
-![Tracker 4.x calibration click map](assets/vicon/tracker4-calibration-click-map.svg)
+> **UI evidence:** the supplied lab material contains an actual Tracker 4.0 general interface screenshot and a legacy Tracker 3.9 calibration screenshot, but not a Tracker 4.x Camera Calibration screenshot. Rather than inventing one, this section follows Vicon's current Tracker 4.4 manufacturer procedure exactly. See the [UI guide](vicon-tracker-ui-guide.md) for the actual screenshots and version notes.
 
 ### 4.1 Mask persistent reflections
 
@@ -253,7 +255,7 @@ A good constellation reduces object swapping and improves re-acquisition after p
 
 ## 7. Create a rigid object in Tracker
 
-![Tracker 4.x object creation click map](assets/vicon/tracker4-object-click-map.svg)
+> **UI evidence:** the local Tracker 4.0 checklist confirms **View → Tracking**, marker selection, object naming, **Create**, **Add Marker**, and **Remove Marker**. The detailed steps below follow Vicon's Tracker 4.4 object-creation procedure; no synthetic UI image is used.
 
 For each chariot:
 

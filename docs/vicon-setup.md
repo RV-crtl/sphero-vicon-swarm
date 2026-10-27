@@ -27,9 +27,10 @@ The local checklist happened to expect eight cameras in that installation. **Eig
 !!! tip "Need the screen layout?"
     Open the [Tracker UI guide](vicon-tracker-ui-guide.md). It now includes full-resolution real Tracker 4.1 screenshots alongside current Tracker 4.4 operating steps.
 
-[![Real Vicon Tracker 4.1 calibration workspace](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)
-
-*Real Tracker 4.1 Camera Calibration workspace. Click to open the full-resolution image.*
+<figure class="sv-figure sv-figure--wide">
+  <img src="assets/site/tracker-overview.svg" alt="High-resolution Tracker 4.x interface map">
+  <figcaption>Tracker 4.x orientation map — local SVG, sharp at any zoom level.</figcaption>
+</figure>
 
 Before continuing:
 
@@ -69,9 +70,10 @@ Manufacturer reference: **Tracker 4.4 User Guide, pp. 177–187**.
 
 ## 3. Remove or mask unwanted reflections
 
-[![Tracker 4.1 masking workspace](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)
-
-*Tracker 4.1 visual reference: Camera Calibration panel + Cameras view.*
+<figure class="sv-figure sv-figure--wide">
+  <img src="assets/site/calibration-workflow.svg" alt="High-resolution Vicon calibration workflow">
+  <figcaption>Primary calibration visual — masking, wand wave, result review and origin setup in a single resolution-independent diagram.</figcaption>
+</figure>
 
 Vicon explicitly recommends **physically removing or covering unwanted reflections first** because masking prevents those camera pixels from contributing to 3D tracking.
 
@@ -104,11 +106,8 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ## 4. Perform the wand wave
 
-[![Tracker 4.1 Wand Wave settings](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)
-
-[![Tracker 4.1 wand calibration in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)
-
-*Tracker 4.1 visual references. The written sequence below follows Tracker 4.4 terminology.*
+!!! tip "Visual reference"
+    The high-resolution [Tracker visual guide](vicon-tracker-ui-guide.md) explains where the Wand Wave controls sit in Tracker 4.x and links to real application captures for appearance comparison.
 
 The current Tracker 4.4 manufacturer sequence is:
 
@@ -135,9 +134,8 @@ Manufacturer reference: **Tracker 4.4 User Guide, pp. 130–132**.
 
 ## 5. Set the volume origin
 
-[![Tracker 4.1 Volume Setup / Start Set Origin](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)
-
-*Tracker 4.1 visual reference for the Volume Setup stage.*
+!!! tip "Visual reference"
+    Use the **Volume Setup** panel represented in the calibration SVG above; exact point-release button placement is confirmed against your installed Tracker help.
 
 Tracker 4.4 manufacturer sequence:
 
@@ -197,13 +195,10 @@ For these three similar chariots:
 
 ## 8. Create the object in Tracker
 
-[![Tracker 4.1 marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)
-
-*Real Tracker 4.1 marker selection in the 3D View.*
-
-[![Tracker 4.1 object creation controls](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)
-
-*Real Tracker 4.1 Tracking panel showing the object-name field and **Create** button. Click either image for full resolution.*
+<figure class="sv-figure sv-figure--wide">
+  <img src="assets/site/rigid-object-workflow.svg" alt="High-resolution rigid object creation workflow">
+  <figcaption>Rigid-object creation — select the asymmetric marker cluster, name/create the object, then physically verify identity.</figcaption>
+</figure>
 
 The current Tracker 4.4 manufacturer sequence is:
 

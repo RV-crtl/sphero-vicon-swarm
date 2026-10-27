@@ -1,20 +1,28 @@
 # Vicon operator quick checklist
 
-Use this at the workstation **after reading the full [Vicon setup workflow](vicon-setup.md)**.
+<div class="sv-callout">
+<strong>Bench-side use:</strong> use this page only after reading the full <a href="vicon-setup.md">Vicon setup workflow</a>. The checklist below is intentionally compact; the linked visual guide contains the version notes and deeper explanations.
+</div>
 
-For actual UI screenshots and exact manufacturer button names, keep the [Tracker UI guide](vicon-tracker-ui-guide.md) open.
-
-![Actual Tracker 4.0 lab interface](assets/vicon/tracker4-actual-overview-annotated.jpg)
+<figure class="sv-figure sv-figure--wide">
+  <img src="assets/site/tracker-overview.svg" alt="High-resolution vector map of the Vicon Tracker 4.x interface">
+  <figcaption>Tracker 4.x operator map — scalable vector artwork, so panel labels remain sharp at any zoom level. It is an explanatory map rather than a pixel-for-pixel screenshot.</figcaption>
+</figure>
 
 ## A. Start and verify Tracker
 
 - [ ] Start the local Vicon workstation/camera network using the lab SOP.
-- [ ] Open Vicon Tracker.
+- [ ] Open **Vicon Tracker**.
 - [ ] Confirm the expected cameras are present in **System**.
 - [ ] Move a reflective marker and confirm plausible reconstruction in **3D View**.
 - [ ] Inspect **System Health Report** for obvious problems.
 
 ## B. If calibration is required
+
+<figure class="sv-figure sv-figure--wide">
+  <img src="assets/site/calibration-workflow.svg" alt="High-resolution Vicon camera calibration workflow">
+  <figcaption>Calibration workflow — Masking → Wand Wave → review image error/counts → Volume Setup. Exact control placement may vary between Tracker 4.x point releases.</figcaption>
+</figure>
 
 ### Remove/mask reflections
 
@@ -34,7 +42,7 @@ For actual UI screenshots and exact manufacturer button names, keep the [Tracker
 - [ ] Cover depth and height across the actual robot volume.
 - [ ] Watch **Wand Count** and concentrate on low-count cameras.
 - [ ] Let **Auto Stop** finish, or stop only after sufficient coverage.
-- [ ] Review Image Error status.
+- [ ] Review **Image Error** status.
 
 ### Origin
 
@@ -49,9 +57,10 @@ For actual UI screenshots and exact manufacturer button names, keep the [Tracker
 
 ## C. Create each rigid object
 
-![Actual legacy Tracker object-creation screen](assets/vicon/tracker39-actual-object-workflow.jpg)
-
-*Actual Tracker 3.9 lab-training screenshot. Follow the current Tracker 4.4 control names below.*
+<figure class="sv-figure sv-figure--wide">
+  <img src="assets/site/rigid-object-workflow.svg" alt="High-resolution rigid object creation workflow">
+  <figcaption>Rigid-object workflow — select an asymmetric marker cluster, name/create the object, then physically verify identity before DataStream mapping.</figcaption>
+</figure>
 
 - [ ] **View → Tracking**.
 - [ ] Place the chariot in the calibrated volume.
@@ -91,7 +100,10 @@ Enter:
 
 ## F. Verify DataStream — no robot motion
 
-![Actual Tracker 4.0 DataStream area](assets/vicon/tracker4-actual-datastream-connections.jpg)
+<figure class="sv-figure sv-figure--wide">
+  <img src="assets/site/datastream-workflow.svg" alt="High-resolution Vicon DataStream verification workflow">
+  <figcaption>DataStream verification — confirm transport and robot identity before enabling any physical motion.</figcaption>
+</figure>
 
 - [ ] Install/import `vicon_dssdk`.
 - [ ] Tracker → **View → Connections**.
@@ -147,6 +159,8 @@ Before live motion:
 
 ## Debug in this order
 
-**camera health → calibration → rigid-object identity → DataStream → Sphero identity → heading calibration → single robot → swarm**
+<div class="sv-codeflow">
+<strong>camera health → calibration → rigid-object identity → DataStream → Sphero identity → heading calibration → single robot → swarm</strong>
+</div>
 
-For exact source/version provenance, see [Vicon procedure sources](vicon-procedure-sources.md).
+For real Tracker 4.x screenshots, version notes, and exact source provenance, use the [Tracker UI guide](vicon-tracker-ui-guide.md) and [Vicon procedure sources](vicon-procedure-sources.md).

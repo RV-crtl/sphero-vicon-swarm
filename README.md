@@ -22,9 +22,13 @@ The repository is designed for reproducibility rather than a single fixed labora
 
 If your goal is to **repeat the laboratory setup from scratch**, start here rather than jumping straight into the controller code:
 
-- **[Step-by-step Vicon setup and reproduction workflow](docs/vicon-setup.md)** — camera health, calibration, origin/floor plane, rigid-body creation, object naming, DataStream verification, heading calibration and staged swarm startup.
+- **[Step-by-step Vicon setup and reproduction workflow](docs/vicon-setup.md)** — full lab procedure from camera health and wand calibration through rigid-body creation, DataStream verification, heading calibration and staged swarm startup.
+- **[Vicon Tracker visual guide](docs/vicon-tracker-ui-guide.md)** — click maps showing where System, Camera Calibration, Tracking, Connections and System Health controls live.
 - **[Bench-side Vicon operator checklist](docs/vicon-operator-checklist.md)** — condensed checklist for a returning user standing at the Vicon workstation.
+- **[Vicon DataStream SDK setup](docs/vicon-datastream.md)** — install `vicon_dssdk`, connect on the DataStream endpoint, verify the client in Tracker and troubleshoot networking.
 - **[Configuration](docs/configuration.md)** — maps local Vicon object names and Sphero devices into the software.
+
+![Tracker 4.x orientation map](docs/assets/vicon/tracker4-overview.svg)
 
 Recommended sequence:
 
@@ -276,6 +280,8 @@ The GitHub workflows add:
 - [Development history](docs/development-history.md)
 - [Hardware setup](docs/hardware-setup.md)
 - [Vicon setup — step-by-step reproduction guide](docs/vicon-setup.md)
+- [Vicon Tracker visual guide](docs/vicon-tracker-ui-guide.md)
+- [Vicon DataStream SDK setup](docs/vicon-datastream.md)
 - [Vicon operator quick checklist](docs/vicon-operator-checklist.md)
 - [Safety](docs/safety.md)
 - [Troubleshooting](docs/troubleshooting.md)

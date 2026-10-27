@@ -276,13 +276,13 @@ Vicon's Python quick-start documentation uses `localhost:801` in its DataStream 
 
 ## 12. Verify DataStream with **no robot commands**
 
-~~~mermaid
+```mermaid
 flowchart LR
     MON["Python Vicon-only monitor"] --> SDK["vicon_dssdk"]
     SDK --> TRACKER["Tracker DataStream server"]
     TRACKER --> CONN["View -> Connections -> Data Stream"]
     TRACKER --> POSE["live subject / segment pose"]
-~~~
+```
 
 1. In Tracker, open **View → Connections**.
 2. Run:

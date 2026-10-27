@@ -35,8 +35,8 @@ jobs:
       - name: Verify installed dependencies
         run: python -m pip check
 
-      - name: Compile Python sources
-        run: python -m compileall -q src examples
+      - name: Compile Python sources and public entry points
+        run: python -m compileall -q src examples reference_controllers tools
 
       - name: Check Ruff formatting
         run: ruff format --check .

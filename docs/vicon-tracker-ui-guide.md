@@ -18,11 +18,11 @@ The primary guide uses **real Tracker 4.1 UI screenshots** for visual recognitio
 
 ## Real Tracker 4.1 visual orientation
 
-[![Real Vicon Tracker 4.1 Camera Calibration interface](https://dasc-lab.github.io/robot-framework/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Vicon Tracker 4.1 Camera Calibration interface](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 *Real Tracker 4.1 Camera Calibration workspace.*
 
-[![Real Vicon Tracker 4.1 Tracking interface](https://dasc-lab.github.io/robot-framework/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+[![Real Vicon Tracker 4.1 Tracking interface](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
 *Real Tracker 4.1 Tracking panel and 3D View during object creation.*
 
@@ -115,7 +115,7 @@ Tracker reports cameras above a **1.0 pixel Image Error diagnostic threshold** i
 
 ## Mask unwanted reflections
 
-[![Real Tracker 4.1 masking workspace](https://dasc-lab.github.io/robot-framework/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Tracker 4.1 masking workspace](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 *Real Tracker 4.1 masking / Cameras view.*
 
@@ -139,9 +139,9 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ### Controls before starting
 
-[![Real Tracker 4.1 calibration in progress](https://dasc-lab.github.io/robot-framework/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Tracker 4.1 calibration in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
-[![Real Tracker 4.1 calibration completed](https://dasc-lab.github.io/robot-framework/flylab/images/wand_finished.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Tracker 4.1 calibration completed](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_finished.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 Use **Camera Calibration -> Wand Wave**.
 
@@ -158,7 +158,7 @@ After this stage, cameras are calibrated relative to each other; the world origi
 
 ## Set the volume origin
 
-[![Real Tracker 4.1 Volume Setup / Start Set Origin](https://dasc-lab.github.io/robot-framework/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![Real Tracker 4.1 Volume Setup / Start Set Origin](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 Use **Camera Calibration -> Volume Setup**.
 
@@ -180,9 +180,9 @@ If required, use Vicon's separate **Set Floor Plane** workflow after the origin 
 
 # 3. Create and verify rigid objects
 
-[![Real Tracker 4.1 marker selection](https://dasc-lab.github.io/robot-framework/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+[![Real Tracker 4.1 marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
-[![Real Tracker 4.1 object creation controls](https://dasc-lab.github.io/robot-framework/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+[![Real Tracker 4.1 object creation controls](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
 Tracker 4.4 uses the **Tracking** panel.
 

@@ -8,6 +8,12 @@ For SDK installation/network debugging, use [Vicon DataStream SDK setup](vicon-d
 
 It condenses the practical sequence into one page for a returning user.
 
+![Actual Vicon Tracker 4.0 lab interface, sanitized](assets/vicon/tracker4-actual-overview-annotated.jpg)
+
+*Actual Tracker 4.0 lab screenshot. Site-specific addresses are redacted. Use the numbered callouts to locate the View menu, 3D View, System Health, DataStream connection area, and optional UDP settings.*
+
+For exact UI/version notes and manufacturer-source links, use the [Vicon Tracker UI guide](vicon-tracker-ui-guide.md).
+
 ## A. Start the Vicon system
 
 - [ ] Start the dedicated Vicon workstation.

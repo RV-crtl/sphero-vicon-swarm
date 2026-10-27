@@ -17,6 +17,7 @@
   <div class="sv-card"><div class="sv-card__title"><a href="vicon-tracker-ui-guide/">Tracker screenshot atlas</a></div><p>Real Tracker 4.1 UI states mapped precisely to current Tracker 4.4 procedure wording.</p></div>
   <div class="sv-card"><div class="sv-card__title"><a href="vicon-datastream/">DataStream SDK</a></div><p>Connect Tracker to Python and verify subject/segment identity before motion.</p></div>
   <div class="sv-card"><div class="sv-card__title"><a href="vicon-operator-checklist/">Operator checklist</a></div><p>A concise bench-side runbook for calibration, object creation, DataStream verification and staged motion.</p></div>
+  <div class="sv-card"><div class="sv-card__title"><a href="command-reference/">Command reference</a></div><p>Know which commands are read-only, zero-speed, short-motion or closed-loop before you run them.</p></div>
 </div>
 
 ## Real Tracker interface

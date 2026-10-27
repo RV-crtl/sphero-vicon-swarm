@@ -18,6 +18,7 @@ import signal
 import time
 import queue
 import threading
+import tomllib
 import multiprocessing as mp
 from collections import deque
 from contextlib import ExitStack
@@ -58,6 +59,107 @@ AO_Y_MAX_MM = VICON_AO_Y_MAX_MM + BOUNDARY_EXTENSION_MM
 AO_CX = 0.5 * (AO_X_MIN_MM + AO_X_MAX_MM)
 AO_CY = 0.5 * (AO_Y_MIN_MM + AO_Y_MAX_MM)
 
+def apply_repository_config(config_path: str, *, allow_placeholders: bool) -> str:
+    """Apply the repository TOML mapping to this standalone reference controller.
+
+    Environment variables still take precedence, preserving automation support.
+    For a hardware run, placeholders are rejected.  A dry-run may fall back to
+    the committed example configuration when the private local file is absent.
+    """
+
+    global VICON_SERVER, FLOOR_PLANE, YAW_EULER_INDEX, YAW_SIGN, YAW_OFFSET_DEG
+    global ROBOT_CONFIGS
+    global VICON_AO_X_MIN_MM, VICON_AO_X_MAX_MM, VICON_AO_Y_MIN_MM, VICON_AO_Y_MAX_MM
+    global AO_X_MIN_MM, AO_X_MAX_MM, AO_Y_MIN_MM, AO_Y_MAX_MM, AO_CX, AO_CY
+    global BODY_LENGTH_MM, BODY_WIDTH_MM, BODY_HALF_LENGTH_MM, BODY_HALF_WIDTH_MM
+    global BODY_YAW_OFFSET_DEG
+
+    path = Path(config_path)
+    if not path.exists() and allow_placeholders:
+        fallback = Path("config/robot_setup.example.toml")
+        if fallback.exists():
+            path = fallback
+            print(f"DRY-RUN: {config_path} not found; using {fallback} for public placeholder geometry.")
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Configuration file not found: {config_path}. "
+            "Copy config/robot_setup.example.toml to config/robot_setup.toml and edit local values."
+        )
+
+    with path.open("rb") as handle:
+        data = tomllib.load(handle)
+
+    vicon = data.get("vicon", {})
+    workspace = data.get("workspace", {})
+    robots = data.get("robots", [])
+    if not isinstance(vicon, dict) or not isinstance(workspace, dict) or not isinstance(robots, list):
+        raise ValueError("Invalid TOML structure: [vicon], [workspace], and [[robots]] are required.")
+    if len(robots) < 3:
+        raise ValueError("The three-chariot controller requires at least three [[robots]] entries.")
+
+    VICON_SERVER = os.getenv("VICON_SERVER", str(vicon.get("server", VICON_SERVER)))
+    FLOOR_PLANE = os.getenv("VICON_FLOOR_PLANE", str(vicon.get("floor_plane", FLOOR_PLANE))).upper()
+    YAW_EULER_INDEX = int(vicon.get("yaw_euler_index", YAW_EULER_INDEX))
+    YAW_SIGN = float(vicon.get("yaw_sign", YAW_SIGN))
+    YAW_OFFSET_DEG = float(vicon.get("yaw_offset_deg", YAW_OFFSET_DEG))
+    if FLOOR_PLANE not in {"XY", "XZ"}:
+        raise ValueError("vicon.floor_plane must be 'XY' or 'XZ'.")
+
+    selected = robots[:3]
+    mapped = []
+    yaw_offsets = {}
+    lengths = []
+    widths = []
+    for index, raw in enumerate(selected, start=1):
+        if not isinstance(raw, dict):
+            raise ValueError("Each [[robots]] entry must be a TOML table.")
+        suffix = str(index)
+        label = str(raw.get("label", f"robot-{index}"))
+        sphero_name = os.getenv(
+            f"SPHERO_{suffix}_NAME", str(raw.get("sphero_name", "YOUR_DEVICE_NAME"))
+        )
+        subject = os.getenv(
+            f"VICON_{suffix}_SUBJECT", str(raw.get("vicon_subject", f"Robot {index}"))
+        )
+        segment = os.getenv(
+            f"VICON_{suffix}_SEGMENT", str(raw.get("vicon_segment", subject))
+        )
+        if not allow_placeholders and sphero_name.startswith("YOUR_"):
+            raise ValueError(f"Replace the placeholder Sphero name for {label} before hardware use.")
+        mapped.append((sphero_name, subject, segment))
+        yaw_offsets[sphero_name] = float(raw.get("body_yaw_offset_deg", 0.0))
+        lengths.append(float(raw.get("body_length_mm", BODY_LENGTH_MM)))
+        widths.append(float(raw.get("body_width_mm", BODY_WIDTH_MM)))
+
+    ROBOT_CONFIGS = mapped
+    BODY_YAW_OFFSET_DEG = yaw_offsets
+
+    # Use the largest configured footprint as a conservative common collision box.
+    BODY_LENGTH_MM = max(lengths)
+    BODY_WIDTH_MM = max(widths)
+    BODY_HALF_LENGTH_MM = 0.5 * BODY_LENGTH_MM
+    BODY_HALF_WIDTH_MM = 0.5 * BODY_WIDTH_MM
+
+    VICON_AO_X_MIN_MM = float(os.getenv("AO_X_MIN_MM", str(workspace.get("x_min_mm", VICON_AO_X_MIN_MM))))
+    VICON_AO_X_MAX_MM = float(os.getenv("AO_X_MAX_MM", str(workspace.get("x_max_mm", VICON_AO_X_MAX_MM))))
+    VICON_AO_Y_MIN_MM = float(os.getenv("AO_Y_MIN_MM", str(workspace.get("y_min_mm", VICON_AO_Y_MIN_MM))))
+    VICON_AO_Y_MAX_MM = float(os.getenv("AO_Y_MAX_MM", str(workspace.get("y_max_mm", VICON_AO_Y_MAX_MM))))
+    AO_X_MIN_MM = VICON_AO_X_MIN_MM - BOUNDARY_EXTENSION_MM
+    AO_X_MAX_MM = VICON_AO_X_MAX_MM + BOUNDARY_EXTENSION_MM
+    AO_Y_MIN_MM = VICON_AO_Y_MIN_MM - BOUNDARY_EXTENSION_MM
+    AO_Y_MAX_MM = VICON_AO_Y_MAX_MM + BOUNDARY_EXTENSION_MM
+    AO_CX = 0.5 * (AO_X_MIN_MM + AO_X_MAX_MM)
+    AO_CY = 0.5 * (AO_Y_MIN_MM + AO_Y_MAX_MM)
+
+    print(
+        f"Config: {path} | Vicon={VICON_SERVER} | floor={FLOOR_PLANE} | "
+        f"workspace=({AO_X_MIN_MM:.0f}..{AO_X_MAX_MM:.0f}, "
+        f"{AO_Y_MIN_MM:.0f}..{AO_Y_MAX_MM:.0f}) mm | "
+        f"body <= {BODY_LENGTH_MM:.0f}x{BODY_WIDTH_MM:.0f} mm"
+    )
+    return str(path)
+
+
 # Square is deliberately small and central.  Individual robots normally stay
 # hundreds of mm away from the recovery band.
 DEFAULT_SIDE_MM = 1600.0
@@ -78,11 +180,10 @@ BODY_SAFETY_MARGIN_MM = 10.0
 BODY_WALL_MARGIN_MM = 30.0
 
 # Vicon segment axes are not guaranteed to use the same body-longitudinal axis
-# on every subject.  Reference observation shows Chariot 3's segment yaw axis is
-# rotated 90 deg relative to its physical 20 x 14 cm rectangle.  This offset is
-# ONLY for footprint geometry/digital twin; steering still uses the calibrated
-# Sphero->Vicon travelling-course map.
-BODY_YAW_OFFSET_DEG = {name: 90.0 for name, _subject, _segment in ROBOT_CONFIGS}
+# on every subject.  The local TOML may provide body_yaw_offset_deg per robot.
+# This affects footprint geometry/digital-twin rendering only; steering uses the
+# measured Sphero->Vicon travelling-course calibration.
+BODY_YAW_OFFSET_DEG = {name: 0.0 for name, _subject, _segment in ROBOT_CONFIGS}
 
 # Swarm-like waypoint capture: the group does not have to settle exactly at a
 # mathematical point.  Entering the capture disc is enough to hand off to the
@@ -1893,7 +1994,6 @@ def save_learning(robots: Sequence[Robot]) -> None:
                 "rolling_floor_cmd": r.learned_rolling_floor_cmd,
                 "drive_gain_mm_s_per_cmd": r.drive_gain_mm_s_per_cmd,
                 "stiction_kicks": r.stiction_kicks,
-                "drive_gain_mm_s_per_cmd": r.drive_gain_mm_s_per_cmd,
             }
             for r in robots
         },
@@ -2079,7 +2179,7 @@ def command_robot(r: Robot, vx: float, vy: float, max_cmd: int, dt: float, recov
             if terminal_zone
             else r.learned_breakaway_cmd
         )
-        pulse = int(round(clamp(pulse, 0.0, 255.0)))
+        pulse = int(round(clamp(pulse, 0.0, float(max_cmd))))
         world_cmd = wrap360(r.cmd_heading_world + r.formation_trim_deg)
         r.cmd_speed = float(pulse)
         r.driver.command_world(world_cmd, pulse, r.heading_bias_deg)
@@ -4301,9 +4401,21 @@ def make_dry_robots() -> Tuple[SimVicon, List[Robot]]:
 
 def parse_args():
     p = argparse.ArgumentParser()
+    p.add_argument("--config", default="config/robot_setup.toml", help="shared repository TOML mapping")
     p.add_argument("--side-mm", type=float, default=DEFAULT_SIDE_MM)
     p.add_argument("--laps", type=int, default=DEFAULT_LAPS, help="0 = continuous")
-    p.add_argument("--max-speed", type=int, default=DEFAULT_MAX_SPEED_CMD)
+    p.add_argument(
+        "--max-speed",
+        type=int,
+        default=DEFAULT_MAX_SPEED_CMD,
+        help="mission command cap (100..255), including stiction pulses; does not set startup calibration speed",
+    )
+    p.add_argument(
+        "--calibration-speed",
+        type=int,
+        default=CAL_SPEED_CMD,
+        help="startup displacement-calibration command (100..255; default: 255)",
+    )
     p.add_argument("--timeout", type=float, default=DEFAULT_TIMEOUT_S, help="0 = no timeout")
     p.add_argument("--log", type=str, default=LOG_FILE)
     p.add_argument("--reuse-calibration", action="store_true", help="explicitly reuse the last VERIFIED reference calibration; default is a fresh hardware calibration every run")
@@ -4314,10 +4426,16 @@ def parse_args():
 
 
 def main() -> None:
+    global CAL_SPEED_CMD
+
     args = parse_args()
+    config_used = apply_repository_config(args.config, allow_placeholders=args.dry_run)
+    CAL_SPEED_CMD = int(clamp(args.calibration_speed, 100, 255))
     side = clamp(args.side_mm, MIN_SIDE_MM, MAX_SIDE_MM)
     max_cmd = int(clamp(args.max_speed, 100, 255))
     print(f"Controller: {CONTROLLER_VERSION}")
+    print(f"CONFIG FILE: {config_used}")
+    print(f"MISSION COMMAND CAP: {max_cmd}; STARTUP CALIBRATION COMMAND: {CAL_SPEED_CMD}")
     print(f"RUNNING FILE: {Path(__file__).resolve()}")
     print(f"BOUNDARY POLICY: workspace comes from local configuration; optional extension={BOUNDARY_EXTENSION_MM:.0f} mm per side; recovery preserves square progress.")
     print(

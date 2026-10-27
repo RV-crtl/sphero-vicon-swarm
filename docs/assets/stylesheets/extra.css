@@ -5,7 +5,7 @@
   --sv-soft: color-mix(in srgb, var(--md-primary-fg-color) 7%, transparent);
 }
 
-.md-grid { max-width: 1440px; }
+.md-grid { max-width: 1280px; }
 
 .md-typeset h1 {
   font-weight: 760;
@@ -102,7 +102,14 @@
   box-shadow: 0 12px 30px rgba(0,0,0,.08);
   border-color: color-mix(in srgb, var(--md-accent-fg-color) 38%, var(--sv-border));
 }
-.sv-card h3, .sv-card h4 { margin: .12rem 0 .4rem; }
+.sv-card__title {
+  margin: .12rem 0 .42rem;
+  font-size: 1rem;
+  line-height: 1.35;
+  font-weight: 750;
+  letter-spacing: -.01em;
+}
+.sv-card__title a { text-decoration: none; }
 .sv-card p { margin: 0; opacity: .82; }
 
 .sv-figure {
@@ -175,4 +182,21 @@
 @media (max-width: 720px) {
   .sv-hero { padding: 1.4rem 1.25rem; border-radius: 18px; }
   .sv-figure--wide { margin-left: 0; margin-right: 0; }
+}
+
+
+/* Operator checklist */
+.md-typeset .task-list-item {
+  margin: .35rem 0;
+}
+.md-typeset .task-list-control {
+  margin-right: .35rem;
+}
+
+/* Keep Mermaid fallback readable if the renderer is temporarily unavailable. */
+.md-typeset pre.mermaid {
+  overflow-x: auto;
+  border: 1px solid var(--sv-border);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--md-code-bg-color) 94%, transparent);
 }

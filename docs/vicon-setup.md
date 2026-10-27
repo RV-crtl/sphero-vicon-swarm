@@ -106,7 +106,7 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ### 4. Perform the wand wave
 
-[![Tracker 4.1 Wand Wave settings](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+[![![Tracker 4.1 Wand Wave settings](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)]](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 *Close-up of the Wand Wave settings and **Wave All** action. Select the calibration object that matches your physical wand.*
 

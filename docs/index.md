@@ -18,13 +18,14 @@ This site documents a public toolkit for external-motion-capture control of Sphe
 3. [Vicon Tracker UI guide](vicon-tracker-ui-guide.md) — actual UI screenshots plus manufacturer procedures, explicitly labeled by Tracker version.
 4. [Vicon DataStream SDK setup](vicon-datastream.md) — Python SDK installation and live connection.
 5. [Vicon operator quick checklist](vicon-operator-checklist.md) — bench-side procedure.
-6. [Configuration](configuration.md) — map local Vicon objects and Sphero devices.
-7. [Hardware setup](hardware-setup.md) — verify robots and physical workspace.
-8. Run the Vicon-only pose monitor.
-9. Perform per-robot heading calibration.
-10. Validate one robot.
-11. Dry-run the three-robot controller.
-12. Run the physical swarm conservatively.
+6. [Vicon procedure sources and version provenance](vicon-procedure-sources.md) — exact source/version audit for the instructions and screenshots.
+7. [Configuration](configuration.md) — map local Vicon objects and Sphero devices.
+8. [Hardware setup](hardware-setup.md) — verify robots and physical workspace.
+9. Run the Vicon-only pose monitor.
+10. Perform per-robot heading calibration.
+11. Validate one robot.
+12. Dry-run the three-robot controller.
+13. Run the physical swarm conservatively.
 
 ## Key design choice
 

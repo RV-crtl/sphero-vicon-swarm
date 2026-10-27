@@ -24,12 +24,9 @@ The purpose is to make the documentation auditable and to avoid silently mixing 
 
 ### Primary visual guidance
 
-The main documentation now uses **clear Tracker 4.x panel/navigation maps** plus direct links to current Vicon documentation. This avoids two problems with the supplied captures:
+The main documentation uses **real Tracker 4.1 application screenshots** for visual recognition and current Vicon Tracker 4.4 documentation for button names, procedure and version-specific behaviour.
 
-- the original files are low-resolution and difficult to read on GitHub Pages;
-- the Tracker 3.9 layout is not a reliable guide to Tracker 4.4 button locations.
-
-Official current references are preferred for UI appearance and control placement.
+The original supplied lab screenshots were removed from the public tree because several were heavily downsampled or malformed. Architecture diagrams are used only for non-UI concepts such as the DataStream software path.
 
 ### Visual-source policy
 

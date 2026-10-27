@@ -20,7 +20,7 @@
 
 ## Real Tracker interface
 
-[![Real Vicon Tracker 4.1 Tracking interface](https://dasc-lab.github.io/robot-framework/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+[![Real Vicon Tracker 4.1 Tracking interface](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
 *Real Vicon Tracker 4.1 UI from DASC Lab's public setup documentation. The site's written procedure is checked against Tracker 4.4, while this image provides a recognisable real interface rather than a mockup.*
 

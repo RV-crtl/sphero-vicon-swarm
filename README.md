@@ -23,15 +23,23 @@ The repository is designed for reproducibility rather than a single fixed labora
 If your goal is to **repeat the laboratory setup from scratch**, start here rather than jumping straight into the controller code:
 
 - **[Step-by-step Vicon setup and reproduction workflow](docs/vicon-setup.md)** — full lab procedure from camera health and wand calibration through rigid-body creation, DataStream verification, heading calibration and staged swarm startup.
-- **[Vicon Tracker UI guide](docs/vicon-tracker-ui-guide.md)** — actual Tracker UI screenshots from the supplied lab material; each screenshot is labeled by Tracker version and paired with current Vicon manufacturer procedure.
+- **[Vicon Tracker UI guide](docs/vicon-tracker-ui-guide.md)** — clear Tracker 4.x panel maps, current Tracker 4.4 procedures, official high-resolution Vicon references, and separately labeled historical lab captures.
 - **[Bench-side Vicon operator checklist](docs/vicon-operator-checklist.md)** — condensed checklist for a returning user standing at the Vicon workstation.
 - **[Vicon DataStream SDK setup](docs/vicon-datastream.md)** — manufacturer-grounded SDK installation plus the exact DataStream calls used by this repository.
 - **[Vicon procedure sources](docs/vicon-procedure-sources.md)** — auditable table showing which instructions come from Vicon, which come from supplied lab material, and which come directly from repository source code.
 - **[Configuration](docs/configuration.md)** — maps local Vicon object names and Sphero devices into the software.
 
-![Actual Vicon Tracker 4.0 lab interface, sanitized](docs/assets/vicon/tracker4-actual-overview-annotated.jpg)
+~~~mermaid
+flowchart LR
+    CAM["Vicon cameras"] --> CAL["Calibrate + set world origin"]
+    CAL --> OBJ["Create rigid chariot objects"]
+    OBJ --> POSE["DataStream pose monitor"]
+    POSE --> HEAD["Per-robot heading calibration"]
+    HEAD --> ONE["Single-chariot validation"]
+    ONE --> SWARM["Three-chariot dry-run -> low-speed swarm"]
+~~~
 
-*Actual Tracker 4.0 lab screenshot; site-specific addresses are redacted.*
+The visual guide deliberately prioritizes **current Tracker 4.x navigation and official Vicon references** over low-resolution legacy screenshots.
 
 Recommended sequence:
 
@@ -283,7 +291,7 @@ The GitHub workflows add:
 - [Development history](docs/development-history.md)
 - [Hardware setup](docs/hardware-setup.md)
 - [Vicon setup — step-by-step reproduction guide](docs/vicon-setup.md)
-- [Vicon Tracker UI guide — actual screenshots](docs/vicon-tracker-ui-guide.md)
+- [Vicon Tracker UI guide — clear Tracker 4.x visual map](docs/vicon-tracker-ui-guide.md)
 - [Vicon DataStream SDK setup](docs/vicon-datastream.md)
 - [Vicon operator quick checklist](docs/vicon-operator-checklist.md)
 - [Vicon procedure sources and version provenance](docs/vicon-procedure-sources.md)

@@ -78,6 +78,10 @@ Use the actual approved local hostname/address; do not copy an address from an o
 
 ## 5. Verify the DataStream connection in Tracker
 
+![DataStream verification architecture](assets/site/datastream-workflow.svg)
+
+*Architecture diagram, not a Tracker UI screenshot. For the actual **Connections** panel, open **View → Connections** in Tracker and use Vicon's current Tracker documentation.*
+
 ```mermaid
 flowchart LR
     CMD["03_vicon_pose_monitor.py"] --> SDK["vicon_dssdk"]

@@ -20,25 +20,27 @@ The purpose is to make the documentation auditable and to avoid silently mixing 
 | Vicon-only validation command | This repository | current `main` | `examples/03_vicon_pose_monitor.py` |
 | Heading/world-frame calibration | This repository | current `main` | `examples/04_heading_calibration.py` |
 
-## Screenshot provenance
+## Visual-source provenance
 
-### Tracker 4.0 screenshots
+### Primary visual guidance
 
-The following images are actual screenshots from the supplied lab material:
+The main documentation now uses **clear Tracker 4.x panel/navigation maps** plus direct links to current Vicon documentation. This avoids two problems with the supplied captures:
+
+- the original files are low-resolution and difficult to read on GitHub Pages;
+- the Tracker 3.9 layout is not a reliable guide to Tracker 4.4 button locations.
+
+Official current references are preferred for UI appearance and control placement.
+
+### Historical lab captures
+
+The following supplied images remain in the repository for provenance only:
 
 - `tracker4-actual-overview-annotated.jpg`
 - `tracker4-actual-datastream-connections.jpg`
-
-Edits are limited to privacy redaction, cropping and explanatory callouts. The application UI is not reconstructed.
-
-### Tracker 3.9 screenshots
-
-The following images come from actual older training material:
-
 - `tracker39-actual-calibrate-tab.jpg`
 - `tracker39-actual-object-workflow.jpg`
 
-They are intentionally labeled **Tracker 3.9 / legacy**. They are not used as evidence for the exact position of Tracker 4.4 controls.
+The Tracker 4.0 files preserve the real lab context after privacy redaction. The Tracker 3.9 files preserve older training context. None of these images is treated as pixel-identical evidence for Tracker 4.4.
 
 ## Manufacturer references
 

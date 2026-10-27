@@ -29,7 +29,7 @@ If your goal is to **repeat the laboratory setup from scratch**, start here rath
 - **[Vicon procedure sources](docs/vicon-procedure-sources.md)** — auditable table showing which instructions come from Vicon, which come from supplied lab material, and which come directly from repository source code.
 - **[Configuration](docs/configuration.md)** — maps local Vicon object names and Sphero devices into the software.
 
-~~~mermaid
+```mermaid
 flowchart LR
     CAM["Vicon cameras"] --> CAL["Calibrate + set world origin"]
     CAL --> OBJ["Create rigid chariot objects"]
@@ -37,7 +37,7 @@ flowchart LR
     POSE --> HEAD["Per-robot heading calibration"]
     HEAD --> ONE["Single-chariot validation"]
     ONE --> SWARM["Three-chariot dry-run -> low-speed swarm"]
-~~~
+```
 
 The visual guide deliberately prioritizes **current Tracker 4.x navigation and official Vicon references** over low-resolution legacy screenshots.
 

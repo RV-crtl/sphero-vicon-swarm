@@ -200,3 +200,17 @@
   border-radius: 14px;
   background: color-mix(in srgb, var(--md-code-bg-color) 94%, transparent);
 }
+
+
+/* Preserve detail in genuine UI crops instead of upscaling them to page width. */
+.md-typeset .sv-shot-link {
+  display: inline-block;
+  margin: 1rem 0 .55rem;
+}
+.md-typeset .sv-shot-link > img.sv-shot-compact {
+  width: auto;
+  max-width: min(100%, 520px);
+  max-height: none;
+  margin: 0;
+  object-fit: contain;
+}

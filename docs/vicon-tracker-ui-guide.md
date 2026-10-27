@@ -73,6 +73,12 @@ For this project the practical rule is:
 
 > If Tracker reports an unhealthy camera/calibration state, or if reconstructed motion is visibly unstable, **do not proceed to closed-loop robot control**.
 
+## Actual object/tracking view
+
+![Actual Tracker object/tracking view](assets/vicon/tracker-ui-actual-object-view.jpg)
+
+*Real Vicon Tracker object/tracking screenshot from the supplied lab material. It is included here so a future user can compare the live workstation to an actual Tracker interface rather than a redrawn mock-up.*
+
 ## Object creation — Tracker 4.0 lab procedure
 
 The unfinished RAS checklist supplied with the project records the following physical workflow:

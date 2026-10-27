@@ -22,7 +22,7 @@
 
 ## Real Tracker interface
 
-[![Real Vicon Tracker 4.1 Wand Wave in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](vicon-tracker-ui-guide/)
+[![Real Vicon Tracker 4.1 Wand Wave in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](vicon-tracker-ui-guide.md)
 
 *Real Tracker 4.1 Wand Wave in progress: wand traces, per-camera counts and the Camera Calibration panel are all visible. The screenshot atlas explains every image state precisely.*
 

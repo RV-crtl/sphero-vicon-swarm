@@ -34,6 +34,7 @@ nav:
       - Tracker visual guide: vicon-tracker-ui-guide.md
       - DataStream SDK setup: vicon-datastream.md
       - Operator quick checklist: vicon-operator-checklist.md
+      - Procedure sources & versions: vicon-procedure-sources.md
   - Safety: safety.md
   - Troubleshooting: troubleshooting.md
   - Validation: validation.md

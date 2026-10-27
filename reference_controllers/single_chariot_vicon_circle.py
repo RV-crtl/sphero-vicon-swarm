@@ -1,3 +1,4 @@
+import argparse
 import math
 import os
 import time
@@ -9,6 +10,8 @@ from vicon_dssdk import ViconDataStream
 from spherov2 import scanner
 from spherov2.sphero_edu import SpheroEduAPI, EventType
 from spherov2.types import Color
+
+from sphero_vicon_swarm.config import load_config
 
 
 # ============================================================
@@ -127,6 +130,34 @@ CALIBRATION_MIN_DISPLACEMENT_MM = 45.0
 # the program stops instead of continuing to run away.
 WRONG_WAY_DOT_LIMIT = -0.35
 WRONG_WAY_GRACE_TIME_S = 1.5
+
+
+def apply_runtime_config(config_path: str, robot_label: str | None) -> None:
+    """Load the same local TOML mapping used by the staged examples."""
+
+    global SPHERO_NAME, VICON_SERVER, SUBJECT_NAME, SEGMENT_NAME, FLOOR_PLANE
+
+    cfg = load_config(config_path)
+    if robot_label is None:
+        spec = cfg.robots[0]
+    else:
+        matches = [robot for robot in cfg.robots if robot.label == robot_label]
+        if not matches:
+            known = ", ".join(robot.label for robot in cfg.robots)
+            raise ValueError(f"Unknown robot label {robot_label!r}. Known labels: {known}")
+        spec = matches[0]
+
+    SPHERO_NAME = spec.sphero_name
+    VICON_SERVER = cfg.vicon.server
+    SUBJECT_NAME = spec.vicon_subject
+    SEGMENT_NAME = spec.vicon_segment
+    FLOOR_PLANE = cfg.vicon.floor_plane
+
+    print(
+        f"Configuration: {spec.label} -> Sphero {SPHERO_NAME!r}, "
+        f"Vicon {SUBJECT_NAME!r}/{SEGMENT_NAME!r}, server={VICON_SERVER}, "
+        f"floor={FLOOR_PLANE}"
+    )
 
 
 # ------------------------------------------------------------
@@ -713,6 +744,18 @@ def make_collision_handler(motion: MotionState):
 # ------------------------------------------------------------
 
 def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Single-chariot Vicon-referenced circle controller."
+    )
+    parser.add_argument("--config", default="config/robot_setup.toml")
+    parser.add_argument(
+        "--robot",
+        default=None,
+        help="configured robot label; default: first robot in the TOML file",
+    )
+    args = parser.parse_args()
+    apply_runtime_config(args.config, args.robot)
+
     client = None
     api = None
 

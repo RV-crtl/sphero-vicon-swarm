@@ -34,13 +34,13 @@
 
 ### Wand wave
 
-[![Tracker 4.1 Wand Wave settings](https://dasc-lab.github.io/robot-framework/flylab/images/wand_settings.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
-
-*Real Tracker 4.1 Wand Wave controls.*
-
 [![Tracker 4.1 Wand Wave in progress](https://dasc-lab.github.io/robot-framework/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
-*Real Tracker 4.1 calibration in progress, with Wand Count and Image Error visible.*
+*Real full-window Tracker 4.1 calibration in progress. The Wand Wave controls are visible at left; Wand Count and Image Error are shown below them.*
+
+[![Tracker 4.1 calibration completed](https://dasc-lab.github.io/robot-framework/flylab/images/wand_finished.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+*Real full-window Tracker 4.1 post-calibration view with completed counts and image-error results.*
 
 - [ ] **Camera Calibration → Wand Wave**.
 - [ ] Select the correct physical calibration object.

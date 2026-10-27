@@ -43,7 +43,7 @@ The visual guide deliberately prioritizes **current Tracker 4.x navigation and o
 
 ### What the real Tracker UI looks like
 
-[![Real Vicon Tracker 4.1 object-creation interface](https://dasc-lab.github.io/robot-framework/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+[![Real Vicon Tracker 4.1 object-creation interface](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
 *Real Tracker 4.1 interface from DASC Lab's public setup documentation. Current procedure wording in this repository is verified against Tracker 4.4.*
 

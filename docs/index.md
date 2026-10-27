@@ -7,7 +7,7 @@ This site documents a public toolkit for external-motion-capture control of Sphe
 
     Keep the **[Vicon Tracker UI guide](vicon-tracker-ui-guide.md)** open for the clear Tracker 4.x panel map, current Tracker 4.4 control paths, official Vicon visual references, and separately labeled historical lab captures. Use the **[operator quick checklist](vicon-operator-checklist.md)** once you know the system.
 
-~~~mermaid
+```mermaid
 flowchart LR
     A["System / cameras"] --> B["Camera Calibration"]
     B --> C["Tracking / rigid objects"]
@@ -15,7 +15,7 @@ flowchart LR
     D --> E["Heading calibration"]
     E --> F["Single robot"]
     F --> G["Swarm"]
-~~~
+```
 
 ## Reproduction path
 

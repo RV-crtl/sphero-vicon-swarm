@@ -30,6 +30,7 @@ class RobotSpec:
     vicon_segment: str
     body_length_mm: float = 200.0
     body_width_mm: float = 140.0
+    body_yaw_offset_deg: float = 0.0
 
 
 @dataclass(frozen=True, slots=True)

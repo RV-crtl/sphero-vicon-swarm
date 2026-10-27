@@ -1,75 +1,55 @@
 # Vicon DataStream SDK setup
 
-The Sphero/Vicon swarm reads live poses through Vicon's **DataStream SDK**, using the Python module `vicon_dssdk`.
+The swarm reads live Vicon poses through the **Vicon DataStream SDK** using the Python module `vicon_dssdk`.
 
-This page explains the software/network side after Tracker can already see and track the rigid objects.
+This page separates:
 
-## What this repository actually uses
+- **Vicon manufacturer information** — SDK version, installation guidance and connection example; from
+- **project behaviour** — what this repository's adapter actually calls.
 
-The live data path is:
+## 1. Current Vicon SDK
 
-```text
-Vicon Tracker
-   │
-   │ TCP/IP DataStream (normally port 801)
-   ▼
-vicon_dssdk.ViconDataStream.Client
-   │
-   ▼
-src/sphero_vicon_swarm/tracking/vicon.py
-   │
-   ▼
-Pose2D(x_mm, y_mm, yaw_deg, occluded)
-   │
-   ▼
-heading calibration + controller
-```
+Vicon's current DataStream download page lists **DataStream SDK 1.13.0** as the latest point release and states that it supports Tracker 4.x.
 
-The repository does **not** require the Tracker UDP Object Stream.
+Download it from Vicon:
 
-Vicon documents UDP as a reduced object-data path for situations where DataStream cannot be used; if TCP/IP DataStream is available, Vicon recommends using the DataStream SDK.
+https://www.vicon.com/software/datastream-sdk/
 
-## 1. Install the SDK
+Do not commit the vendor installer into this repository.
 
-Download the current DataStream SDK from Vicon:
+## 2. Python installation
 
-https://www.vicon.com/software/datastream-sdk/?section=downloads
-
-Do not commit the Vicon installer or vendor binaries into this repository.
-
-As of DataStream SDK 1.13, Python support is supplied with the SDK installation/source package. Follow Vicon's installer instructions for your platform.
-
-### Windows Python installation pattern
-
-After installing the SDK, the Python package is normally found under a path similar to:
+Vicon's Windows Python quick-start documentation installs the package from the DataStream SDK Python directory using pip. A typical 64-bit path is:
 
 ```text
 C:\Program Files\Vicon\DataStream SDK\Win64\Python\vicon_dssdk
 ```
 
-Install it into the exact Python environment that will run this repository:
+Install into the exact interpreter/environment used for this project:
 
 ```powershell
 python -m pip install "C:\Program Files\Vicon\DataStream SDK\Win64\Python\vicon_dssdk"
 ```
 
-If the SDK installer/package location differs, use the actual installed path.
+### SDK 1.13 note for recent Python 3
 
-### SDK 1.13 Python note
+Vicon's **DataStream SDK 1.13** release notes document a known issue: on some recent Python 3 installations (their example is Python 3.11.x), the supplied install batch file may fail when run from `Program Files`.
 
-Vicon's DataStream SDK 1.13 release notes document a known issue where the supplied install batch file can fail for some recent Python 3 installations. Vicon's workaround is to run the batch file with suitable permissions or copy the package to a user-writable location before installing.
+Vicon's documented workarounds are:
 
-For this project, explicitly installing the `vicon_dssdk` package with the intended interpreter is preferable because it makes the environment unambiguous.
+- run the batch file as administrator; or
+- copy the package to a user-writable folder before running the install script.
 
-## 2. Confirm the Python package imports
+Manufacturer reference:  
+https://help.vicon.com/space/DSSDK113/726007829
 
-Run:
+## 3. Verify the import
 
 ```bash
 python -c "import vicon_dssdk; print('vicon_dssdk import: OK')"
 ```
 
-If this fails, do not debug the swarm controller yet. Fix the SDK/Python installation first.
+If this fails, fix the SDK/Python installation before debugging the swarm controller.
 
 You can also run:
 
@@ -77,87 +57,101 @@ You can also run:
 python -m sphero_vicon_swarm doctor
 ```
 
-to inspect the optional hardware backends visible to the current environment.
+## 4. Configure the Tracker host
 
-## 3. Determine the Tracker host
-
-The local configuration expects:
+The local TOML expects a host and port:
 
 ```toml
 [vicon]
-server = "HOST_OR_IP:801"
+server = "TRACKER_HOST:801"
 ```
 
-Examples:
+Vicon's Python DataStream quick-start example connects to:
 
-```toml
-server = "localhost:801"
+```python
+client.Connect("localhost:801")
 ```
 
-when the client runs on the Tracker computer, or:
+so this repository follows the same `HOST:PORT` convention.
 
-```toml
-server = "TRACKER_HOSTNAME:801"
-```
+Use the actual approved local hostname/address; do not copy an address from an old screenshot.
 
-when the client is on another permitted machine.
+## 5. Verify the actual DataStream connection in Tracker
 
-Use the local lab's approved hostname/address. Do not copy an old private address from a screenshot or previous user's configuration.
+![Actual Tracker 4.0 Connections/DataStream panel](assets/vicon/tracker4-actual-datastream-connections.jpg)
 
-## 4. Verify Tracker is providing live data
+This is an actual Tracker 4.0 screenshot from the supplied lab material, with the site-specific address redacted.
 
-![Actual Vicon Tracker 4.0 Connections/DataStream panel](assets/vicon/tracker4-actual-datastream-connections.jpg)
-
-*Actual Tracker 4.0 lab screenshot, cropped from the supplied lab material. The site-specific client address is redacted. The highlighted Data Stream area is the interface used by this repository.*
-
-Tracker must be running with live tracking available.
-
-In Tracker 4.x:
-
-1. open **View → Connections**;
-2. leave that panel visible;
-3. start the repository's pose monitor;
-4. confirm a DataStream client appears.
-
-Run:
+1. In Tracker, open **View → Connections**.
+2. Leave the panel visible.
+3. Run:
 
 ```bash
-python examples/03_vicon_pose_monitor.py \
-  --config config/robot_setup.toml \
-  --seconds 20
+python examples/03_vicon_pose_monitor.py --config config/robot_setup.toml --seconds 20
 ```
 
-The repository's adapter:
+4. Confirm a client appears in the **Data Stream** area.
+5. Move each physical chariot by hand and verify the intended software label changes.
 
-- creates a `ViconDataStream.Client`;
-- connects to the configured host;
-- requests server-push mode when available;
-- keeps a small buffer;
-- enables segment data;
-- gets one frame at a time;
-- requests global segment translation and Euler rotation.
+## 6. What this repository actually calls
 
-## 5. Expected pose-monitor output
-
-You should see output similar to:
+The project adapter is:
 
 ```text
-robot-1: (  120.4, -340.2) yaw= 91.3 occ=False
-robot-2: ( -515.0,  225.9) yaw=182.7 occ=False
-robot-3: (  612.7,  -55.1) yaw=271.0 occ=False
+src/sphero_vicon_swarm/tracking/vicon.py
 ```
 
-The values above are examples only.
+It:
 
-The important checks are:
+1. imports `ViconDataStream` from `vicon_dssdk`;
+2. creates `ViconDataStream.Client()`;
+3. calls `Connect(config.server)`;
+4. requests `EServerPush` when supported;
+5. attempts `SetBufferSize(1)`;
+6. enables segment data;
+7. requests frames;
+8. reads global segment translation;
+9. reads global Euler rotation.
 
-- positions change smoothly when a chariot is moved;
-- values are in millimetres;
-- only the intended robot label responds to that physical robot;
-- the horizontal axes agree with `floor_plane`;
-- occlusion changes to `True` when tracking is intentionally lost.
+Those statements are derived directly from the repository source, not inferred from Tracker UI.
 
-## 6. Verify subject and segment names
+### Why ServerPush appears in the code
+
+Vicon's DataStream Developer's Guide describes **ServerPush** as the improved-performance stream mode compared with default ClientPull. This repository requests it when available.
+
+### Why the buffer is set to one
+
+That is a **project design choice**, not a Vicon manufacturer requirement. The controller prioritizes recent pose data over a backlog of older frames.
+
+## 7. UDP Object Stream is a separate interface
+
+The Tracker Connections UI can also expose UDP output settings.
+
+This repository does not use them.
+
+Enabling UDP does not change the project's adapter: the Python source still creates a DataStream client through `vicon_dssdk`.
+
+So, for this repository, do not add UDP configuration as a required setup step.
+
+## 8. Verify the returned data
+
+Expected pose-monitor fields include:
+
+- planar X coordinate in millimetres;
+- planar Y coordinate in millimetres;
+- yaw;
+- occlusion state.
+
+With the monitor running and **no robot commands active**:
+
+1. move robot 1 only;
+2. confirm only `robot-1` changes;
+3. repeat for all robots;
+4. check known axis directions;
+5. rotate the rigid body;
+6. briefly occlude it and inspect the occlusion flag.
+
+## 9. Subject and segment names must match Tracker
 
 The adapter calls:
 
@@ -166,87 +160,53 @@ client.GetSegmentGlobalTranslation(vicon_subject, vicon_segment)
 client.GetSegmentGlobalRotationEulerXYZ(vicon_subject, vicon_segment)
 ```
 
-Therefore the configured names must match Tracker exactly.
+Therefore the TOML names must match the tracked object/segment names exactly.
 
-A typical robot section is:
+Do not assume subject and segment names are identical if the local Tracker setup says otherwise.
 
-```toml
-[[robots]]
-label = "robot-1"
-sphero_name = "YOUR_DEVICE_NAME"
-vicon_subject = "Robot_1"
-vicon_segment = "Robot_1"
-```
+## Troubleshooting
 
-The subject and segment are often the same for a simple Tracker rigid object, but do not assume this if your Tracker setup differs.
+### Import fails
 
-## 7. DataStream port vs UDP settings
+Fix `vicon_dssdk` installation first.
 
-The default DataStream endpoint commonly uses port **801**.
-
-Do not confuse this with the **UDP Object Stream** settings visible in Tracker's Connections panel.
-
-For this repository:
-
-| Interface | Required? | Purpose |
-|---|---:|---|
-| Vicon DataStream SDK | **Yes** | Full live pose client used by the Python code |
-| Tracker UDP Object Stream | No | Optional reduced object-data broadcast |
-| OSC | No | Not used |
-| VRPN | No | Not used |
-
-If someone enables UDP anyway, it does not make the repository use UDP; the Python code still connects through `vicon_dssdk`.
-
-## 8. Network troubleshooting
-
-### `vicon_dssdk` imports but the connection fails
+### Import works but Connect fails
 
 Check:
 
 - Tracker is running;
-- the configured hostname/address is correct;
-- the client machine can reach the Tracker host;
-- local firewall policy allows the connection;
-- the DataStream port is not being confused with UDP output configuration;
-- you are using the correct network interface for the lab.
+- the configured host is correct;
+- client and Tracker host can communicate;
+- the intended port is reachable;
+- local firewall/network policy.
 
-Do not publish private lab addresses in issues, screenshots or commits.
-
-### Connection succeeds but no useful pose appears
+### Connect works but no useful pose appears
 
 Check:
 
-- the object is active in Tracker;
-- the object name matches the TOML file;
-- the segment name matches;
-- Tracker is receiving live frames;
-- the marker constellation is actually tracking;
-- occlusion state;
-- System Health Report.
+- the Tracker object is actually tracking;
+- subject/segment names;
+- live frames;
+- occlusion;
+- System Health.
 
-### Pose is correct but steering is wrong
+### Pose looks correct but robot steering is wrong
 
-That is normally **not** a DataStream problem.
+That is not automatically a DataStream problem.
 
-Run the repository's heading/displacement calibration:
+Run:
 
 ```bash
 python examples/04_heading_calibration.py --config config/robot_setup.toml
 ```
 
-The project intentionally calibrates the Sphero command frame against measured Vicon displacement rather than assuming the two frames align.
+The project intentionally measures Sphero-command to Vicon-world displacement rather than assuming those frames align.
 
-## 9. Why the repo uses a buffer of one
+## Manufacturer references
 
-The reusable adapter attempts to use server-push streaming and `SetBufferSize(1)`.
+- DataStream SDK downloads/current version: https://www.vicon.com/software/datastream-sdk/
+- DataStream SDK 1.13 release information: https://help.vicon.com/space/DSSDK113/726007829
+- Vicon Python DataStream Quick Start: https://help.vicon.com/space/DSSDK110/9240617
+- DataStream Developer's Guide: https://help.vicon.com/download/attachments/10027198/Vicon%20DataStream%20SDK%201.12%20Developers%20Guide.pdf
 
-For control, recent pose is more useful than a queue of stale poses. A small buffer helps avoid controlling the robot from old frames when the consumer falls behind.
-
-This is separate from Vicon's Tracker processing latency; watch Tracker's **System Health Report → Performance** as well.
-
-## Official references
-
-- [Vicon DataStream SDK downloads](https://www.vicon.com/software/datastream-sdk/?section=downloads)
-- [DataStream SDK 1.13 documentation](https://help.vicon.com/space/DSSDK113)
-- [DataStream SDK Developer's Guide](https://help.vicon.com/download/attachments/726007858/Vicon%20DataStream%20SDK%20Developer%27s%20Guide.pdf)
-- [Tracker 4.4 User Guide](https://help.vicon.com/download/attachments/376309877/Vicon%20Tracker%20User%20Guide.pdf)
+For source provenance, see [Vicon procedure sources](vicon-procedure-sources.md).

@@ -1,6 +1,6 @@
 # Vicon Tracker visual guide — real UI + verified procedures
 
-This page is the visual companion to the [full Vicon setup workflow](vicon-setup.md).
+This page is the visual companion to the [full Vicon setup workflow](vicon-setup.md). Real application screenshots are used for UI recognition; diagrams are explicitly labelled and used only to explain navigation or data flow.
 
 The primary guide uses **real Tracker 4.1 UI screenshots** for visual recognition and current Vicon Tracker 4.4 documentation for procedure wording. The old supplied low-resolution screenshots were removed from the public tree because several were malformed or too compressed to be useful.
 
@@ -30,7 +30,7 @@ These are real application screenshots, not reconstructed UI artwork. Tracker 4.
 !!! note "Version relationship"
     These screenshots are Tracker **4.1**, so they use the same Tracker 4 panel-based UI generation as Tracker 4.4. Button placement can move between point releases; the written instructions on this page follow current Tracker 4.4 terminology.
 
-## Tracker 4.x window map
+## Tracker 4.x navigation map (diagram)
 
 ```mermaid
 flowchart LR

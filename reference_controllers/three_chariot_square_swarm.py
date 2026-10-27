@@ -124,12 +124,25 @@ def apply_repository_config(config_path: str, *, allow_placeholders: bool) -> st
         segment = os.getenv(
             f"VICON_{suffix}_SEGMENT", str(raw.get("vicon_segment", subject))
         )
-        if not allow_placeholders and sphero_name.startswith("YOUR_"):
+        is_placeholder = sphero_name.startswith("YOUR_")
+        if not allow_placeholders and is_placeholder:
             raise ValueError(f"Replace the placeholder Sphero name for {label} before hardware use.")
-        mapped.append((sphero_name, subject, segment))
-        yaw_offsets[sphero_name] = float(raw.get("body_yaw_offset_deg", 0.0))
+
+        # The public example deliberately repeats the same placeholder device name.
+        # Dry-run still needs three unique simulation keys, so use the software
+        # label only for placeholder simulations. Hardware always uses the real
+        # discoverable Sphero name.
+        runtime_name = label if allow_placeholders and is_placeholder else sphero_name
+        mapped.append((runtime_name, subject, segment))
+        yaw_offsets[runtime_name] = float(raw.get("body_yaw_offset_deg", 0.0))
         lengths.append(float(raw.get("body_length_mm", BODY_LENGTH_MM)))
         widths.append(float(raw.get("body_width_mm", BODY_WIDTH_MM)))
+
+    runtime_names = [name for name, _subject, _segment in mapped]
+    if len(set(runtime_names)) != len(runtime_names):
+        raise ValueError(
+            "The first three configured robots must resolve to unique device/software names."
+        )
 
     ROBOT_CONFIGS = mapped
     BODY_YAW_OFFSET_DEG = yaw_offsets

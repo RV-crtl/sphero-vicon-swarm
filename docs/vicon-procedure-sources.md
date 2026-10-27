@@ -36,6 +36,28 @@ For UI recognition, the public site now links directly to real **Tracker 4.1 app
 
 For non-UI concepts such as the Python/DataStream path, the site may use local diagrams that are explicitly labelled as architecture diagrams rather than Tracker screenshots.
 
+## Screenshot-to-state audit
+
+The public visual guide intentionally maps each image to the exact UI state it depicts.
+
+| Screenshot | Tracker state shown | Used for |
+|---|---|---|
+| `masking_initial.png` | Camera Calibration before masking | workspace orientation |
+| `masking_mask_all.png` | Mask All / active Stop state | masking action |
+| `masking_no_markers.png` | 3-D View, no marker selection | workspace recognition |
+| `wand_settings.png` | Wand Wave advanced settings crop | wand configuration only |
+| `wand_initial.png` | calibration active, early/zero counts | beginning collection |
+| `wand_in_progress.png` | wand traces + accumulating counts | active volume coverage |
+| `wand_finished.png` | completed counts + Image Error | post-calibration result |
+| `origin_initial.png` | 3-D Volume Setup before final origin | origin pre-state |
+| `origin_pan_zoom.png` | Start Set Origin highlighted | origin action |
+| `origin_final.png` | camera/world geometry after origin | origin result |
+| `object_initial.png` | Tracking panel before selection | object-creation pre-state |
+| `object_select.png` | five markers selected | marker selection |
+| `object_create.png` | object name + Create | creation action |
+
+This table exists specifically to prevent a screenshot from being captioned as a different Tracker state than the one actually visible.
+
 ## Manufacturer references
 
 ### Vicon Tracker

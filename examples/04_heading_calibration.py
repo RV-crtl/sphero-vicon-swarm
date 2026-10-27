@@ -134,7 +134,9 @@ def main() -> None:
     print("Per-robot Vicon displacement calibration")
     print(f"Configured robots: {', '.join(robot.label for robot in robots)}")
     print(f"Motion command: speed={speed}, duration={seconds:.2f} s per axis")
-    print("Only one robot moves at a time. Keep the operating area clear and keep Ctrl+C available.")
+    print(
+        "Only one robot moves at a time. Keep the operating area clear and keep Ctrl+C available."
+    )
 
     results: dict[str, object] = {
         "config": str(Path(args.config)),

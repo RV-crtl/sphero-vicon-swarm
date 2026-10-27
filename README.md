@@ -41,6 +41,12 @@ flowchart LR
 
 The visual guide deliberately prioritizes **current Tracker 4.x navigation and official Vicon references** over low-resolution legacy screenshots.
 
+### What the real Tracker UI looks like
+
+[![Vicon Tracker 4.1 object-creation view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](docs/vicon-tracker-ui-guide.md)
+
+*Real Vicon Tracker 4.1 interface shown at full resolution. Source: DASC Lab public setup documentation, pinned to commit `c3241aa50284`. The repository's procedure text remains aligned to current Tracker 4.4 terminology.*
+
 Recommended sequence:
 
 ```text

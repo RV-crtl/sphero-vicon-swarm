@@ -85,7 +85,7 @@ Use it to recognise the 3-D workspace before object/origin operations.
 
 ## 4. Wand Wave advanced settings
 
-[![![Tracker 4.1 Wand Wave settings close-up](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)]](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+<a class="sv-shot-link" href="https://dasc-lab.github.io/robot-framework/flylab/calibration.html"><img class="sv-shot-compact" src="https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png" alt="Tracker 4.1 Wand Wave settings close-up"></a>
 
 This is intentionally a **close-up**, not a whole-window screenshot.
 

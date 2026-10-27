@@ -108,9 +108,14 @@ Enter:
 
 ## F. Verify DataStream — no robot motion
 
-![DataStream verification architecture](assets/site/datastream-workflow.svg)
+~~~mermaid
+flowchart LR
+    A["Tracker"] --> B["DataStream"]
+    B --> C["vicon_dssdk"]
+    C --> D["pose monitor"]
+~~~
 
-*Architecture diagram, not a Tracker UI screenshot: Tracker → DataStream → `vicon_dssdk` → pose monitor.*
+*Architecture diagram, not a Tracker UI screenshot. Verify the actual connection in **View → Connections → Data Stream**.*
 
 - [ ] Install/import `vicon_dssdk`.
 - [ ] Tracker → **View → Connections**.

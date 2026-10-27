@@ -23,9 +23,10 @@ The repository is designed for reproducibility rather than a single fixed labora
 If your goal is to **repeat the laboratory setup from scratch**, start here rather than jumping straight into the controller code:
 
 - **[Step-by-step Vicon setup and reproduction workflow](docs/vicon-setup.md)** — full lab procedure from camera health and wand calibration through rigid-body creation, DataStream verification, heading calibration and staged swarm startup.
-- **[Vicon Tracker UI guide](docs/vicon-tracker-ui-guide.md)** — actual Tracker screenshots from the supplied lab material, with private addresses redacted, plus version-specific manufacturer instructions.
+- **[Vicon Tracker UI guide](docs/vicon-tracker-ui-guide.md)** — actual Tracker UI screenshots from the supplied lab material; each screenshot is labeled by Tracker version and paired with current Vicon manufacturer procedure.
 - **[Bench-side Vicon operator checklist](docs/vicon-operator-checklist.md)** — condensed checklist for a returning user standing at the Vicon workstation.
-- **[Vicon DataStream SDK setup](docs/vicon-datastream.md)** — install `vicon_dssdk`, connect on the DataStream endpoint, verify the client in Tracker and troubleshoot networking.
+- **[Vicon DataStream SDK setup](docs/vicon-datastream.md)** — manufacturer-grounded SDK installation plus the exact DataStream calls used by this repository.
+- **[Vicon procedure sources](docs/vicon-procedure-sources.md)** — auditable table showing which instructions come from Vicon, which come from supplied lab material, and which come directly from repository source code.
 - **[Configuration](docs/configuration.md)** — maps local Vicon object names and Sphero devices into the software.
 
 ![Actual Vicon Tracker 4.0 lab interface, sanitized](docs/assets/vicon/tracker4-actual-overview-annotated.jpg)
@@ -285,6 +286,7 @@ The GitHub workflows add:
 - [Vicon Tracker UI guide — actual screenshots](docs/vicon-tracker-ui-guide.md)
 - [Vicon DataStream SDK setup](docs/vicon-datastream.md)
 - [Vicon operator quick checklist](docs/vicon-operator-checklist.md)
+- [Vicon procedure sources and version provenance](docs/vicon-procedure-sources.md)
 - [Safety](docs/safety.md)
 - [Troubleshooting](docs/troubleshooting.md)
 - [Validation](docs/validation.md)

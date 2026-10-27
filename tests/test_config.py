@@ -9,3 +9,4 @@ def test_example_config_parses() -> None:
     assert len(cfg.robots) == 3
     assert cfg.vicon.floor_plane == "XY"
     assert cfg.controller.max_speed_cmd == 160
+    assert all(robot.body_yaw_offset_deg == 0.0 for robot in cfg.robots)

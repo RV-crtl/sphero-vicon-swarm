@@ -2,7 +2,7 @@
 
 This page is the visual companion to the [full Vicon setup workflow](vicon-setup.md).
 
-The primary guide now uses **version-correct navigation maps and current Vicon documentation**, rather than asking readers to interpret tiny legacy screenshots. The original lab captures are still retained as historical evidence, but they are no longer the main source for locating controls.
+The primary guide uses **real Tracker 4.1 UI screenshots** for visual recognition and current Vicon Tracker 4.4 documentation for procedure wording. The old supplied low-resolution screenshots were removed from the public tree because several were malformed or too compressed to be useful.
 
 ## Read the version labels first
 
@@ -11,7 +11,7 @@ The primary guide now uses **version-correct navigation maps and current Vicon d
 | Current procedure text | Tracker 4.4 | Primary authority for control names and workflow |
 | Tracker 4.x panel map below | Tracker 4.x | Clear orientation to the current application layout |
 | Official Vicon online documentation | Tracker 4.4 / Tracker 4.x | High-resolution current visual reference |
-| Supplied lab captures | Tracker 4.0 and 3.9 | Historical lab evidence only |
+| DASC Lab public UI captures | Tracker 4.1 | Real interface screenshots for visual recognition |
 
 !!! warning "Use the installed Tracker version as the final UI authority"
     Tracker 4.x keeps the same core panel model, but controls and layout can move between point releases. Follow the current Vicon help for the version installed on the workstation.
@@ -139,9 +139,9 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ### Controls before starting
 
-[![Real Tracker 4.1 Wand Wave settings](https://dasc-lab.github.io/robot-framework/flylab/images/wand_settings.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
-
 [![Real Tracker 4.1 calibration in progress](https://dasc-lab.github.io/robot-framework/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
+
+[![Real Tracker 4.1 calibration completed](https://dasc-lab.github.io/robot-framework/flylab/images/wand_finished.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
 Use **Camera Calibration -> Wand Wave**.
 

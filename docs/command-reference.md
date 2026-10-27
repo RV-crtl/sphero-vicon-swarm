@@ -15,9 +15,9 @@ Use the [end-to-end tutorial](end-to-end-tutorial.md) for sequence and context.
 
 ---
 
-# Package CLI
+## Package CLI
 
-## doctor
+### doctor
 
 ~~~powershell
 python -m sphero_vicon_swarm doctor
@@ -31,7 +31,7 @@ Use it immediately after installation.
 
 ---
 
-## validate-config
+### validate-config
 
 ~~~powershell
 python -m sphero_vicon_swarm validate-config --config config/robot_setup.toml
@@ -43,7 +43,7 @@ Parses/sanity-checks the TOML. It can report placeholders, but parsing alone doe
 
 ---
 
-## simulate
+### simulate
 
 ~~~powershell
 python -m sphero_vicon_swarm simulate --seconds 8
@@ -55,9 +55,9 @@ Runs the reusable package's simple hardware-free robot-motion simulation.
 
 ---
 
-# Staged examples
+## Staged examples
 
-## 01_single_sphero_smoke_test.py
+### 01_single_sphero_smoke_test.py
 
 ~~~powershell
 python examples/01_single_sphero_smoke_test.py --config config/robot_setup.toml --speed 60 --seconds 0.5
@@ -83,7 +83,7 @@ Use it only after you know the area in front of that robot is clear.
 
 ---
 
-## 02_multi_sphero_smoke_test.py
+### 02_multi_sphero_smoke_test.py
 
 ~~~powershell
 python examples/02_multi_sphero_smoke_test.py --config config/robot_setup.toml
@@ -97,7 +97,7 @@ Purpose: prove all BLE identities can be addressed without intentionally moving 
 
 ---
 
-## 03_vicon_pose_monitor.py
+### 03_vicon_pose_monitor.py
 
 ~~~powershell
 python examples/03_vicon_pose_monitor.py --config config/robot_setup.toml --seconds 20
@@ -118,7 +118,7 @@ Default duration: 10 s.
 
 ---
 
-## 04_heading_calibration.py
+### 04_heading_calibration.py
 
 ~~~powershell
 python examples/04_heading_calibration.py --config config/robot_setup.toml
@@ -152,9 +152,9 @@ Do not use --no-prompt for an unfamiliar physical setup.
 
 ---
 
-# Reference controllers
+## Reference controllers
 
-## single_chariot_vicon_circle.py
+### single_chariot_vicon_circle.py
 
 ~~~powershell
 python reference_controllers/single_chariot_vicon_circle.py --config config/robot_setup.toml
@@ -183,7 +183,7 @@ This is the mandatory single-agent integration gate before a physical swarm.
 
 ---
 
-## three_chariot_square_swarm.py — dry-run
+### three_chariot_square_swarm.py — dry-run
 
 ~~~powershell
 python reference_controllers/three_chariot_square_swarm.py --config config/robot_setup.toml --dry-run --timeout 8 --no-digital-twin
@@ -197,7 +197,7 @@ The dry simulator injects asymmetric response/stiction so the controller sees no
 
 ---
 
-## three_chariot_square_swarm.py — hardware
+### three_chariot_square_swarm.py — hardware
 
 ~~~powershell
 python reference_controllers/three_chariot_square_swarm.py --config config/robot_setup.toml --laps 1 --max-speed 140 --calibration-speed 180
@@ -221,13 +221,13 @@ Important options:
 | --dry-run | use simulation rather than hardware |
 | --no-digital-twin | disable Tk dashboard |
 
-### Critical distinction
+#### Critical distinction
 
 **--max-speed does not set the startup calibration speed.**
 
 Default startup calibration command is 255. Choose --calibration-speed deliberately for a new setup.
 
-### Fresh calibration
+#### Fresh calibration
 
 Fresh calibration is the default for hardware.
 
@@ -235,9 +235,9 @@ Previously measured calibration is reused only when explicitly requested with --
 
 ---
 
-# Release and maintenance commands
+## Release and maintenance commands
 
-## Local release check
+### Local release check
 
 ~~~powershell
 python tools/release_check.py
@@ -257,7 +257,7 @@ Generated release-check artifacts are cleaned up afterward.
 
 ---
 
-## Privacy scan
+### Privacy scan
 
 ~~~powershell
 python tools/privacy_scan.py .
@@ -269,7 +269,7 @@ Run before publishing local changes.
 
 ---
 
-# Recommended operator sequence
+## Recommended operator sequence
 
 ~~~text
 doctor

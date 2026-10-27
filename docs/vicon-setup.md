@@ -5,7 +5,7 @@ This is the **end-to-end lab procedure** for reproducing the Vicon side of the S
 The UI instructions on this page use two evidence types:
 
 - **current Vicon manufacturer procedure** for Tracker 4.4; and
-- **clear Tracker 4.x navigation maps** in the [Tracker UI guide](vicon-tracker-ui-guide.md).
+- **real Tracker 4.1 application screenshots** in the [Tracker visual guide](vicon-tracker-ui-guide.md), used for visual recognition.
 
 The old supplied lab captures were removed from the public tree because their resolution was too low for dependable button-by-button instruction. Real Tracker 4.1 UI screenshots from DASC Lab's public documentation are used instead, with written procedure checked against Tracker 4.4.
 
@@ -65,9 +65,9 @@ Manufacturer reference: **Tracker 4.4 User Guide, pp. 177–187**.
 
 ---
 
-# Camera calibration
+## Camera calibration
 
-## 3. Remove or mask unwanted reflections
+### 3. Remove or mask unwanted reflections
 
 [![Real Tracker 4.1 masking / Cameras view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -100,7 +100,7 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ---
 
-## 4. Perform the wand wave
+### 4. Perform the wand wave
 
 [![Real Tracker 4.1 wand calibration in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -124,12 +124,9 @@ After the wand wave, the cameras are calibrated **relative to each other**, but 
 
 Manufacturer reference: **Tracker 4.4 User Guide, pp. 130–132**.
 
-!!! info "Legacy lab screenshot"
-    The original Tracker 3.9 calibration capture remains in `docs/assets/vicon/` for provenance, but it is intentionally not embedded here. Its layout is obsolete for Tracker 4.4; follow the control path above.
-
 ---
 
-## 5. Set the volume origin
+### 5. Set the volume origin
 
 [![Real Tracker 4.1 Volume Setup view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://dasc-lab.github.io/robot-framework/flylab/calibration.html)
 
@@ -157,7 +154,7 @@ Manufacturer reference: **Tracker 4.4 User Guide, pp. 134–147**.
 
 ---
 
-## 6. Save and validate the calibration
+### 6. Save and validate the calibration
 
 Save the calibration using the lab's normal naming/version convention.
 
@@ -173,9 +170,9 @@ Do not widen the software workspace into a region where tracking is poor.
 
 ---
 
-# Rigid-body creation
+## Rigid-body creation
 
-## 7. Build a distinct marker constellation
+### 7. Build a distinct marker constellation
 
 Vicon Tracker 4.4 states that, for best results, an object should be rigid and contain **at least four asymmetric markers**.
 
@@ -189,7 +186,7 @@ For these three similar chariots:
 
 ---
 
-## 8. Create the object in Tracker
+### 8. Create the object in Tracker
 
 [![Real Tracker 4.1 marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
 
@@ -215,13 +212,13 @@ Vicon notes that the new object's initial origin is the mean point of its marker
 
 Manufacturer reference: **Tracker 4.4 User Guide, pp. 187–190**.
 
-### Add a marker
+#### Add a marker
 
 1. select the object;
 2. hold **Ctrl** and select one unassigned marker;
 3. click **Add Marker**.
 
-### Remove a marker
+#### Remove a marker
 
 1. select the marker;
 2. click **Remove Marker**.
@@ -233,7 +230,7 @@ https://help.vicon.com/space/Tracker44/376309055
 
 ---
 
-## 9. Verify object identity before software integration
+### 9. Verify object identity before software integration
 
 For each chariot:
 
@@ -247,7 +244,7 @@ Do not infer identity from list order.
 
 ---
 
-# DataStream and software handoff
+## DataStream and software handoff
 
 ## 10. Install the Vicon DataStream SDK
 
@@ -379,7 +376,7 @@ The hardware reference controller performs a fresh heading calibration by defaul
 
 The procedure above was built from:
 
-1. **the supplied local Vicon checklist and historical lab captures** for site workflow context;
+1. **the supplied local Vicon checklist and training material** for site workflow context;
 2. **Vicon Tracker 4.4 User Guide** for current calibration, System Health and object-creation procedure;
 3. **Vicon Tracker 4.0 masking documentation** where the lab software/version-specific procedure is relevant;
 4. **Vicon DataStream SDK documentation** for Python/DataStream setup;

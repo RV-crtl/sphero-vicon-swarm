@@ -242,6 +242,8 @@ The three-robot implementation is centralised: one process observes the Vicon st
 - [Getting started](docs/getting-started.md)
 - [Configuration](docs/configuration.md)
 - [Hardware setup](docs/hardware-setup.md)
+- [Command reference](docs/command-reference.md)
+- [Glossary](docs/glossary.md)
 
 **Vicon**
 - [Detailed Vicon setup workflow](docs/vicon-setup.md)
@@ -303,7 +305,7 @@ before publishing local changes.
 
 Tagged releases are published on the GitHub Releases page. The repository is the recommended form when you need examples, docs, configuration templates and reference controllers alongside the package.
 
-See [v1.0.0 release notes](docs/releases/v1.0.0.md).
+The **current `main` branch** contains the latest tutorial/runtime alignment described above. The existing **v1.0.0** tag is retained as the earlier archival release; see its [release notes](docs/releases/v1.0.0.md).
 
 ## License
 

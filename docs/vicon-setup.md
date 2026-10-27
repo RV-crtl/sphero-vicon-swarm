@@ -246,7 +246,7 @@ Do not infer identity from list order.
 
 ## DataStream and software handoff
 
-## 10. Install the Vicon DataStream SDK
+### 10. Install the Vicon DataStream SDK
 
 The repository uses Vicon **DataStream SDK** via the Python module `vicon_dssdk`.
 
@@ -256,7 +256,7 @@ Use the dedicated [DataStream SDK setup page](vicon-datastream.md).
 
 ---
 
-## 11. Create the local configuration
+### 11. Create the local configuration
 
 Copy:
 
@@ -284,7 +284,7 @@ Vicon's Python quick-start documentation uses `localhost:801` in its DataStream 
 
 ---
 
-## 12. Verify DataStream with **no robot commands**
+### 12. Verify DataStream with **no robot commands**
 
 ```mermaid
 flowchart LR
@@ -312,7 +312,7 @@ Do not enable closed-loop motion if identity, axes or tracking quality are ambig
 
 ---
 
-## 13. Verify the Sphero devices
+### 13. Verify the Sphero devices
 
 Run the staged Sphero smoke tests:
 
@@ -325,7 +325,7 @@ Keep speeds low and maintain a direct stop path.
 
 ---
 
-## 14. Calibrate Sphero heading against measured Vicon displacement
+### 14. Calibrate Sphero heading against measured Vicon displacement
 
 Run:
 
@@ -339,7 +339,7 @@ The calibration measures Vicon displacement produced by approximately orthogonal
 
 ---
 
-## 15. Validate one robot before the swarm
+### 15. Validate one robot before the swarm
 
 ```bash
 python reference_controllers/single_chariot_vicon_circle.py
@@ -354,7 +354,7 @@ Check that:
 
 ---
 
-## 16. Dry-run, then run the physical swarm
+### 16. Dry-run, then run the physical swarm
 
 Software-only first:
 

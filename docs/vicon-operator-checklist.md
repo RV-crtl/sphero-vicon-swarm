@@ -1,70 +1,51 @@
-# Vicon operator quick checklist
+# Vicon Tracker 4.0 — bench-side reproduction checklist
 
-Use this as the **bench-side checklist** once the full [Vicon setup and reproduction workflow](vicon-setup.md) has been read.
+This is a **condensed operator checklist**. It deliberately does not replace Vicon's manufacturer documentation.
 
-For screenshots/click maps, keep the [Vicon Tracker visual guide](vicon-tracker-ui-guide.md) open beside this page.
+For screenshots and explanations, use:
 
-For SDK installation/network debugging, use [Vicon DataStream SDK setup](vicon-datastream.md).
+- [Actual Tracker UI guide](vicon-tracker-ui-guide.md)
+- [Full Vicon reproduction procedure](vicon-setup.md)
+- [DataStream SDK setup](vicon-datastream.md)
 
-It condenses the practical sequence into one page for a returning user.
+## Before calibration
 
-## A. Start the Vicon system
+- [ ] Open the dedicated Vicon workstation using the local lab procedure.
+- [ ] Confirm Vicon camera-network hardware is powered.
+- [ ] Open **Vicon Tracker 4.0**.
+- [ ] Open **System** and confirm every expected camera is active.
+- [ ] Move a reflector through the working volume and confirm marker reconstruction.
+- [ ] Stop if camera/system health is not credible.
 
-- [ ] Start the dedicated Vicon workstation.
-- [ ] Confirm the Vicon camera-network hardware is powered.
-- [ ] Confirm any local streaming/network equipment required by the lab is powered and isolated according to local network policy.
-- [ ] Open **Vicon Tracker 4.x**.
-- [ ] Open **System** and confirm every expected camera is online and contributing.
-- [ ] Check the 3D view: reflective markers should reconstruct as points when moved through the capture volume.
-- [ ] Check **System Health Report**: calibration status, latency/drop frames, Centroid Connectivity and Image Error.
-- [ ] Stop if the expected camera count or tracking volume is not healthy.
+## Calibration
 
-## B. Check or calibrate the volume
+- [ ] Follow Vicon's Tracker 4.0 masking instructions: https://help.vicon.com/space/Tracker40/14190245
+- [ ] Follow Vicon's Tracker 4.0 calibration/origin instructions: https://help.vicon.com/space/Tracker40/14189152
+- [ ] Cover the **actual chariot workspace**, not only the centre of the volume.
+- [ ] Confirm the world origin and horizontal plane after calibration.
+- [ ] Save the validated Tracker setup.
 
-If the current calibration is known to be valid, perform the validation checks and continue.
+## Create each chariot object
 
-If cameras have moved, Tracker reports an invalid calibration, or tracking quality is poor:
+Using the supplied RAS Tracker 4.0 lab procedure:
 
-- [ ] Open the **Cameras** view.
-- [ ] Remove or cover unnecessary reflective objects.
-- [ ] Mask persistent reflections only when they cannot be physically removed.
-- [ ] Select the correct calibration wand.
-- [ ] Run the wand-wave calibration throughout the **actual robot working volume**.
-- [ ] Set/verify the volume origin using the lab-approved origin procedure.
-- [ ] Confirm floor plane and positive axis directions.
-- [ ] Check tracking in the centre **and near the planned workspace edges**.
-- [ ] Save the valid Tracker setup.
+- [ ] use a rigid, asymmetric, unique marker constellation with at least four markers;
+- [ ] place one chariot in the visible volume;
+- [ ] open **View → Tracking**;
+- [ ] select its markers using **Ctrl + left-click**;
+- [ ] in **Tracking → Setup**, enter the object name and choose **Create**;
+- [ ] correct the definition with **Add Marker** / **Remove Marker** if required;
+- [ ] move the chariot by hand and confirm the intended object follows it;
+- [ ] save the setup.
 
-## C. Create the rigid bodies
+## Verify identity before robot motion
 
-For **each** chariot:
+- [ ] move Robot 1 only → only Robot 1 Vicon object changes;
+- [ ] repeat for Robot 2;
+- [ ] repeat for Robot 3;
+- [ ] record exact Sphero device ↔ Vicon object/segment mappings.
 
-- [ ] Use at least four rigid, asymmetric, well-spaced reflective markers; **five or more is preferred** where practical.
-- [ ] Make the constellation visibly different from the other robots.
-- [ ] Place the chariot in the capture volume.
-- [ ] Open the **Tracking** panel.
-- [ ] Ctrl-select only that chariot's markers.
-- [ ] Give the object a clear, unique name.
-- [ ] Click **Create**.
-- [ ] Move the chariot by hand and confirm only that Vicon object follows it.
-- [ ] Add/remove markers if necessary.
-- [ ] Save the object/setup.
-
-## D. Record the robot mapping
-
-For each physical robot, write down:
-
-| Physical robot | Sphero/BLE name | Vicon subject/object | Vicon segment |
-|---|---|---|---|
-| Robot 1 | local value | local value | local value |
-| Robot 2 | local value | local value | local value |
-| Robot 3 | local value | local value | local value |
-
-Do **not** infer this mapping from list order.
-
-## E. Create the local configuration
-
-Copy the template:
+## Configure the repository
 
 ```powershell
 Copy-Item config/robot_setup.example.toml config/robot_setup.toml
@@ -76,113 +57,78 @@ or:
 cp config/robot_setup.example.toml config/robot_setup.toml
 ```
 
-Then edit:
+Set the local:
 
-- `vicon.server`
-- `vicon.floor_plane`
-- each `sphero_name`
-- each `vicon_subject`
-- each `vicon_segment`
-- measured workspace limits and conservative soft margin
+- [ ] DataStream server;
+- [ ] horizontal `floor_plane`;
+- [ ] Sphero device names;
+- [ ] Vicon subject/object names;
+- [ ] Vicon segment names;
+- [ ] conservative workspace limits.
 
-The real local file is ignored by Git.
-
-## F. Verify the DataStream path — no robot commands
-
-This project uses the **Vicon DataStream SDK**. Tracker's UDP Object Stream is optional and is **not required** for the swarm controller.
-
-- [ ] Install/import `vicon_dssdk`.
-- [ ] In Tracker, open **View → Connections**.
-- [ ] Confirm the configured DataStream endpoint/host is the approved local value.
-
-## G. Verify Vicon only — no robot commands
-
-Run:
+## Vicon only
 
 ```bash
 python examples/03_vicon_pose_monitor.py --config config/robot_setup.toml --seconds 20
 ```
 
-Then:
+- [ ] move each robot by hand and verify the correct software pose;
+- [ ] check axis signs;
+- [ ] check yaw response;
+- [ ] check occlusion reporting;
+- [ ] do not continue if mappings are ambiguous.
 
-- [ ] move Robot 1 by hand; only `robot-1` should move in software;
-- [ ] repeat for Robots 2 and 3;
-- [ ] rotate each robot and inspect yaw;
-- [ ] move along the expected +X and +Y/+Z directions;
-- [ ] briefly occlude markers and confirm occlusion is reported;
-- [ ] verify positions are in millimetres;
-- [ ] verify the software workspace matches the safe tracking volume.
-
-**Do not enable closed-loop motion if any mapping is ambiguous.**
-
-## H. Verify one Sphero at a time
-
-Run the single-device and multi-device smoke tests:
+## Sphero only
 
 ```bash
 python examples/01_single_sphero_smoke_test.py --config config/robot_setup.toml
 python examples/02_multi_sphero_smoke_test.py --config config/robot_setup.toml
 ```
 
-Keep speeds low and maintain a clear stop path.
+- [ ] verify each software label commands the intended physical Sphero.
 
-## I. Calibrate Sphero heading to Vicon world coordinates
-
-Run:
+## Heading calibration
 
 ```bash
 python examples/04_heading_calibration.py --config config/robot_setup.toml
 ```
 
-The calibration measures Vicon displacement for two approximately orthogonal Sphero command headings.
+- [ ] clear space;
+- [ ] verify the correct Vicon object is tracking;
+- [ ] confirm both calibration displacements are sensible.
 
-- [ ] clear space around the robot;
-- [ ] confirm the correct rigid body is tracking;
-- [ ] confirm both calibration moves produce sensible displacement;
-- [ ] repeat if mounting, wheel/chariot mechanics or marker geometry changed.
-
-## J. Validate closed-loop motion
-
-Single robot first:
+## One robot
 
 ```bash
 python reference_controllers/single_chariot_vicon_circle.py
 ```
 
-Check:
+- [ ] verify world direction;
+- [ ] verify stopping;
+- [ ] verify conservative workspace containment.
 
-- [ ] commanded motion agrees with Vicon-world direction;
-- [ ] stop/interrupt behaviour is safe;
-- [ ] tracking remains stable;
-- [ ] the robot stays inside conservative bounds.
-
-## K. Validate the three-robot controller
-
-Software-only dry run:
+## Three robots — software first
 
 ```bash
 python reference_controllers/three_chariot_square_swarm.py --dry-run --timeout 8 --no-digital-twin
 ```
 
-Then a conservative hardware run:
+## Three robots — physical
 
 ```bash
 python reference_controllers/three_chariot_square_swarm.py --laps 1 --max-speed 160
 ```
 
-Before starting:
+- [ ] all three Vicon objects visible;
+- [ ] all mappings verified;
+- [ ] workspace clear;
+- [ ] stop path available;
+- [ ] fresh calibration completes.
 
-- [ ] all three rigid bodies are visible;
-- [ ] all three robot mappings are confirmed;
-- [ ] the workspace is clear;
-- [ ] boundaries are conservative;
-- [ ] an operator is ready to stop the run;
-- [ ] a fresh heading calibration is allowed to complete.
+## Debugging order
 
-## If something looks wrong
+If something fails, debug in this order:
 
-Stop the robots and use the full [Vicon setup and reproduction workflow](vicon-setup.md) plus the [troubleshooting guide](troubleshooting.md).
+**camera/system health → Vicon calibration → rigid-body identity → DataStream pose → Sphero identity → heading calibration → one robot → swarm**
 
-The safest debugging order is:
-
-**camera health → calibration → rigid-body identity → DataStream pose → Sphero identity → heading calibration → single robot → swarm**.
+That order prevents software/controller tuning from hiding a basic tracking or identity problem.

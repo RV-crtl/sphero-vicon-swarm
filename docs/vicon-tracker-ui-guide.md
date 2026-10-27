@@ -16,6 +16,21 @@ The primary guide now uses **version-correct navigation maps and current Vicon d
 !!! warning "Use the installed Tracker version as the final UI authority"
     Tracker 4.x keeps the same core panel model, but controls and layout can move between point releases. Follow the current Vicon help for the version installed on the workstation.
 
+## Real Tracker 4.1 visual reference
+
+The diagrams below explain the layout, but the screenshots here show the **actual application** at a readable resolution.
+
+[![Vicon Tracker 4.1 - camera calibration workspace](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)
+
+*Tracker 4.1 Camera Calibration workspace: Camera Calibration panel on the left and multi-camera views in the workspace. Click to open the full-resolution image.*
+
+[![Vicon Tracker 4.1 - tracking workspace](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)
+
+*Tracker 4.1 Tracking panel and 3D View during rigid-object creation. Click to open full resolution.*
+
+!!! note "Version relationship"
+    These screenshots are Tracker **4.1**, so they use the same Tracker 4 panel-based UI generation as Tracker 4.4. Button placement can move between point releases; the written instructions on this page follow current Tracker 4.4 terminology.
+
 ## Tracker 4.x window map
 
 ```mermaid
@@ -100,6 +115,10 @@ Tracker reports cameras above a **1.0 pixel Image Error diagnostic threshold** i
 
 ## Mask unwanted reflections
 
+[![Tracker 4.1 masking / Cameras view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/masking_initial.png)
+
+*Real Tracker 4.1 masking workspace. The Camera Calibration panel is visible on the left; camera views occupy the workspace.*
+
 Use **Camera Calibration -> Masking**.
 
 1. Physically remove or cover reflective clutter where practical.
@@ -118,6 +137,18 @@ https://help.vicon.com/space/Tracker40/14190245
 
 ## Perform the wand wave
 
+### Controls before starting
+
+[![Tracker 4.1 Wand Wave settings](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_settings.png)
+
+*Real Tracker 4.1 Wand Wave controls, including Auto Stop and Wave All.*
+
+### During calibration
+
+[![Tracker 4.1 wand calibration in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)
+
+*Real Tracker 4.1 calibration run. Wand Count and Image Error feedback are visible at left while per-camera detections fill the workspace.*
+
 Use **Camera Calibration -> Wand Wave**.
 
 1. Confirm masking is complete.
@@ -132,6 +163,10 @@ Use **Camera Calibration -> Wand Wave**.
 After this stage, cameras are calibrated relative to each other; the world origin still needs to be set.
 
 ## Set the volume origin
+
+[![Tracker 4.1 Start Set Origin view](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/origin_pan_zoom.png)
+
+*Real Tracker 4.1 Volume Setup view with **Start Set Origin** highlighted and completed camera-calibration feedback visible.*
 
 Use **Camera Calibration -> Volume Setup**.
 
@@ -152,6 +187,18 @@ If required, use Vicon's separate **Set Floor Plane** workflow after the origin 
 ---
 
 # 3. Create and verify rigid objects
+
+### Select the marker cluster
+
+[![Tracker 4.1 marker selection](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_select.png)
+
+*Real Tracker 4.1 3D View with an asymmetric marker cluster selected.*
+
+### Create the object
+
+[![Tracker 4.1 object creation](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)
+
+*Real Tracker 4.1 Tracking panel showing the object name field and **Create** control.*
 
 Tracker 4.4 uses the **Tracking** panel.
 
@@ -227,6 +274,12 @@ The repository still retains the supplied lab captures for provenance:
 They are intentionally **not embedded as the primary instructions** because the source material is low-resolution and the Tracker 3.9 screens no longer match the current Tracker 4.4 layout.
 
 Use them only to recognize the historical lab environment. Use the Tracker 4.4 references above to locate controls on a current workstation.
+
+## Screenshot attribution
+
+The Tracker 4.1 screenshots above come from the public **DASC Lab robot-framework** setup documentation and are referenced from the source repository at commit `c3241aa50284640d379de1acb5f87774c5d415a2`. They are used as visual references for the real Tracker 4 interface; current procedure authority remains Vicon Tracker 4.4 documentation.
+
+Source documentation: https://github.com/dasc-lab/robot-framework/tree/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab
 
 ## Manufacturer references used for this page
 

@@ -12,17 +12,18 @@
 </div>
 
 <div class="sv-grid">
-  <div class="sv-card"><div class="sv-card__title"><a href="vicon-setup/">Reproduce the lab</a></div><p>Camera health, masking, wand wave, origin, rigid objects and staged validation.</p></div>
-  <div class="sv-card"><div class="sv-card__title"><a href="vicon-tracker-ui-guide/">Tracker visual guide</a></div><p>Real Tracker UI screenshots with clear version labels and current operating guidance.</p></div>
+  <div class="sv-card"><div class="sv-card__title"><a href="end-to-end-tutorial/">End-to-end first run</a></div><p>Clean PC to first safe multi-robot run, with exact pass/fail gates and real Tracker screenshots.</p></div>
+  <div class="sv-card"><div class="sv-card__title"><a href="vicon-setup/">Vicon procedure</a></div><p>Deep camera health, masking, calibration, origin, rigid-object and DataStream guidance.</p></div>
+  <div class="sv-card"><div class="sv-card__title"><a href="vicon-tracker-ui-guide/">Tracker screenshot atlas</a></div><p>Real Tracker 4.1 UI states mapped precisely to current Tracker 4.4 procedure wording.</p></div>
   <div class="sv-card"><div class="sv-card__title"><a href="vicon-datastream/">DataStream SDK</a></div><p>Connect Tracker to Python and verify subject/segment identity before motion.</p></div>
   <div class="sv-card"><div class="sv-card__title"><a href="vicon-operator-checklist/">Operator checklist</a></div><p>A concise bench-side runbook for calibration, object creation, DataStream verification and staged motion.</p></div>
 </div>
 
 ## Real Tracker interface
 
-[![Real Vicon Tracker 4.1 Tracking interface](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/object_create.png)](https://dasc-lab.github.io/robot-framework/flylab/object.html)
+[![Real Vicon Tracker 4.1 Wand Wave in progress](https://raw.githubusercontent.com/dasc-lab/robot-framework/c3241aa50284640d379de1acb5f87774c5d415a2/docs/flylab/images/wand_in_progress.png)](vicon-tracker-ui-guide/)
 
-*Real Vicon Tracker 4.1 UI from DASC Lab's public setup documentation. The site's written procedure is checked against Tracker 4.4, while this image provides a recognisable real interface rather than a mockup.*
+*Real Tracker 4.1 Wand Wave in progress: wand traces, per-camera counts and the Camera Calibration panel are all visible. The screenshot atlas explains every image state precisely.*
 
 ## Reproduction path
 
@@ -52,13 +53,14 @@ This keeps the lab procedure aligned with `src/sphero_vicon_swarm/tracking/vicon
 
 ## Documentation map
 
-1. [Getting started](getting-started.md)
-2. [Vicon setup and reproduction workflow](vicon-setup.md)
-3. [Vicon Tracker visual guide](vicon-tracker-ui-guide.md)
-4. [Vicon DataStream SDK setup](vicon-datastream.md)
-5. [Vicon operator quick checklist](vicon-operator-checklist.md)
-6. [Vicon procedure sources and version provenance](vicon-procedure-sources.md)
-7. [Configuration](configuration.md)
-8. [Hardware setup](hardware-setup.md)
-9. [Control design](control-design.md)
-10. [Validation](validation.md)
+1. **[End-to-end first-run tutorial](end-to-end-tutorial.md)** — primary new-user path.
+2. [Getting started](getting-started.md)
+3. [Vicon setup and reproduction workflow](vicon-setup.md)
+4. [Vicon Tracker visual guide](vicon-tracker-ui-guide.md)
+5. [Vicon DataStream SDK setup](vicon-datastream.md)
+6. [Vicon operator quick checklist](vicon-operator-checklist.md)
+7. [Vicon procedure sources and version provenance](vicon-procedure-sources.md)
+8. [Configuration](configuration.md)
+9. [Hardware setup](hardware-setup.md)
+10. [Control design](control-design.md)
+11. [Validation](validation.md)
